@@ -1,4 +1,6 @@
-﻿using Business.Services.Users;
+﻿using Business.Models;
+using Business.Services.Users;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -15,8 +17,8 @@ namespace TwitterBackup.Web.Controllers
         }
 
         public async Task<ActionResult> Index()
-        { 
-            var users = await this.favoriteUserService.GetAllAsync();
+        {
+            var users = new List<UserModel>(); //await this.favoriteUserService.GetAllAsync();
             return View(users);
         }
 
