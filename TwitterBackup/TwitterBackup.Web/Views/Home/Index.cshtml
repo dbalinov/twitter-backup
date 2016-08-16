@@ -3,15 +3,30 @@
     ViewBag.Title = "Home Page";
 }
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
         <table class="table table-bordered table-condensed">
             @foreach (var user in Model)
             {
                 <tr>
-                    <td>@user.Id</td>
+                    <td>
+                        @if (user.ProfileImageUrl != null)
+                        {
+                            <img src="@user.ProfileImageUrl" />
+                        }
+                    </td>
+                    @*<td>@user.Id</td>*@
                     <td>@user.Name</td>
                     <td>@user.Description</td>
-                    <td>@user.Notifications</td>
+                    <td>
+                        @if (user.Notifications)
+                        {
+                            <i class="glyphicon glyphicon-star"></i>
+                        }
+                        else
+                        {
+                            <i class="glyphicon glyphicon-star-empty"></i>
+                        }
+                    </td>
                 </tr>
             }
         </table>

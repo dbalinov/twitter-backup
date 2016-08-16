@@ -6,5 +6,6 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public bool Notifications { get; set; }
+        public string ProfileImageUrl { get; set; }
     }
 }

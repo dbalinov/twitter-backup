@@ -10,6 +10,7 @@ namespace Business.Models.Mapping
             to.Name = from.Name;
             to.Description = from.Description;
             to.Notifications = from.Notifications;
+            to.ProfileImageUrl = from.ProfileImageUrl;
 
             return to;
         }

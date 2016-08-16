@@ -56,7 +56,8 @@ namespace DataAccess.Repositories.Users
                             Id = friend.UserIDResponse,
                             Name = friend.Name,
                             Description = friend.Description,
-                            Notifications = friend.Notifications
+                            Notifications = friend.Notifications,
+                            ProfileImageUrl = friend.ProfileImageUrl
                         };
                         result.Add(user);
                     }
