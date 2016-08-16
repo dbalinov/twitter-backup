@@ -228,12 +228,16 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\app\app.module.js" />
     <Content Include="Scripts\app\app.route.js" />
+    <Content Include="Scripts\app\friends\friendsView.html" />
     <Content Include="Scripts\app\friends\friendsController.js" />
     <Content Include="Scripts\app\friends\friendsService.js" />
     <Content Include="Scripts\bootstrap.js" />

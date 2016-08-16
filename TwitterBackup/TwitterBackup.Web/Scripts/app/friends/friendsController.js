@@ -1,3 +1,5 @@
-﻿function friendsController($scope) {
-    $scope.message = "text message";
+﻿function friendsController($scope, friendsServices) {
+    $scope.friends = [];
+
+    $scope.message = friendsServices.getFriends();
 }

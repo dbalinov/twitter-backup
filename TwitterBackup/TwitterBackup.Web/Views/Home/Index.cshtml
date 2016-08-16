@@ -1,7 +1,10 @@
 ﻿@model IEnumerable<Business.Models.UserModel>
 <div ng-app="twitterbackup" ng-cloak>
-    <div class="row" ng-controller="friendsController">
+    <div ng-view>
         <h2>{{ message }}</h2>
+    </div>
+    <div class="row">
+
         <div class="col-md-8">
             <table class="table table-bordered table-condensed">
                 @foreach (var user in Model)
