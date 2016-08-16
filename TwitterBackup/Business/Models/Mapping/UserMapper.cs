@@ -11,6 +11,9 @@ namespace Business.Models.Mapping
             to.Description = from.Description;
             to.Notifications = from.Notifications;
             to.ProfileImageUrl = from.ProfileImageUrl;
+            to.Url = from.Url;
+            to.ProfileBackgroundColor = from.ProfileBackgroundColor;
+
 
             return to;
         }

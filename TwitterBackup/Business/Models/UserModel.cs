@@ -7,5 +7,7 @@
         public string Description { get; set; }
         public bool Notifications { get; set; }
         public string ProfileImageUrl { get; set; }
+        public string Url { get; internal set; }
+        public string ProfileBackgroundColor { get; internal set; }
     }
 }

@@ -8,7 +8,7 @@
             @foreach (var user in Model)
             {
                 <tr>
-                    <td>
+                    <td style="background-color: #@user.ProfileBackgroundColor;">
                         @if (user.ProfileImageUrl != null)
                         {
                             <img src="@user.ProfileImageUrl" />
