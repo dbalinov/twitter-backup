@@ -371,6 +371,8 @@ namespace TwitterBackup.Web.Controllers
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        await StoreAuthTokenClaims(user);
+
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }
@@ -478,5 +480,31 @@ namespace TwitterBackup.Web.Controllers
             }
         }
         #endregion
+
+        private async Task StoreAuthTokenClaims(ApplicationUser user)
+        {
+            // Get the claims identity
+            var claimsIdentity =
+                await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+
+            if (claimsIdentity != null)
+            {
+                // Retrieve the existing claims
+                var currentClaims = await UserManager.GetClaimsAsync(user.Id);
+
+                // Get the list of access token related claims from the identity
+                var tokenClaims = claimsIdentity.Claims
+                    .Where(c => c.Type.StartsWith("urn:tokens:"));
+
+                // Save the access token related claims
+                foreach (var tokenClaim in tokenClaims)
+                {
+                    if (!currentClaims.Contains(tokenClaim))
+                    {
+                        await UserManager.AddClaimAsync(user.Id, tokenClaim);
+                    }
+                }
+            }
+        }
     }
 }
