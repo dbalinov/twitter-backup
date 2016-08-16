@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LinqToTwitter;
 using System.Web.Configuration;
+using System.Threading.Tasks;
 
 namespace DataAccess.Repositories.Users
 {
@@ -14,7 +15,7 @@ namespace DataAccess.Repositories.Users
         public FavoriteUserRepository(string oAuthToken, string oAuthTokenSecret, string userId)
         {
             this.userId = userId;
-           this.auth = new MvcAuthorizer
+            this.auth = new MvcAuthorizer
             {
                 CredentialStore = new SessionStateCredentialStore
                 {
@@ -27,23 +28,20 @@ namespace DataAccess.Repositories.Users
            };
         }
 
-        public IEnumerable<DataAccess.Entities.User> GetAll()
+        public async Task<IEnumerable<DataAccess.Entities.User>> GetAllAsync()
         {
             var ctx = new TwitterContext(this.auth);
             // var favorites = ctx.Favorites;
-
+            var result = new List<DataAccess.Entities.User>();
             Friendship friendship;
             long cursor = -1;
             do
             {
-                friendship =
-                    //await 
-                    (from friend in ctx.Friendship
-                        where friend.Type == FriendshipType.FriendsList &&
-                              friend.UserID == this.userId &&
-                              friend.Cursor == cursor
-                        select friend)
-                        .SingleOrDefault(); //Async();
+                friendship = await ctx.Friendship
+                    .Where(friend => friend.Type == FriendshipType.FriendsList &&
+                        friend.UserID == this.userId &&
+                        friend.Cursor == cursor)
+                    .SingleOrDefaultAsync();
 
                 if (friendship != null &&
                     friendship.Users != null &&
@@ -53,18 +51,20 @@ namespace DataAccess.Repositories.Users
 
                     foreach (var friend in friendship.Users)
                     {
-                        yield return new DataAccess.Entities.User {Name = friend.Name};
+                        var user = new DataAccess.Entities.User
+                        {
+                            Id = friend.UserIDResponse,
+                            Name = friend.Name,
+                            Description = friend.Description,
+                            Notifications = friend.Notifications
+                        };
+                        result.Add(user);
                     }
                 }
 
             } while (cursor != 0);
 
-            //var users = ctx.Friendship
-            //    .FirstOrDefault(x => x.Type == FriendshipType.FriendsList && x.UserID == this.userId)
-            //    .Users;
-            //var responseTweet = users
-            //    .Select(x => new DataAccess.Entities.User {Name = x.Name});
-            //return responseTweet;
+            return result;
         }
     }
 }

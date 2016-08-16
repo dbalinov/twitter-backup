@@ -6,7 +6,10 @@ namespace Business.Models.Mapping
     {
         public UserModel Map(User from, UserModel to)
         {
+            to.Id = from.Id;
             to.Name = from.Name;
+            to.Description = from.Description;
+            to.Notifications = from.Notifications;
 
             return to;
         }

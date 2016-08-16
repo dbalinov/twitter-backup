@@ -18,12 +18,12 @@ namespace Business.Services.Users
             this.favoriteUserRepository = new FavoriteUserRepository(oAuthToken, oAuthTokenSecret, userId);
         }
 
-        public IEnumerable<UserModel> GetAll()
+        public async Task<IEnumerable<UserModel>> GetAllAsync()
         {
             var mapper = new UserMapper();
-            var users = this.favoriteUserRepository.GetAll()
-                .Select(x => mapper.Map(x, new UserModel()));
-            return users;
+            var users = await this.favoriteUserRepository.GetAllAsync();
+
+            return users.Select(x => mapper.Map(x, new UserModel()));
         }
     }
 }

@@ -2,13 +2,18 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
 <div class="row">
-    <div class="col-md-4">
-        @foreach (var user in Model)
-        {
-            <p>@user.Name</p>
-        }
-
+    <div class="col-md-6">
+        <table class="table table-bordered table-condensed">
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Name</td>
+                    <td>@user.Description</td>
+                    <td>@user.Notifications</td>
+                </tr>
+            }
+        </table>
     </div>
 </div>
