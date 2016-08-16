@@ -1,10 +1,14 @@
-﻿@{
+﻿@model IEnumerable<Business.Models.UserModel>
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        @foreach (var user in Model)
+        {
+            <p>@user.Name</p>
+        }
+
     </div>
 </div>
