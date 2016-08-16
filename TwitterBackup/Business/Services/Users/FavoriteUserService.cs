@@ -11,16 +11,15 @@ namespace Business.Services.Users
     {
         private IFavoriteUserRepository favoriteUserRepository;
 
-        public FavoriteUserService(string oAuthToken, string oAuthTokenSecret, string userId)
+        public FavoriteUserService(IFavoriteUserRepository favoriteUserRepository)
         {
-            this.favoriteUserRepository = new FavoriteUserRepository(oAuthToken, oAuthTokenSecret, userId);
+            this.favoriteUserRepository = favoriteUserRepository;
         }
 
         public async Task<IEnumerable<UserModel>> GetAllAsync()
         {
             var mapper = new UserMapper();
             var users = await this.favoriteUserRepository.GetAllAsync();
-
             return users.Select(x => mapper.Map(x, new UserModel()));
         }
     }

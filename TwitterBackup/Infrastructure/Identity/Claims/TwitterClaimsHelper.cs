@@ -2,16 +2,9 @@
 using System.Security.Claims;
 using System.Threading;
 
-namespace TwitterBackup.Web
+namespace Infrastructure.Identity.Claims
 {
-    public interface ITwitterClaimsHelper
-    {
-        string GetOAuthAccessToken();
-        string GetOAuthAccessTokenSecret();
-        ulong GetUserId();
-    }
-
-    public class TweeterClaimsHelper : ITwitterClaimsHelper
+    public class TwitterClaimsHelper : ITwitterClaimsHelper
     {
         public string GetOAuthAccessToken()
         {
@@ -23,11 +16,9 @@ namespace TwitterBackup.Web
             return GetClaimValue("urn:tokens:twitter:accesstokensecret");
         }
 
-        public ulong GetUserId()
+        public string GetUserId()
         {
-            ulong userId;
-            ulong.TryParse(GetClaimValue("urn:tokens:twitter:userid"), out userId);
-            return userId;
+            return GetClaimValue("urn:tokens:twitter:userid");
         }
 
         private static string GetClaimValue(string claimName)

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using LinqToTwitter;
 using System.Web.Configuration;
 using System.Threading.Tasks;
+using Infrastructure.Identity.Claims;
 
 namespace DataAccess.Repositories.Users
 {
@@ -12,18 +12,17 @@ namespace DataAccess.Repositories.Users
         private readonly MvcAuthorizer auth;
         private readonly string userId;
 
-        public FavoriteUserRepository(string oAuthToken, string oAuthTokenSecret, string userId)
+        public FavoriteUserRepository(ITwitterClaimsHelper claimsHelper)
         {
-            this.userId = userId;
+            this.userId = claimsHelper.GetUserId();
             this.auth = new MvcAuthorizer
             {
                 CredentialStore = new SessionStateCredentialStore
                 {
                     ConsumerKey = WebConfigurationManager.AppSettings["twitter:ConsumerKey"],
                     ConsumerSecret = WebConfigurationManager.AppSettings["twitter:ConsumerSecret"],
-                    OAuthToken = oAuthToken,
-                    OAuthTokenSecret = oAuthTokenSecret,
-                    //UserID = claimsHelper.GetUserId()
+                    OAuthToken = claimsHelper.GetOAuthAccessToken(),
+                    OAuthTokenSecret = claimsHelper.GetOAuthAccessTokenSecret()
                 }
            };
         }

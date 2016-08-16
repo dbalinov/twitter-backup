@@ -7,11 +7,16 @@ namespace TwitterBackup.Web.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        public async Task<ActionResult> Index()
+        private IFavoriteUserService favoriteUserService;
+
+        public HomeController(IFavoriteUserService favoriteUserService)
         {
-            var claimsHelper = new TweeterClaimsHelper();
-            var f = new FavoriteUserService(claimsHelper.GetOAuthAccessToken(), claimsHelper.GetOAuthAccessTokenSecret(), claimsHelper.GetUserId().ToString());
-            var users = await f.GetAllAsync();
+            this.favoriteUserService = favoriteUserService;
+        }
+
+        public async Task<ActionResult> Index()
+        { 
+            var users = await this.favoriteUserService.GetAllAsync();
             return View(users);
         }
 
