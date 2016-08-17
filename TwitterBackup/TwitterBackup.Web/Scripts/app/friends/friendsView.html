@@ -14,20 +14,98 @@
     </ul>
 </div>
 <div class="row">
-    <div class="col-md-8">
-        <table class="table table-bordered table-condensed">
-            <tr ng-repeat="friend in friends">
-                <td ng-if="friend.ProfileImageUrl != null"
-                     ng-style="friend.ProfileBackgroundColor != '000000' && {'background-color': '#{{friend.ProfileBackgroundColor}}' }">
-                    <img src="{{friend.ProfileImageUrl}}" alt="" class="img-thumbnail" />
-                </td>
-                <td>{{friend.Id}}</td>
-                <td>{{friend.Name}}</td>
-                <!--<td>{{friend.Description}}</td>-->
-                <td>
-                    <i class="glyphicon " ng-class="{ 'glyphicon-star': friend.Notifications, 'glyphicon-star-empty': !friend.Notifications }"></i>
-                </td>
-            </tr>
-        </table>
+    <div ng-repeat="friend in friends"
+         class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="twitter-card">
+            <div class="background-layer">
+                <div class="twitter-banner"
+                     ng-style="{'background-color': '#{{friend.ProfileBackgroundColor}}', 'background-image': 'url({{friend.ProfileBannerUrl}})' }"></div>
+            </div>
+            <div class="foreground-layer">
+                <div class="profile-image">
+                    <div ng-if="friend.ProfileImageUrl != null">
+                        <img src="{{friend.ProfileImageUrl}}" alt="" />
+                    </div>
+                </div>
+                <div class="profile-name">
+                    <div>
+                        <a href="https://twitter.com/" target="_blank">{{friend.Name}}</a>
+                        <i class="glyphicon " ng-class="{ 'glyphicon-star': friend.Notifications, 'glyphicon-star-empty': !friend.Notifications }"></i>
+                    </div>
+                    <span>
+                        <a href="https://twitter.com/" target="_blank">@<span>nameeee</span></a>
+                    </span>
+                </div>
+                <div class="stats">
+                    <!--<a href="https://twitter.com/mertskaplan" title="9.840 Tweet">
+                        <span class="twPc-StatLabel twPc-block">Tweets</span>
+                        <span class="twPc-StatValue">9.840</span>
+                    </a>
+                    <a href="https://twitter.com/mertskaplan/following" title="885 Following">
+                        <span class="twPc-StatLabel twPc-block">Following</span>
+                        <span class="twPc-StatValue">885</span>
+                    </a>
+                    <a href="https://twitter.com/mertskaplan/followers" title="1.810 Followers">
+                        <span class="twPc-StatLabel twPc-block">Followers</span>
+                        <span class="twPc-StatValue">1.810</span>
+                    </a>-->
+                </div>
+                <!--{{friend.Id}}-->
+            </div>
+        </div>
     </div>
 </div>
+<style>
+    .twitter-card {
+        height: 220px;
+        position: relative;
+        border: 1px solid #e1e8ed;
+        border-radius: 6px;
+        margin: 5px auto;
+    }
+
+    .twitter-card .background-layer,
+    .twitter-card .foreground-layer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .twitter-card .background-layer .twitter-banner {
+        width: 100%;
+        height: 110px;
+        background-size: 100% auto;
+        background-position: 0 50%;
+        border-bottom: 1px solid #e1e8ed;
+        border-radius: 4px 4px 0 0;
+    }
+    .twitter-card .foreground-layer {
+        z-index: 10;
+    }
+
+    .twitter-card .foreground-layer .profile-image {
+        position: relative;
+        top: 75px;
+    }
+     .twitter-card .foreground-layer .profile-image img {
+         margin: 0 0 0 5px;
+         border: 2px solid #fff;
+         border-radius: 7px;
+         box-sizing: border-box;
+         color: #fff;
+     }
+
+     .twitter-card .foreground-layer .profile-name {
+        position: relative;
+        top: 40px;
+        left: 100px;
+     }
+     .twitter-card .foreground-layer .profile-name div {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 21px;
+     }
+   
+</style>

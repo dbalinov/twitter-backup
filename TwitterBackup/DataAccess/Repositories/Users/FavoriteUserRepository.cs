@@ -34,8 +34,8 @@ namespace DataAccess.Repositories.Users
             var result = new List<DataAccess.Entities.User>();
             Friendship friendship;
             long cursor = -1;
-            do
-            {
+            //do
+            //{
                 friendship = await ctx.Friendship
                     .Where(friend => friend.Type == FriendshipType.FriendsList &&
                         friend.UserID == this.userId &&
@@ -56,14 +56,20 @@ namespace DataAccess.Repositories.Users
                             Name = friend.Name,
                             Description = friend.Description,
                             Notifications = friend.Notifications,
-                            ProfileImageUrl = friend.ProfileImageUrl,
-                            ProfileBackgroundColor = friend.ProfileBackgroundColor
+                            ProfileImageUrl = friend.ProfileImageUrl.Replace("_normal", "_bigger"),
+                            ProfileBackgroundColor = friend.ProfileBackgroundColor,
+                            ProfileBannerUrl = friend.ProfileBannerUrl,
+                            FollowersCount = friend.FollowersCount,
+                            StatusesCount = friend.StatusesCount,
+                            FriendsCount = friend.FriendsCount,
+                            ScreenName = friend.ScreenName,
+                            Verified = friend.Verified
                         };
                         result.Add(user);
                     }
                 }
 
-            } while (cursor != 0);
+            //} while (cursor != 0);
 
             return result;
         }

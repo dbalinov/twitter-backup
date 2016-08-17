@@ -13,7 +13,12 @@ namespace Business.Models.Mapping
             to.ProfileImageUrl = from.ProfileImageUrl;
             to.Url = from.Url;
             to.ProfileBackgroundColor = from.ProfileBackgroundColor;
-
+            to.ProfileBannerUrl = from.ProfileBannerUrl;
+            to.FollowersCount = from.FollowersCount;
+            to.StatusesCount = from.StatusesCount;
+            to.FriendsCount = from.FriendsCount;
+            to.ScreenName = from.ScreenName;
+            to.Verified = from.Verified;
 
             return to;
         }
