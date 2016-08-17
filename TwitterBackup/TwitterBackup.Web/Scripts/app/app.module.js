@@ -2,8 +2,8 @@
 // controllers
     .controller('friendsController', friendsController)
 // services
-    .factory('friendsServices', ['$http', function($http) {
-            return new friendsServices($http);
+    .factory('friendsService', ['$http', function($http) {
+            return new friendsService($http);
         }
     ])
 //    .factory('messageService', ['$q', ($q) => new App.Services.MessageService($q)])

@@ -1,39 +1,8 @@
-﻿@model IEnumerable<Business.Models.UserModel>
+﻿@{
+    ViewBag.Title = "Home";
+}
 <div ng-app="twitterbackup" ng-cloak>
-    <div ng-view>
-        <h2>{{ message }}</h2>
-    </div>
-    <div class="row">
-
-        <div class="col-md-8">
-            <table class="table table-bordered table-condensed">
-                @foreach (var user in Model)
-                {
-                    <tr>
-                        <td style="background-color: #@user.ProfileBackgroundColor;">
-                            @if (user.ProfileImageUrl != null)
-                            {
-                                <img src="@user.ProfileImageUrl"/>
-                            }
-                        </td>
-                        @*<td>@user.Id</td>*@
-                        <td>@user.Name</td>
-                        <td>@user.Description</td>
-                        <td>
-                            @if (user.Notifications)
-                            {
-                                <i class="glyphicon glyphicon-star"></i>
-                            }
-                            else
-                            {
-                                <i class="glyphicon glyphicon-star-empty"></i>
-                            }
-                        </td>
-                    </tr>
-                }
-            </table>
-        </div>
-    </div>
+    <div ng-view></div>
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/angular")

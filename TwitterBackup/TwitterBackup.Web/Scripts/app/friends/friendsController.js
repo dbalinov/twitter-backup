@@ -1,5 +1,7 @@
-﻿function friendsController($scope, friendsServices) {
+﻿function friendsController($scope, friendsService) {
     $scope.friends = [];
 
-    $scope.message = friendsServices.getFriends();
+    friendsService.getFriends(function (friends) {
+        $scope.friends = friends;
+    });
 }
