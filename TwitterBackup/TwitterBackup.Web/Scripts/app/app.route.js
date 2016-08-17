@@ -5,9 +5,7 @@ twitterBackupApp.config(function ($routeProvider) {
             templateUrl: '/scripts/app/friends/friendsView.html',
             controller: 'friendsController'
         })
-//    .when('/GeofenceGroup/:id?', {
-//        templateUrl: '/scripts/app/views/GeofenceGroup/Edit.html',
-//        controller: 'GeofenceGroupController'
+//    .when('/timeline/:id', {
 //    })
         .otherwise({
             redirectTo: '/friends'

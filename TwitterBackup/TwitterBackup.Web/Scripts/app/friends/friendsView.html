@@ -6,11 +6,11 @@
 <!-- Single button -->
 <div class="btn-group">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Action <span class="caret"></span>
+        Favorites <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
         <li><a href="#">Favorites</a></li>
-        <li><a href="#">All friends</a></li>
+        <li><a href="#">Friends</a></li>
     </ul>
 </div>
 <div class="row">
@@ -21,7 +21,7 @@
                      ng-style="friend.ProfileBackgroundColor != '000000' && {'background-color': '#{{friend.ProfileBackgroundColor}}' }">
                     <img src="{{friend.ProfileImageUrl}}" alt="" class="img-thumbnail" />
                 </td>
-                <!--<td>{{friend.Id}}</td>-->
+                <td>{{friend.Id}}</td>
                 <td>{{friend.Name}}</td>
                 <!--<td>{{friend.Description}}</td>-->
                 <td>

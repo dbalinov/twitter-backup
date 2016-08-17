@@ -6,6 +6,7 @@ using Business.Services.Users;
 
 namespace TwitterBackup.Web.Controllers
 {
+    [Authorize]
     public class FriendsController : ApiController
     {
         private IFavoriteUserService favoriteUserService;
