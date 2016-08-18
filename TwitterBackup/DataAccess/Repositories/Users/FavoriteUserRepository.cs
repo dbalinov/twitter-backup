@@ -1,87 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using LinqToTwitter;
-using System.Web.Configuration;
-using System.Threading.Tasks;
-using Infrastructure.Identity.Claims;
+using Tweetinvi.Models;
+using Tweetinvi;
+using DataAccess.Credentials;
 
 namespace DataAccess.Repositories.Users
 {
-    public class FavoriteUserRepository : IFavoriteUserRepository
+    internal class FavoriteUserRepository : IFavoriteUserRepository
     {
-        private readonly MvcAuthorizer auth;
-        private readonly string userId;
+        private ITwitterCredentials credentials;
 
-        public FavoriteUserRepository(ITwitterClaimsHelper claimsHelper)
+        public FavoriteUserRepository(ITwitterCredentialsFactory credentialsFactory)
         {
-            this.userId = claimsHelper.GetUserId();
-            this.auth = new MvcAuthorizer
-            {
-                CredentialStore = new SessionStateCredentialStore
-                {
-                    ConsumerKey = WebConfigurationManager.AppSettings["twitter:ConsumerKey"],
-                    ConsumerSecret = WebConfigurationManager.AppSettings["twitter:ConsumerSecret"],
-                    OAuthToken = claimsHelper.GetOAuthAccessToken(),
-                    OAuthTokenSecret = claimsHelper.GetOAuthAccessTokenSecret()
-                }
-           };
+            this.credentials = credentialsFactory.Create();
         }
 
-        public async Task<IEnumerable<DataAccess.Entities.User>> GetAllAsync()
+        public IEnumerable<DataAccess.Entities.User> GetAll()
         {
-            var ctx = new TwitterContext(this.auth);
-            // var favorites = ctx.Favorites;
-            var result = new List<DataAccess.Entities.User>();
-            Friendship friendship;
-            try
+            var authenticatedUser = User.GetAuthenticatedUser(this.credentials);
+            var users = Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => authenticatedUser.GetFriends());
+            
+            // TODO: add mapper;
+
+            return users.Select(friend => new DataAccess.Entities.User
             {
-                long cursor = -1;
-                do
-                {
-                    friendship = await ctx.Friendship
-                        .Where(f => f.Type == FriendshipType.FriendsList &&
-                            f.UserID == this.userId &&
-                            f.Count == 200 &&
-                            f.Cursor == cursor)
-                        .SingleOrDefaultAsync();
+                Id = friend.IdStr,
+                Name = friend.Name,
+                Description = friend.Description,
+                Notifications = friend.Notifications,
+                ProfileImageUrl = friend.ProfileImageUrl.Replace("_normal", "_bigger"),
+                ProfileBackgroundColor = friend.ProfileBackgroundColor,
+                ProfileBannerUrl = friend.ProfileBannerURL,
+                FollowersCount = friend.FollowersCount,
+                StatusesCount = friend.StatusesCount,
+                FriendsCount = friend.FriendsCount,
+                ScreenName = friend.ScreenName,
+                Verified = friend.Verified
+            });
+        }
 
-                    if (friendship != null &&
-                        friendship.Users != null &&
-                        friendship.CursorMovement != null)
-                    {
-                        cursor = friendship.CursorMovement.Next;
+        public void UpdateDeviceNotificationsStatus(string screenName, bool deviceNotificationsEnabled)
+        {
+            var authenticatedUser = User.GetAuthenticatedUser(this.credentials);
 
-                        foreach (var friend in friendship.Users)
-                        {
-                            var user = new DataAccess.Entities.User
-                            {
-                                Id = friend.UserIDResponse,
-                                Name = friend.Name,
-                                Description = friend.Description,
-                                Notifications = friend.Notifications,
-                                ProfileImageUrl = friend.ProfileImageUrl.Replace("_normal", "_bigger"),
-                                ProfileBackgroundColor = friend.ProfileBackgroundColor,
-                                ProfileBannerUrl = friend.ProfileBannerUrl,
-                                FollowersCount = friend.FollowersCount,
-                                StatusesCount = friend.StatusesCount,
-                                FriendsCount = friend.FriendsCount,
-                                ScreenName = friend.ScreenNameResponse,
-                                Verified = friend.Verified
-                            };
-                            result.Add(user);
-                        }
-                    }
+            var relationship = authenticatedUser.GetRelationshipWith(screenName);
 
-                } while (cursor != 0);
-            }
-            catch (TwitterQueryException)
-            {
-                throw new Exception("error");
-            }
-           
-
-            return result;
+            authenticatedUser.UpdateRelationshipAuthorizationsWith(
+                screenName, relationship.WantRetweets, deviceNotificationsEnabled);
         }
     }
 }

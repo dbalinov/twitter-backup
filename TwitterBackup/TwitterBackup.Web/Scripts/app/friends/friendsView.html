@@ -9,12 +9,12 @@
         Favorites <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-        <li><a href="#">Favorites</a></li>
-        <li><a href="#">Friends</a></li>
+        <li><a href="javascript:;" ng-click="filterType = filterTypes.favorites;">Favorites</a></li>
+        <li><a href="javascript:;" ng-click="filterType = filterTypes.friends;">Friends</a></li>
     </ul>
 </div>
 <div class="row">
-    <div ng-repeat="friend in friends"
+    <div ng-repeat="friend in friends | filter: friendFilter"
          class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
         <div class="twitter-card">
             <div class="background-layer">
@@ -36,12 +36,16 @@
                             <img src="./Content/Images/Icons/verified.png" alt="verified" />
                         </span>
                         
-                        <span ng-if="friend.Notifications">
-                            <img src="./Content/Images/Icons/notifications-on.png" alt="verified" />
-                        </span>
-                        <span ng-if="!friend.Notifications">
-                            <img src="./Content/Images/Icons/notifications-off.png" alt="verified" />
-                        </span>
+                        <div class="profile-buttons">
+                            <img src="./Content/Images/Icons/notifications-on.png"
+                                 ng-show="friend.Notifications"
+                                 ng-click="removeFromFavorites(friend)"
+                                 alt="verified"/>
+                            <img src="./Content/Images/Icons/notifications-off.png"
+                                 ng-show="!friend.Notifications"
+                                 ng-click="addToFavorites(friend)"
+                                 alt="verified"/>
+                        </div>
                     </div>
                     <span>
                         <a href="https://twitter.com/" target="_blank">@<span>{{friend.ScreenName}}</span></a>

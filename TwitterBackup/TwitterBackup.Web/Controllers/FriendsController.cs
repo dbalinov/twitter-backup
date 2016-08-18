@@ -16,10 +16,25 @@ namespace TwitterBackup.Web.Controllers
             this.favoriteUserService = favoriteUserService;
         }
 
-        public async Task<IEnumerable<UserModel>> Get()
+        public IEnumerable<UserModel> Get()
         {
-            var users = await this.favoriteUserService.GetAllAsync();
+            var users = this.favoriteUserService.GetAll();
             return users;
+        }
+
+        public IHttpActionResult Put(FriendshipModel friendship)
+        {
+            this.favoriteUserService.UpdateFriendship(
+                friendship.ScreenName,
+                friendship.Notifications);
+            return Ok();
+        }
+
+        public class FriendshipModel
+        {
+            public string ScreenName { get; set; }
+            public bool Notifications { get; set; }
         }
     }
 }
+

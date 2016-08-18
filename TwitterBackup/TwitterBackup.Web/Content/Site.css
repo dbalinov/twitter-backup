@@ -67,21 +67,26 @@ textarea {
     position: relative;
     top: 75px;
 }
-    .twitter-card .foreground-layer .profile-image img {
-        margin: 0 0 0 5px;
-        border: 3px solid #fff;
-        border-radius: 7px;
-        box-sizing: border-box;
-        color: #fff;
-    }
+.twitter-card .foreground-layer .profile-image img {
+    margin: 0 0 0 5px;
+    border: 3px solid #fff;
+    border-radius: 7px;
+    box-sizing: border-box;
+    color: #fff;
+}
 
-    .twitter-card .foreground-layer .profile-name {
+.twitter-card .foreground-layer .profile-name {
     position: relative;
     top: 40px;
     left: 100px;
-    }
-    .twitter-card .foreground-layer .profile-name div {
+    width: 70%;
+}
+.twitter-card .foreground-layer .profile-name div {
     font-size: 18px;
     font-weight: 700;
     line-height: 21px;
-    }
+}
+
+.twitter-card .profile-buttons {
+    float: right;
+}

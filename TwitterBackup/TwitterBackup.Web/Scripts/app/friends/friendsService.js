@@ -8,4 +8,16 @@
             .success(callback)
             .error(function (error) { console.log(error); });
     };
+
+    self.updateFavorite = function(friend, toAdd) {
+        $http.put('api/friends',
+            {
+                ScreenName: friend.ScreenName,
+                Notifications: toAdd
+            })
+            .success(function() {
+                console.log('success');
+                friend.Notifications = toAdd;
+            });
+    };
 }

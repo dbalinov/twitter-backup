@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Business.Models;
 using Business.Models.Mapping;
 using DataAccess.Repositories.Users;
@@ -16,11 +15,17 @@ namespace Business.Services.Users
             this.favoriteUserRepository = favoriteUserRepository;
         }
 
-        public async Task<IEnumerable<UserModel>> GetAllAsync()
+        public IEnumerable<UserModel> GetAll()
         {
             var mapper = new UserMapper();
-            var users = await this.favoriteUserRepository.GetAllAsync();
+            var users = this.favoriteUserRepository.GetAll();
             return users.Select(x => mapper.Map(x, new UserModel()));
+        }
+
+        public void UpdateFriendship(string screenName, bool deviceNotificationsEnabled)
+        {
+            this.favoriteUserRepository.UpdateDeviceNotificationsStatus(
+                screenName, deviceNotificationsEnabled);
         }
     }
 }

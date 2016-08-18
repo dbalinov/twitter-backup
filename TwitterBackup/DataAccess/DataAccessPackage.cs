@@ -1,4 +1,5 @@
-﻿using DataAccess.Repositories.Users;
+﻿using DataAccess.Credentials;
+using DataAccess.Repositories.Users;
 using SimpleInjector;
 using SimpleInjector.Packaging;
 
@@ -9,6 +10,7 @@ namespace DataAccess
         public void RegisterServices(Container container)
         {
             container.Register<IFavoriteUserRepository, FavoriteUserRepository>(Lifestyle.Scoped);
+            container.Register<ITwitterCredentialsFactory, TwitterCredentialsFactory>(Lifestyle.Scoped);
         }
     }
 }
