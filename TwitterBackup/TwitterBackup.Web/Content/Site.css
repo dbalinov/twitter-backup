@@ -1,9 +1,8 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
 }
 
-/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -22,3 +21,67 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.navbar {
+    background-color: #55acee;
+    height: 48px;
+    border: 0;
+}
+.navbar a {
+     color: #fff!important;
+}
+
+.navbar-brand {
+    padding-top: 10px;
+}
+.twitter-card {
+    height: 220px;
+    position: relative;
+    border: 1px solid #e1e8ed;
+    border-radius: 6px;
+    margin: 5px auto;
+}
+
+.twitter-card .background-layer,
+.twitter-card .foreground-layer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.twitter-card .background-layer .twitter-banner {
+    width: 100%;
+    height: 110px;
+    background-size: 100% auto;
+    background-position: 0 50%;
+    border-bottom: 1px solid #e1e8ed;
+    border-radius: 4px 4px 0 0;
+}
+.twitter-card .foreground-layer {
+    z-index: 10;
+}
+
+.twitter-card .foreground-layer .profile-image {
+    position: relative;
+    top: 75px;
+}
+    .twitter-card .foreground-layer .profile-image img {
+        margin: 0 0 0 5px;
+        border: 3px solid #fff;
+        border-radius: 7px;
+        box-sizing: border-box;
+        color: #fff;
+    }
+
+    .twitter-card .foreground-layer .profile-name {
+    position: relative;
+    top: 40px;
+    left: 100px;
+    }
+    .twitter-card .foreground-layer .profile-name div {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21px;
+    }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using LinqToTwitter;
 using System.Web.Configuration;
@@ -33,43 +34,52 @@ namespace DataAccess.Repositories.Users
             // var favorites = ctx.Favorites;
             var result = new List<DataAccess.Entities.User>();
             Friendship friendship;
-            long cursor = -1;
-            //do
-            //{
-                friendship = await ctx.Friendship
-                    .Where(friend => friend.Type == FriendshipType.FriendsList &&
-                        friend.UserID == this.userId &&
-                        friend.Cursor == cursor)
-                    .SingleOrDefaultAsync();
-
-                if (friendship != null &&
-                    friendship.Users != null &&
-                    friendship.CursorMovement != null)
+            try
+            {
+                long cursor = -1;
+                do
                 {
-                    cursor = friendship.CursorMovement.Next;
+                    friendship = await ctx.Friendship
+                        .Where(f => f.Type == FriendshipType.FriendsList &&
+                            f.UserID == this.userId &&
+                            f.Count == 200 &&
+                            f.Cursor == cursor)
+                        .SingleOrDefaultAsync();
 
-                    foreach (var friend in friendship.Users)
+                    if (friendship != null &&
+                        friendship.Users != null &&
+                        friendship.CursorMovement != null)
                     {
-                        var user = new DataAccess.Entities.User
-                        {
-                            Id = friend.UserIDResponse,
-                            Name = friend.Name,
-                            Description = friend.Description,
-                            Notifications = friend.Notifications,
-                            ProfileImageUrl = friend.ProfileImageUrl.Replace("_normal", "_bigger"),
-                            ProfileBackgroundColor = friend.ProfileBackgroundColor,
-                            ProfileBannerUrl = friend.ProfileBannerUrl,
-                            FollowersCount = friend.FollowersCount,
-                            StatusesCount = friend.StatusesCount,
-                            FriendsCount = friend.FriendsCount,
-                            ScreenName = friend.ScreenName,
-                            Verified = friend.Verified
-                        };
-                        result.Add(user);
-                    }
-                }
+                        cursor = friendship.CursorMovement.Next;
 
-            //} while (cursor != 0);
+                        foreach (var friend in friendship.Users)
+                        {
+                            var user = new DataAccess.Entities.User
+                            {
+                                Id = friend.UserIDResponse,
+                                Name = friend.Name,
+                                Description = friend.Description,
+                                Notifications = friend.Notifications,
+                                ProfileImageUrl = friend.ProfileImageUrl.Replace("_normal", "_bigger"),
+                                ProfileBackgroundColor = friend.ProfileBackgroundColor,
+                                ProfileBannerUrl = friend.ProfileBannerUrl,
+                                FollowersCount = friend.FollowersCount,
+                                StatusesCount = friend.StatusesCount,
+                                FriendsCount = friend.FriendsCount,
+                                ScreenName = friend.ScreenNameResponse,
+                                Verified = friend.Verified
+                            };
+                            result.Add(user);
+                        }
+                    }
+
+                } while (cursor != 0);
+            }
+            catch (TwitterQueryException)
+            {
+                throw new Exception("error");
+            }
+           
 
             return result;
         }

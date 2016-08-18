@@ -29,11 +29,22 @@
                 </div>
                 <div class="profile-name">
                     <div>
-                        <a href="https://twitter.com/" target="_blank">{{friend.Name}}</a>
-                        <i class="glyphicon " ng-class="{ 'glyphicon-star': friend.Notifications, 'glyphicon-star-empty': !friend.Notifications }"></i>
+                        <a href="https://twitter.com/" target="_blank">
+                            {{friend.Name}}
+                        </a>
+                        <span ng-if="friend.Verified">
+                            <img src="./Content/Images/Icons/verified.png" alt="verified" />
+                        </span>
+                        
+                        <span ng-if="friend.Notifications">
+                            <img src="./Content/Images/Icons/notifications-on.png" alt="verified" />
+                        </span>
+                        <span ng-if="!friend.Notifications">
+                            <img src="./Content/Images/Icons/notifications-off.png" alt="verified" />
+                        </span>
                     </div>
                     <span>
-                        <a href="https://twitter.com/" target="_blank">@<span>nameeee</span></a>
+                        <a href="https://twitter.com/" target="_blank">@<span>{{friend.ScreenName}}</span></a>
                     </span>
                 </div>
                 <div class="stats">
@@ -55,57 +66,3 @@
         </div>
     </div>
 </div>
-<style>
-    .twitter-card {
-        height: 220px;
-        position: relative;
-        border: 1px solid #e1e8ed;
-        border-radius: 6px;
-        margin: 5px auto;
-    }
-
-    .twitter-card .background-layer,
-    .twitter-card .foreground-layer {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    .twitter-card .background-layer .twitter-banner {
-        width: 100%;
-        height: 110px;
-        background-size: 100% auto;
-        background-position: 0 50%;
-        border-bottom: 1px solid #e1e8ed;
-        border-radius: 4px 4px 0 0;
-    }
-    .twitter-card .foreground-layer {
-        z-index: 10;
-    }
-
-    .twitter-card .foreground-layer .profile-image {
-        position: relative;
-        top: 75px;
-    }
-     .twitter-card .foreground-layer .profile-image img {
-         margin: 0 0 0 5px;
-         border: 2px solid #fff;
-         border-radius: 7px;
-         box-sizing: border-box;
-         color: #fff;
-     }
-
-     .twitter-card .foreground-layer .profile-name {
-        position: relative;
-        top: 40px;
-        left: 100px;
-     }
-     .twitter-card .foreground-layer .profile-name div {
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 21px;
-     }
-   
-</style>
