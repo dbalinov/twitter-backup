@@ -1,14 +1,16 @@
-﻿using System.Web;
+﻿using NLog;
+using System;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using System.Web.SessionState;
 
 namespace TwitterBackup.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -17,20 +19,13 @@ namespace TwitterBackup.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             SimpleInjectorInitializer.Initialize();
+            logger.Trace("applictions start");
         }
 
-        protected void Application_PostAuthorizeRequest()
+        protected void Application_Error(object sender, EventArgs e)
         {
-            if (IsWebApiRequest())
-            {
-                HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
-            }
+            var error = Server.GetLastError();
+            logger.Error(error);
         }
-
-        private bool IsWebApiRequest()
-        {
-            return HttpContext.Current.Request.AppRelativeCurrentExecutionFilePath.StartsWith(WebApiConfig.UrlPrefixRelative);
-        }
-
     }
 }

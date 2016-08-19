@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Web.Http;
 using Business.Models;
 using Business.Services.Users;

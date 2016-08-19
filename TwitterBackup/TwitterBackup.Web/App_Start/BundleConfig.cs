@@ -28,12 +28,15 @@ namespace TwitterBackup.Web
                       "~/Scripts/angular-route.min.js",
                       "~/Scripts/loading-bar.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+            var appBundle = new ScriptBundle("~/bundles/app");
+            appBundle.Include(
                 "~/Scripts/app/friends/friendsController.js",
                 "~/Scripts/app/friends/friendsService.js",
                 "~/Scripts/app/app.module.js",
-                "~/Scripts/app/app.route.js"
-                ));
+                "~/Scripts/app/app.route.js");
+
+            appBundle.Transforms.Clear();
+            bundles.Add(appBundle);
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
