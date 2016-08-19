@@ -228,6 +228,8 @@
     <Content Include="Content\Images\Twitter_Logo_Blue.png" />
     <Content Include="Content\Images\Twitter_logo_white_32.png" />
     <Content Include="Content\loading-bar.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -246,10 +248,13 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Properties\PublishProfiles\publish.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\app\app.module.js" />
     <Content Include="Scripts\app\app.route.js" />
+    <Content Include="Scripts\app\common\services\notificationService.js" />
     <Content Include="Scripts\app\friends\friendsView.html" />
     <Content Include="Scripts\app\friends\friendsController.js" />
     <Content Include="Scripts\app\friends\friendsService.js" />
@@ -269,8 +274,12 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

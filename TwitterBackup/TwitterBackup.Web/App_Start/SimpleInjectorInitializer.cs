@@ -14,7 +14,6 @@ namespace TwitterBackup.Web
         {
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
-            container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
             //container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
 
             container.RegisterPackages();

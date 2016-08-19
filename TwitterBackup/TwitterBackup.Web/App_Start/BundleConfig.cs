@@ -26,12 +26,14 @@ namespace TwitterBackup.Web
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/Scripts/angular.min.js",
                       "~/Scripts/angular-route.min.js",
-                      "~/Scripts/loading-bar.js"));
+                      "~/Scripts/loading-bar.js",
+                      "~/Scripts/toastr.min.js"));
 
             var appBundle = new ScriptBundle("~/bundles/app");
             appBundle.Include(
                 "~/Scripts/app/friends/friendsController.js",
                 "~/Scripts/app/friends/friendsService.js",
+                "~/Scripts/app/common/services/notificationService.js",
                 "~/Scripts/app/app.module.js",
                 "~/Scripts/app/app.route.js");
 
@@ -41,6 +43,7 @@ namespace TwitterBackup.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/loading-bar.css",
+                      "~/Content/toastr.min.css",
                       "~/Content/site.css"));
         }
     }

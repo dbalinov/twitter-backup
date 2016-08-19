@@ -1,23 +1,24 @@
 ﻿var twitterBackupApp = angular.module('twitterbackup', ['ngRoute', 'angular-loading-bar']) // ['ngAnimate'])
 // controllers
     .controller('friendsController', friendsController)
+// values
+	.value('toastr', toastr)
 // services
-    .factory('friendsService', ['$http', function($http) {
-            return new friendsService($http);
+    .factory('friendsService', ['$http', '$q', function($http, $q) {
+            return new friendsService($http, $q);
         }
     ])
-//    .factory('messageService', ['$q', ($q) => new App.Services.MessageService($q)])
-//    .factory('dataService', ['$http', '$q', 'messageService', 'mapService',
-//        ($http, $q, messageService, mapService) => new App.Services.DataService($http, $q, messageService, mapService)])
-//    .factory('mapService', [() => new App.Services.MapService()])
-
+    .factory("notificationService", ["toastr", function(toastr) {
+            return new notificationService(toastr);
+        }
+    ])
 // plugins config
-.config(['cfpLoadingBarProvider', (cfpLoadingBarProvider) => {
-    cfpLoadingBarProvider.includeSpinner = false;
-}])
+    .config(['cfpLoadingBarProvider', (cfpLoadingBarProvider) => {
+        cfpLoadingBarProvider.includeSpinner = false;
+    }])
 
     // TODO: move to separate file
-.directive('tooltip', function(){
+.directive('tooltip', function tooltip(){
     return {
         restrict: 'A',
         link: function(scope, element, attrs){
