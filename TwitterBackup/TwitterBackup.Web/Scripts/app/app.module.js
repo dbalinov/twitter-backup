@@ -1,4 +1,4 @@
-﻿var twitterBackupApp = angular.module('twitterbackup', ['ngRoute']) // ['angular-loading-bar', 'ngAnimate'])
+﻿var twitterBackupApp = angular.module('twitterbackup', ['ngRoute', 'angular-loading-bar']) // ['ngAnimate'])
 // controllers
     .controller('friendsController', friendsController)
 // services
@@ -11,9 +11,11 @@
 //        ($http, $q, messageService, mapService) => new App.Services.DataService($http, $q, messageService, mapService)])
 //    .factory('mapService', [() => new App.Services.MapService()])
 
-//    .config(['cfpLoadingBarProvider', (cfpLoadingBarProvider) => {
-//        cfpLoadingBarProvider.includeSpinner = false;
-//    }])
+// plugins config
+.config(['cfpLoadingBarProvider', (cfpLoadingBarProvider) => {
+    cfpLoadingBarProvider.includeSpinner = false;
+}])
+
     // TODO: move to separate file
 .directive('tooltip', function(){
     return {

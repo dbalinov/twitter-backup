@@ -24,7 +24,8 @@ namespace TwitterBackup.Web
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/Scripts/angular.min.js",
-                      "~/Scripts/angular-route.min.js"));
+                      "~/Scripts/angular-route.min.js",
+                      "~/Scripts/loading-bar.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/app/friends/friendsController.js",
@@ -35,6 +36,7 @@ namespace TwitterBackup.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/loading-bar.css",
                       "~/Content/site.css"));
         }
     }
