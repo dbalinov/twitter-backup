@@ -1,6 +1,6 @@
 ﻿<div class="row">
     <div class="col-xs-12">
-        <h1>Friends</h1>
+        <h3>Friends</h3>
     </div>
 </div>
 <!-- Single button -->
@@ -33,18 +33,31 @@
                             {{friend.Name}}
                         </a>
                         <span ng-if="friend.Verified">
-                            <img src="./Content/Images/Icons/verified.png" alt="verified" />
+                            <img src="./Content/Images/Icons/verified.png"
+                                 alt="Verified account" 
+                                 title="Verified account"
+                                 data-toggle="tooltip"
+                                 data-placement="right"
+                                 tooltip />
                         </span>
                         
                         <div class="profile-buttons">
-                            <img src="./Content/Images/Icons/notifications-on.png"
-                                 ng-show="friend.Notifications"
-                                 ng-click="removeFromFavorites(friend)"
-                                 alt="verified"/>
-                            <img src="./Content/Images/Icons/notifications-off.png"
-                                 ng-show="!friend.Notifications"
-                                 ng-click="addToFavorites(friend)"
-                                 alt="verified"/>
+                            <span class="notifications-button">
+                                <img src="./Content/Images/Icons/notifications-on.png"
+                                     ng-show="friend.Notifications"
+                                     ng-click="removeFromFavorites(friend)"
+                                     title="Favorite user"
+                                     data-toggle="tooltip"
+                                     data-placement="bottom"
+                                     tooltip />
+                                <img src="./Content/Images/Icons/notifications-off.png"
+                                     ng-show="!friend.Notifications"
+                                     ng-click="addToFavorites(friend)"
+                                     title="Add to favorites"
+                                     data-toggle="tooltip"
+                                     data-placement="bottom"
+                                     tooltip />
+                            </span>
                         </div>
                     </div>
                     <span>
@@ -52,18 +65,18 @@
                     </span>
                 </div>
                 <div class="stats">
-                    <!--<a href="https://twitter.com/mertskaplan" title="9.840 Tweet">
-                        <span class="twPc-StatLabel twPc-block">Tweets</span>
-                        <span class="twPc-StatValue">9.840</span>
-                    </a>
-                    <a href="https://twitter.com/mertskaplan/following" title="885 Following">
-                        <span class="twPc-StatLabel twPc-block">Following</span>
-                        <span class="twPc-StatValue">885</span>
-                    </a>
-                    <a href="https://twitter.com/mertskaplan/followers" title="1.810 Followers">
-                        <span class="twPc-StatLabel twPc-block">Followers</span>
-                        <span class="twPc-StatValue">1.810</span>
-                    </a>-->
+                    <div class="col-xs-4">
+                        <p>Tweets</p>
+                        <p>{{friend.StatusesCount}}</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <p>Following</p>
+                        <p>{{friend.FriendsCount}}</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <p>Followers</p>
+                        <p>{{friend.FollowersCount}}</p>
+                    </div>
                 </div>
                 <!--{{friend.Id}}-->
             </div>

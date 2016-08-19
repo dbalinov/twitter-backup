@@ -14,6 +14,22 @@
 //    .config(['cfpLoadingBarProvider', (cfpLoadingBarProvider) => {
 //        cfpLoadingBarProvider.includeSpinner = false;
 //    }])
+    // TODO: move to separate file
+.directive('tooltip', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs){
+            $(element).hover(function(){
+                // on mouseenter
+                $(element).tooltip('show');
+            }, function(){
+                // on mouseleave
+                $(element).tooltip('hide');
+            });
+        }
+    };
+})
+
 .run(function ($rootScope) {
     //// Prevent two request at the same time by blocking the screen.
     //$rootScope.$on('cfpLoadingBar:started', (evt, e, ee) => {
