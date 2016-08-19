@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Business.Models;
 using Business.Services.Users;
@@ -8,31 +9,17 @@ namespace TwitterBackup.Web.Controllers
     [Authorize]
     public class FriendsController : ApiController
     {
-        private IFavoriteUserService favoriteUserService;
+        private readonly IFavoriteUserService favoriteUserService;
 
         public FriendsController(IFavoriteUserService favoriteUserService)
         {
             this.favoriteUserService = favoriteUserService;
         }
 
-        public IEnumerable<UserModel> Get()
+        public async Task<IEnumerable<UserModel>> Get()
         {
-            var users = this.favoriteUserService.GetAll();
+            var users = await this.favoriteUserService.GetAllAsync();
             return users;
-        }
-
-        public IHttpActionResult Put(FriendshipModel friendship)
-        {
-            this.favoriteUserService.UpdateFriendship(
-                friendship.ScreenName,
-                friendship.Notifications);
-            return Ok();
-        }
-
-        public class FriendshipModel
-        {
-            public string ScreenName { get; set; }
-            public bool Notifications { get; set; }
         }
     }
 }

@@ -16,15 +16,12 @@
         public int FollowersCount { get; set; }
         public bool Verified { get; set; }
         /*
-"profile_sidebar_fill_color": "252429",
-"profile_sidebar_border_color": "181A1E",
 "profile_link_color": "2FC2EF",
 "profile_text_color": "666666",
 "profile_background_tile": false,
 "profile_use_background_image": true,
 "profile_background_image_url": "http://a0.twimg.com/images/themes/theme9/bg.gif",
 "default_profile_image": false,
-"location": "San Francisco",
 "favourites_count": 1973,
 */
     }

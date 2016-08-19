@@ -3,6 +3,7 @@ using System.Linq;
 using Business.Models;
 using Business.Models.Mapping;
 using DataAccess.Repositories.Users;
+using System.Threading.Tasks;
 
 namespace Business.Services.Users
 {
@@ -15,17 +16,11 @@ namespace Business.Services.Users
             this.favoriteUserRepository = favoriteUserRepository;
         }
 
-        public IEnumerable<UserModel> GetAll()
+        public async Task<IEnumerable<UserModel>> GetAllAsync()
         {
             var mapper = new UserMapper();
-            var users = this.favoriteUserRepository.GetAll();
+            var users = await this.favoriteUserRepository.GetAllAsync();
             return users.Select(x => mapper.Map(x, new UserModel()));
-        }
-
-        public void UpdateFriendship(string screenName, bool deviceNotificationsEnabled)
-        {
-            this.favoriteUserRepository.UpdateDeviceNotificationsStatus(
-                screenName, deviceNotificationsEnabled);
         }
     }
 }

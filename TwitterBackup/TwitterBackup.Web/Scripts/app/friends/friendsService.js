@@ -10,8 +10,7 @@
     };
 
     self.updateFavorite = function(friend, toAdd) {
-        $http.put('api/friends',
-            {
+        $http.put('api/friendship', {
                 ScreenName: friend.ScreenName,
                 Notifications: toAdd
             })

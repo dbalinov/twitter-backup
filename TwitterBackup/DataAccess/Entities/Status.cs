@@ -1,9 +1,12 @@
 ﻿namespace DataAccess.Entities
 {
-    public class Post
+    public class Status
     {
-        /*
-          {
+        public string Text { get; set; }
+        public int RetweetCount { get; set; }
+
+ /*
+{
     "coordinates": null,
     "favorited": false,
     "truncated": false,
@@ -24,7 +27,6 @@
     "retweet_count": 121,
     "in_reply_to_status_id_str": null,
     "id": 240859602684612608,
-    "geo": null,
     "retweeted": false,
     "possibly_sensitive": false,
     "in_reply_to_user_id": null,

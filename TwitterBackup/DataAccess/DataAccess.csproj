@@ -88,9 +88,14 @@
     <Compile Include="Credentials\ITwitterCredentialsFactory.cs" />
     <Compile Include="Credentials\TwitterCredentialsFactory.cs" />
     <Compile Include="DataAccessPackage.cs" />
-    <Compile Include="Entities\Post.cs" />
+    <Compile Include="Entities\Friendship.cs" />
+    <Compile Include="Entities\Status.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Friendships\FriendshipRepository.cs" />
+    <Compile Include="Repositories\Friendships\IFriendshipRepository.cs" />
+    <Compile Include="Repositories\Statuses\IStatusRepository.cs" />
+    <Compile Include="Repositories\Statuses\StatusRepository.cs" />
     <Compile Include="Repositories\Users\FavoriteUserRepository.cs" />
     <Compile Include="Repositories\Users\IFavoriteUserRepository.cs" />
   </ItemGroup>

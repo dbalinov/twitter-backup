@@ -1,4 +1,5 @@
-﻿using Business.Services.Users;
+﻿using Business.Services.Statuses;
+using Business.Services.Users;
 using SimpleInjector;
 using SimpleInjector.Packaging;
 
@@ -9,6 +10,8 @@ namespace Business
         public void RegisterServices(Container container)
         {
             container.Register<IFavoriteUserService, FavoriteUserService>(Lifestyle.Scoped);
+            container.Register<IFriendshipService, FriendshipService>(Lifestyle.Scoped);
+            container.Register<IStatusService, StatusService>(Lifestyle.Scoped);
         }
     }
 }
