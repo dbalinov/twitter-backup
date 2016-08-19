@@ -33,11 +33,11 @@
 })
 
 .run(function ($rootScope) {
-    //// Prevent two request at the same time by blocking the screen.
-    //$rootScope.$on('cfpLoadingBar:started', (evt, e, ee) => {
-    //    $.blockUI({ message: null, overlayCSS: { opacity: 0 } });
-    //});
-    //$rootScope.$on('cfpLoadingBar:completed', (evt) => {
-    //    $.unblockUI();
-    //});
+    // Prevent two request at the same time by blocking the screen.
+    $rootScope.$on('cfpLoadingBar:started', (evt, e, ee) => {
+        $.blockUI({ message: null, overlayCSS: { opacity: 0 } });
+    });
+    $rootScope.$on('cfpLoadingBar:completed', (evt) => {
+        $.unblockUI();
+    });
 });
