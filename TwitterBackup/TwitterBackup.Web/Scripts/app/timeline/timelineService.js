@@ -50,8 +50,8 @@
 
     self.unsave = function (statusId) {
         var defer = $q.defer();
-
-        $http.delete('api/statusStore/', { StatusId: statusId })
+        var url = 'api/statusStore/?statusId=' + statusId;
+        $http.delete(url)
             .success(defer.resolve)
             .error(defer.reject);
         return defer.promise;

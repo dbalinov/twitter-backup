@@ -4,6 +4,6 @@ namespace DataAccess.Entities
 {
     public abstract class MongoEntity
     {
-        public ObjectId ObjectId { get; set; }
+        public ObjectId Id { get; set; }
     }
 }

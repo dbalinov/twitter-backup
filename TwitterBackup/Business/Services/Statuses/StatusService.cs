@@ -22,7 +22,17 @@ namespace Business.Services.Statuses
         {
             var mapper = new StatusMapper();
             var statuses = await this.statusRepository.GetUserTimelineAsync(screenName, maxId);
-            return statuses.Select(x => mapper.Map(x, new StatusModel()));
+
+            var statusModels = statuses
+                .Select(x => mapper.Map(x, new StatusModel()))
+                .ToList();
+
+            var savedStatusIds = await this.statusStoreRepository.GetSavedStatusIdsAsync();
+            var savedStatusIdsList = savedStatusIds.ToList();
+
+            statusModels.ForEach(x => x.IsSaved = savedStatusIdsList.Contains(x.Id));
+
+            return statusModels;
         }
 
         public Task RetweetAsync(string statusId)

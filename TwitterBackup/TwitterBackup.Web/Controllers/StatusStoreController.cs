@@ -20,7 +20,7 @@ namespace TwitterBackup.Web.Controllers
             return Ok();
         }
 
-        public async Task<IHttpActionResult> Delete(StatusIdRequest request)
+        public async Task<IHttpActionResult> Delete([FromUri]StatusIdRequest request)
         {
             await this.statusService.UnsaveAsync(request.StatusId);
             return Ok();

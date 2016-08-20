@@ -19,6 +19,8 @@ namespace Business.Models
         public DateTime CreatedAt { get; set; }
 
         public StatusEntitiesModel Entities { get; set; }
+        
+        public bool IsSaved { get; set; }
 
         public string CreatedAtFormatted
         {

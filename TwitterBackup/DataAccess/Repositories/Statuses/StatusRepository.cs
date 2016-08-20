@@ -53,7 +53,7 @@ namespace DataAccess.Repositories.Statuses
         {
             return new Status
             {
-                Id = x.IdStr,
+                StatusId = x.IdStr,
                 Text = x.FullText,
                 //RetweetCount = x.RetweetCount,
                 Retweeted = x.Retweeted,

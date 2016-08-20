@@ -6,7 +6,9 @@ namespace DataAccess.Repositories.Statuses
 {
     public interface IStatusStoreRepository
     {
-        Task<IEnumerable<Status>> GetAllAsync(string userId);
+        Task<IEnumerable<string>> GetSavedStatusIdsAsync();
+
+        Task<IEnumerable<Status>> GetAllSavedbyUserAsync(string userId);
 
         Task SaveAsync(Status status);
 

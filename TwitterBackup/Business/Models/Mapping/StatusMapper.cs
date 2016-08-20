@@ -7,7 +7,7 @@ namespace Business.Models.Mapping
     {
         public StatusModel Map(Status from, StatusModel to)
         {
-            to.Id = from.Id;
+            to.Id = from.StatusId;
             to.Text = from.Text;
             //to.RetweetCount = from.RetweetCount;
             to.Retweeted = from.Retweeted;

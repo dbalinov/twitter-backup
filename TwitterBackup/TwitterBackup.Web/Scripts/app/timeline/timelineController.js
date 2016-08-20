@@ -41,11 +41,19 @@
     };
 
     $scope.save = function (status) {
-        timelineService.unsave(status.Id)
-            .then(function () {
-               // status.Retweeted = true;
-                notificationService.info("The status has been saved.");
-            });
-        console.log('save', status);
+        if (!status.IsSaved) {
+            timelineService.save(status.Id)
+                .then(function() {
+                    status.IsSaved = true;
+                    notificationService.info("The status has been saved.");
+                });
+        } else {
+            console.log(status.Id);
+            timelineService.unsave(status.Id)
+                .then(function() {
+                    status.IsSaved = false;
+                    notificationService.info("The status has been unsaved.");
+                });
+        }
     };
 };
