@@ -1,4 +1,5 @@
-﻿using DataAccess.Entities;
+﻿using System.Linq;
+using DataAccess.Entities;
 
 namespace Business.Models.Mapping
 {
@@ -13,6 +14,14 @@ namespace Business.Models.Mapping
             //to.FavoriteCount = from.FavoriteCount;
             //to.Favorited = from.Favorited;
             to.CreatedAt = from.CreatedAt;
+            to.Entities = new StatusEntitiesModel
+            {
+                Medias = from.Entities.Medias.Select(x => new MediaEntityModel
+                {
+                    MediaType = x.MediaType,
+                    MediaUrl = x.MediaUrl
+                })
+            };
 
             return to;
         }

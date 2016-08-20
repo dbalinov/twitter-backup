@@ -162,6 +162,16 @@ textarea {
   opacity:1;
 }
 
-.retweeted {
+
+.tweet:hover {
+    background-color: #f5f8fa;
+}
+.tweet-list {
+   border: 1px solid #e1e8ed; 
+}
+.tweet {
+    border-bottom: 1px solid #e1e8ed;
+}
+.tweet .retweeted {
     color: greenyellow;
 }

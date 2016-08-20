@@ -17,5 +17,12 @@ namespace Business.Models
         //public bool Favorited { get; set; }
 
         public DateTime CreatedAt { get; set; }
+
+        public StatusEntitiesModel Entities { get; set; }
+
+        public string CreatedAtFormatted
+        {
+            get { return CreatedAt.ToString();  }
+        }
     }
 }

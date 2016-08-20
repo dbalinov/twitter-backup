@@ -35,14 +35,21 @@ namespace DataAccess.Repositories.Statuses
             return tweets.Select(x => new Status
             {
                 Id = x.IdStr,
-                Text = x.Text,
+                Text = x.FullText,
                 //RetweetCount = x.RetweetCount,
                 Retweeted = x.Retweeted,
                 //FavoriteCount = x.FavoriteCount,
                 //Favorited = x.Favorited,
                 CreatedAt = x.CreatedAt,
-                //Entities = x.Entities.M
-                //
+                CreatedById = x.CreatedBy.IdStr,
+                Entities = new StatusEntities
+                {
+                    Medias = x.Entities.Medias.Select(y => new MediaEntity
+                    {
+                        MediaType = y.MediaType,
+                        MediaUrl = y.MediaURL
+                    })
+                } 
             });
         }
 

@@ -3,12 +3,21 @@
         <h3>Timeline</h3>
     </div>
 </div>
-<div class="row">
-    <div ng-repeat="status in statuses" class="col-xs-12 animate-repeat">
+<div class="row tweet-list">
+    <div ng-repeat="status in statuses" class="col-xs-12 tweet animate-repeat">
         <div class="row">
             <div class="col-xs-12">
                 {{status.Text}}<br/>
-                {{status.CreatedAt}}<br/>
+                {{status.CreatedAtFormatted}}<br/>
+
+                <div ng-repeat="media in status.Entities.Medias">
+                    <div ng-if="media.MediaType != 'photo' && media.MediaType !== 'animated_gif'">
+                        Unknown media type: {{media.MediaType}}
+                    </div>
+                    <div ng-if="media.MediaType == 'photo' || media.MediaType == 'animated_gif'">
+                        <img ng-src="{{media.MediaUrl}}" />
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">

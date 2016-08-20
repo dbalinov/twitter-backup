@@ -209,6 +209,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RetweetController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\StatusStoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

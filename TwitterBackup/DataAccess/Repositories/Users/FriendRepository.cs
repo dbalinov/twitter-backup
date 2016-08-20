@@ -15,11 +15,6 @@ namespace DataAccess.Repositories.Users
 
         public FriendRepository(ITwitterCredentialsFactory credentialsFactory)
         {
-            var connectionString = "mongodb://dbalinov:n0password@ds013216.mlab.com:13216/twitter-backup";
-            MongoClient client = new MongoClient(connectionString);
-            IMongoDatabase database = client.GetDatabase("twitter-backup");
-            var statuses = database.GetCollection<Entities.Status>("Statuses");
-
             this.credentials = credentialsFactory.Create();
         }
 
