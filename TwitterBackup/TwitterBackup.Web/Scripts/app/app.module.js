@@ -1,4 +1,8 @@
-﻿var twitterBackupApp = angular.module('twitterbackup', ['ngRoute', 'angular-loading-bar', 'ngAnimate'])
+﻿var twitterBackupApp = angular.module('twitterbackup', [
+    'ngRoute',
+    'ngAnimate',
+    'angular-loading-bar',
+    'infinite-scroll'])
 // controllers
     .controller('friendsController', friendsController)
     .controller('timelineController', timelineController)

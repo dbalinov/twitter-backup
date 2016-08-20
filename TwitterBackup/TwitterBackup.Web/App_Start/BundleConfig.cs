@@ -28,7 +28,8 @@ namespace TwitterBackup.Web
                       "~/Scripts/angular-route.min.js",
                       "~/Scripts/angular-animate.min.js",
                       "~/Scripts/loading-bar.js",
-                      "~/Scripts/toastr.min.js"));
+                      "~/Scripts/toastr.min.js",
+                      "~/Scripts/ng-infinite-scroll.min.js"));
 
             var appBundle = new ScriptBundle("~/bundles/app");
             appBundle.Include(

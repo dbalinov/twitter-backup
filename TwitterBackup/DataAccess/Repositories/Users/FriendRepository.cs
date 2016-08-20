@@ -4,8 +4,6 @@ using Tweetinvi.Models;
 using Tweetinvi;
 using DataAccess.Credentials;
 using System.Threading.Tasks;
-using MongoDB.Driver;
-using MongoDB.Bson;
 
 namespace DataAccess.Repositories.Users
 {
@@ -55,6 +53,14 @@ namespace DataAccess.Repositories.Users
                 this.credentials, () => authenticatedUser.GetFriendsAsync());
 
             return users.Select(friend => Map(friend));
+        }
+
+        public async Task<Entities.User> GetByScreenNameAsync(string screenName)
+        {
+            var user = await Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => UserAsync.GetUserFromScreenName(screenName));
+
+            return Map(user);
         }
     }
 }

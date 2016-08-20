@@ -1,13 +1,25 @@
 ﻿function timelineController($scope, $routeParams, timelineService, notificationService) {
     "use strict";
-    $scope.statuses = [];
 
     var screenName = $routeParams["screenName"];
 
-    timelineService.getStatuses(screenName)
-        .then(function (statuses) {
-            $scope.statuses = statuses;
-        });
+    $scope.items = [];
+    $scope.busy = false;
+
+    $scope.getNext = function () {
+        if ($scope.busy) return;
+
+        $scope.busy = true;
+
+        timelineService.getNext1(screenName)
+            .then(function (items) {
+                for (var i = 0; i < items.length; i++) {
+                    $scope.items.push(items[i]);
+                }
+
+                $scope.busy = false;
+            });
+    };
 
     $scope.retweet = function (status) {
         if (!status.Retweeted) {
@@ -20,10 +32,6 @@
             notificationService.info("The status is alredy retweeted.");
         }
     };
-    
-    //$scope.favorite = function (status) {
-    //    console.log('favorite', status);
-    //};
 
     $scope.save = function (status) {
         timelineService.unsave(status.Id)

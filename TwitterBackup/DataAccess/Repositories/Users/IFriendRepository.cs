@@ -6,6 +6,8 @@ namespace DataAccess.Repositories.Users
 {
     public interface IFriendRepository
     {
+        Task<User> GetByScreenNameAsync(string screenName);
+
         IEnumerable<User> GetAll();
 
         Task<IEnumerable<User>> GetAllAsync();

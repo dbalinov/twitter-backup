@@ -18,10 +18,10 @@ namespace Business.Services.Statuses
             this.statusStoreRepository = statusStoreRepository;
         }
 
-        public async Task<IEnumerable<StatusModel>> GetUserTimelineAsync(string screenName)
+        public async Task<IEnumerable<StatusModel>> GetUserTimelineAsync(string screenName, string maxId = null)
         {
             var mapper = new StatusMapper();
-            var statuses = await this.statusRepository.GetUserTimelineAsync(screenName);
+            var statuses = await this.statusRepository.GetUserTimelineAsync(screenName, maxId);
             return statuses.Select(x => mapper.Map(x, new StatusModel()));
         }
 

@@ -26,21 +26,27 @@ namespace DataAccess.Repositories.Statuses
             return Map(tweet);
         }
 
-        public async Task<IEnumerable<Status>> GetUserTimelineAsync(string screenName)
+        public async Task<IEnumerable<Status>> GetUserTimelineAsync(string screenName, string maxId = null)
         {
             var user = await Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => UserAsync.GetUserFromScreenName(screenName));
             
             var userTimelineParam = new UserTimelineParameters
             {
-                MaximumNumberOfTweetsToRetrieve = 100,
+                MaximumNumberOfTweetsToRetrieve = 5,
                 IncludeRTS = true,
-                TrimUser = true,
+                TrimUser = true
             };
-            
-            var tweets = await user.GetUserTimelineAsync(userTimelineParam);
 
-            return tweets.Select(x => Map(x));
+            if (!string.IsNullOrEmpty(maxId))
+            {
+                userTimelineParam.MaxId = long.Parse(maxId) - 1;
+            }
+
+            var tweets = await Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => user.GetUserTimelineAsync(userTimelineParam));
+
+            return tweets.Select(Map);
         }
 
         private Status Map(ITweet x)

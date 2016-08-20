@@ -210,11 +210,14 @@
     <Compile Include="Controllers\RetweetController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\StatusStoreController.cs" />
+    <Compile Include="Controllers\TimelineController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Messages\Friendship\FriendshipUpdateRequest.cs" />
     <Compile Include="Messages\StatusIdRequest.cs" />
+    <Compile Include="Messages\Timeline\TimelineRequest.cs" />
+    <Compile Include="Messages\Timeline\TimelineResponse.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -284,6 +287,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\loading-bar.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ng-infinite-scroll.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />

@@ -8,16 +8,16 @@ namespace TwitterBackup.Web.Controllers
     [Authorize]
     public class FriendsController : ApiController
     {
-        private readonly IFavoriteUserService favoriteUserService;
+        private readonly IFriendService friendService;
 
-        public FriendsController(IFavoriteUserService favoriteUserService)
+        public FriendsController(IFriendService friendService)
         {
-            this.favoriteUserService = favoriteUserService;
+            this.friendService = friendService;
         }
 
         public IEnumerable<UserModel> Get()
         {
-            var users = this.favoriteUserService.GetAll();
+            var users = this.friendService.GetAll();
             return users;
         }
     }

@@ -6,7 +6,7 @@ namespace Business.Services.Statuses
 {
     public interface IStatusService
     {
-        Task<IEnumerable<StatusModel>> GetUserTimelineAsync(string screenName);
+        Task<IEnumerable<StatusModel>> GetUserTimelineAsync(string screenName, string maxId = null);
 
         Task RetweetAsync(string statusId);
 

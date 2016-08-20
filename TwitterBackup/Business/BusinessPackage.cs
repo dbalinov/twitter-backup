@@ -9,7 +9,7 @@ namespace Business
     {
         public void RegisterServices(Container container)
         {
-            container.Register<IFavoriteUserService, FavoriteUserService>(Lifestyle.Scoped);
+            container.Register<IFriendService, FriendService>(Lifestyle.Scoped);
             container.Register<IFriendshipService, FriendshipService>(Lifestyle.Scoped);
             container.Register<IStatusService, StatusService>(Lifestyle.Scoped);
         }

@@ -60,9 +60,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Statuses\IStatusService.cs" />
     <Compile Include="Services\Statuses\StatusService.cs" />
-    <Compile Include="Services\Users\FavoriteUserService.cs" />
+    <Compile Include="Services\Users\FriendService.cs" />
     <Compile Include="Services\Users\FriendshipService.cs" />
-    <Compile Include="Services\Users\IFavoriteUserService.cs" />
+    <Compile Include="Services\Users\IFriendService.cs" />
     <Compile Include="Services\Users\IFriendshipService.cs" />
   </ItemGroup>
   <ItemGroup>

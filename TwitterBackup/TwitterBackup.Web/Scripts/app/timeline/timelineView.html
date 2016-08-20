@@ -3,46 +3,48 @@
         <h3>Timeline</h3>
     </div>
 </div>
-<div class="row tweet-list">
-    <div ng-repeat="status in statuses" class="col-xs-12 tweet animate-repeat">
-        <div class="row">
-            <div class="col-xs-12">
-                {{status.Text}}<br/>
-                {{status.CreatedAtFormatted}}<br/>
-                <div class="row">
-                    <div class="col-sm-offset-2 col-lg-18">
-                        <div ng-repeat="media in status.Entities.Medias">
-                            <div ng-if="media.MediaType != 'photo' && media.MediaType !== 'animated_gif'">
-                                Unknown media type: {{media.MediaType}}
-                            </div>
+<div class="tweet-list" infinite-scroll="getNext()" infinite-scroll-disabled="busy" infinite-scroll-distance="1">
+        <div ng-repeat="item in items" class="tweet animate-repeat">
+            <div class="row">
+                <div class="col-xs-12">
+                    {{item.Text}}<br />
+                    {{item.CreatedAtFormatted}}<br />
+                   <div class="row">
+                        <div class="col-sm-offset-2 col-lg-18">
+                            <div ng-repeat="media in item.Entities.Medias">
+                                <div ng-if="media.MediaType != 'photo' && media.MediaType !== 'animated_gif'">
+                                    Unknown media type: {{media.MediaType}}
+                                </div>
 
-                            <div ng-if="media.MediaType == 'photo' || media.MediaType == 'animated_gif'">
-                                <img ng-src="{{media.MediaUrl}}" class="img-responsive" />
+                                <div ng-if="media.MediaType == 'photo' || media.MediaType == 'animated_gif'">
+                                    <img ng-src="{{media.MediaUrl}}" class="img-responsive"/>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-1">
+                    <a ng-click="save(item)">
+                        <i class="glyphicon glyphicon-bookmark"></i>
+                    </a>
+                </div>
+                <div class="col-xs-1">
+                    <a ng-click="retweet(item)" ng-class="{ 'retweeted': item.Retweeted }">
+                        <i class="tw-icon tw-icon-retweet"></i>
+                        <!--{{item.RetweetCount}}-->
+                    </a>
+                </div>
+                <!--<div class="col-xs-1">
+            <a ng-click="favorite(item)" ng-class="{ 'favorited': item.Favorited }">
+                <i class="glyphicon glyphicon-heart"></i>
+                {{item.FavoriteCount}}
+            </a>
+        </div>-->
+            </div>
 
-            </div>
         </div>
-        <div class="row">
-            <div class="col-xs-1">
-                <a ng-click="save(status)">
-                    <i class="glyphicon glyphicon-bookmark"></i>
-                </a>
-            </div>
-            <div class="col-xs-1">
-                <a ng-click="retweet(status)" ng-class="{ 'retweeted': status.Retweeted }">
-                    <i class="tw-icon tw-icon-retweet"></i>
-                    <!--{{status.RetweetCount}}-->
-                </a>
-            </div>
-            <!--<div class="col-xs-1">
-                <a ng-click="favorite(status)" ng-class="{ 'favorited': status.Favorited }">
-                    <i class="glyphicon glyphicon-heart"></i>
-                    {{status.FavoriteCount}}
-                </a>
-            </div>-->
-        </div>
-    </div> 
+        <div ng-show="busy" class="tweet">Loading data...</div>
 </div>
+
