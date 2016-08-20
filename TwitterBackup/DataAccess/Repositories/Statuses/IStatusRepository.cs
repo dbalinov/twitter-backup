@@ -7,5 +7,7 @@ namespace DataAccess.Repositories.Statuses
     public interface IStatusRepository
     {
         Task<IEnumerable<Status>> GetUserTimelineAsync(string screenName);
+
+        Task RetweetAsync(string statusId);
     }
 }

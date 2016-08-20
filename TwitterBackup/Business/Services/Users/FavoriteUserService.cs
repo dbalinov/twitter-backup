@@ -9,24 +9,24 @@ namespace Business.Services.Users
 {
     public class FavoriteUserService : IFavoriteUserService
     {
-        private IFavoriteUserRepository favoriteUserRepository;
+        private IFriendRepository friendRepository;
 
-        public FavoriteUserService(IFavoriteUserRepository favoriteUserRepository)
+        public FavoriteUserService(IFriendRepository friendRepository)
         {
-            this.favoriteUserRepository = favoriteUserRepository;
+            this.friendRepository = friendRepository;
         }
 
         public IEnumerable<UserModel> GetAll()
         {
             var mapper = new UserMapper();
-            var users = this.favoriteUserRepository.GetAll();
+            var users = this.friendRepository.GetAll();
             return users.Select(x => mapper.Map(x, new UserModel()));
         }
 
         public async Task<IEnumerable<UserModel>> GetAllAsync()
         {
             var mapper = new UserMapper();
-            var users = await this.favoriteUserRepository.GetAllAsync();
+            var users = await this.friendRepository.GetAllAsync();
             return users.Select(x => mapper.Map(x, new UserModel()));
         }
     }

@@ -11,7 +11,7 @@ namespace DataAccess
     {
         public void RegisterServices(Container container)
         {
-            container.Register<IFavoriteUserRepository, FavoriteUserRepository>(Lifestyle.Scoped);
+            container.Register<IFriendRepository, FriendRepository>(Lifestyle.Scoped);
             container.Register<IFriendshipRepository, FriendshipRepository>(Lifestyle.Scoped);
             container.Register<IStatusRepository, StatusRepository>(Lifestyle.Scoped);
 

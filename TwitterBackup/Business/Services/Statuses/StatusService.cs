@@ -22,5 +22,10 @@ namespace Business.Services.Statuses
             var statuses = await this.statusRepository.GetUserTimelineAsync(screenName);
             return statuses.Select(x => mapper.Map(x, new StatusModel()));
         }
+
+        public Task RetweetAsync(string statusId)
+        {
+            return this.statusRepository.RetweetAsync(statusId);
+        }
     }
 }

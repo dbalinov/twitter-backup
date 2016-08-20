@@ -4,15 +4,22 @@ using Tweetinvi.Models;
 using Tweetinvi;
 using DataAccess.Credentials;
 using System.Threading.Tasks;
+using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace DataAccess.Repositories.Users
 {
-    internal class FavoriteUserRepository : IFavoriteUserRepository
+    internal class FriendRepository : IFriendRepository
     {
         private ITwitterCredentials credentials;
 
-        public FavoriteUserRepository(ITwitterCredentialsFactory credentialsFactory)
+        public FriendRepository(ITwitterCredentialsFactory credentialsFactory)
         {
+            var connectionString = "mongodb://dbalinov:n0password@ds013216.mlab.com:13216/twitter-backup";
+            MongoClient client = new MongoClient(connectionString);
+            IMongoDatabase database = client.GetDatabase("twitter-backup");
+            var statuses = database.GetCollection<Entities.Status>("Statuses");
+
             this.credentials = credentialsFactory.Create();
         }
 

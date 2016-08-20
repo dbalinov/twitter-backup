@@ -4,7 +4,7 @@ using DataAccess.Entities;
 
 namespace DataAccess.Repositories.Users
 {
-    public interface IFavoriteUserRepository
+    public interface IFriendRepository
     {
         IEnumerable<User> GetAll();
 

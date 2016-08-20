@@ -207,11 +207,13 @@
     <Compile Include="Controllers\FriendshipController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RetweetController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Messages\Friendship\FriendshipUpdateRequest.cs" />
+    <Compile Include="Messages\StatusIdRequest.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -231,6 +233,7 @@
     <Content Include="Content\loading-bar.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -253,6 +256,9 @@
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="fonts\rosetta-icons-Regular.eot" />
+    <Content Include="fonts\rosetta-icons-Regular.ttf" />
+    <Content Include="fonts\rosetta-icons-Regular.woff" />
     <None Include="Properties\PublishProfiles\publish.pubxml" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

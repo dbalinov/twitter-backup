@@ -8,13 +8,13 @@ namespace Business.Models
 
         public string Text { get; set; }
 
-        public int RetweetCount { get; set; }
+        //public int RetweetCount { get; set; }
 
         public bool Retweeted { get; set; }
 
-        public int FavoriteCount { get; set; }
+        //public int FavoriteCount { get; set; }
 
-        public bool Favorited { get; set; }
+        //public bool Favorited { get; set; }
 
         public DateTime CreatedAt { get; set; }
     }

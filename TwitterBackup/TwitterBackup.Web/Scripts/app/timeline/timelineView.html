@@ -7,23 +7,28 @@
     <div ng-repeat="status in statuses" class="col-xs-12 animate-repeat">
         <div class="row">
             <div class="col-xs-12">
-                <img src="{{status.CreatedByProfileImageUrl}}" />
-                {{status.Text}}<br />
-                {{status.CreatedAt}}<br />
+                {{status.Text}}<br/>
+                {{status.CreatedAt}}<br/>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-4">
-                
+            <div class="col-xs-1">
+                <a ng-click="save(status)">
+                    <i class="glyphicon glyphicon-bookmark"></i>
+                </a>
             </div>
-            <div class="col-xs-4">
-                {{status.RetweetCount}}<br />
-                {{status.Retweeted}}
+            <div class="col-xs-1">
+                <a ng-click="retweet(status)" ng-class="{ 'retweeted': status.Retweeted }">
+                    <i class="tw-icon tw-icon-retweet"></i>
+                    <!--{{status.RetweetCount}}-->
+                </a>
             </div>
-            <div class="col-xs-4">
-                {{status.FavoriteCount}}<br />
-                {{status.Favorited}}
-            </div>
+            <!--<div class="col-xs-1">
+                <a ng-click="favorite(status)" ng-class="{ 'favorited': status.Favorited }">
+                    <i class="glyphicon glyphicon-heart"></i>
+                    {{status.FavoriteCount}}
+                </a>
+            </div>-->
         </div>
     </div> 
 </div>

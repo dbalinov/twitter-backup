@@ -36,13 +36,21 @@ namespace DataAccess.Repositories.Statuses
             {
                 Id = x.IdStr,
                 Text = x.Text,
-                RetweetCount = x.RetweetCount,
+                //RetweetCount = x.RetweetCount,
                 Retweeted = x.Retweeted,
-                FavoriteCount = x.FavoriteCount,
-                Favorited = x.Favorited,
+                //FavoriteCount = x.FavoriteCount,
+                //Favorited = x.Favorited,
                 CreatedAt = x.CreatedAt,
                 //Entities = x.Entities.M
+                //
             });
+        }
+
+        public async Task RetweetAsync(string statusId)
+        {
+            var tweetId = long.Parse(statusId);
+            var tweet = await Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => TweetAsync.PublishRetweet(tweetId));
         }
     }
 }

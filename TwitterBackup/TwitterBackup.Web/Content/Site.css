@@ -1,6 +1,8 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 25px;
+	font-family: "Helvetica Neue",Arial,sans-serif;
+	font-size: 14px;
 }
 
 .body-content {
@@ -30,6 +32,28 @@ textarea {
 .navbar a {
      color: #fff!important;
 }
+
+@font-face {
+	font-family: 'rosettaIconFont';
+	src: url(../fonts/rosetta-icons-Regular.woff);
+	src: url(../fonts/rosetta-icons-Regular.ttf);
+}
+
+
+.tw-icon {
+	font-family: 'rosettaIconFont';
+	display: block;
+	font-weight: normal;
+	font-style: normal;
+	text-align: center;
+	-webkit-font-smoothing: antialiased;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.tw-icon-retweet:before { content: "\f152"; }
+
+.tw-icon-tweet:before { content: "\f029"; }
 
 .navbar-brand {
     padding-top: 10px;
@@ -136,4 +160,8 @@ textarea {
 .animate-repeat.ng-move.ng-move-active,
 .animate-repeat.ng-enter.ng-enter-active {
   opacity:1;
+}
+
+.retweeted {
+    color: greenyellow;
 }
