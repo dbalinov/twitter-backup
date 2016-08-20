@@ -5,6 +5,7 @@ using TwitterBackup.Web.Messages.Friendship;
 
 namespace TwitterBackup.Web.Controllers
 {
+    [Authorize]
     public class FriendshipController : ApiController
     {
         private readonly IFriendshipService friendshipService;

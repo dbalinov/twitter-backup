@@ -4,27 +4,44 @@ using System.Threading.Tasks;
 using DataAccess.Entities;
 using Tweetinvi;
 using Tweetinvi.Parameters;
+using Tweetinvi.Models;
+using DataAccess.Credentials;
 
 namespace DataAccess.Repositories.Statuses
 {
-    public class StatusRepository : IStatusRepository
+    internal class StatusRepository : IStatusRepository
     {
-        public async Task<IEnumerable<Status>> GetUserTimelineAnsync(string screenName)
-        {
-            var user = Tweetinvi.User.GetUserFromScreenName(screenName);
+        private readonly ITwitterCredentials credentials;
 
+        public StatusRepository(ITwitterCredentialsFactory credentialsFactory)
+        {
+            this.credentials = credentialsFactory.Create();
+        }
+
+        public async Task<IEnumerable<Status>> GetUserTimelineAsync(string screenName)
+        {
+            var user = await Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => UserAsync.GetUserFromScreenName(screenName));
+            
             var userTimelineParam = new UserTimelineParameters
             {
                 MaximumNumberOfTweetsToRetrieve = 100,
-                IncludeRTS = true
+                IncludeRTS = true,
+                TrimUser = true
             };
             
-            var tweets = await TimelineAsync.GetUserTimeline(user, userTimelineParam);
+            var tweets = await user.GetUserTimelineAsync(userTimelineParam);
 
             return tweets.Select(x => new Status
             {
+                Id = x.IdStr,
                 Text = x.Text,
-                RetweetCount = x.RetweetCount
+                RetweetCount = x.RetweetCount,
+                Retweeted = x.Retweeted,
+                FavoriteCount = x.FavoriteCount,
+                Favorited = x.Favorited,
+                CreatedAt = x.CreatedAt,
+                //Entities = x.Entities.M
             });
         }
     }

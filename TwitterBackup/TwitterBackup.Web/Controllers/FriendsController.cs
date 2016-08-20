@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Web.Http;
 using Business.Models;
 using Business.Services.Users;
@@ -16,9 +15,9 @@ namespace TwitterBackup.Web.Controllers
             this.favoriteUserService = favoriteUserService;
         }
 
-        public async Task<IEnumerable<UserModel>> Get()
+        public IEnumerable<UserModel> Get()
         {
-            var users = await this.favoriteUserService.GetAllAsync();
+            var users = this.favoriteUserService.GetAll();
             return users;
         }
     }

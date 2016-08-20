@@ -16,6 +16,13 @@ namespace Business.Services.Users
             this.favoriteUserRepository = favoriteUserRepository;
         }
 
+        public IEnumerable<UserModel> GetAll()
+        {
+            var mapper = new UserMapper();
+            var users = this.favoriteUserRepository.GetAll();
+            return users.Select(x => mapper.Map(x, new UserModel()));
+        }
+
         public async Task<IEnumerable<UserModel>> GetAllAsync()
         {
             var mapper = new UserMapper();

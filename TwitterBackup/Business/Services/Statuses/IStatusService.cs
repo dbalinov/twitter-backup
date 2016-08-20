@@ -6,6 +6,6 @@ namespace Business.Services.Statuses
 {
     public interface IStatusService
     {
-        Task<IEnumerable<StatusModel>> GetUserTimelineAnsync(string screenName);
+        Task<IEnumerable<StatusModel>> GetUserTimelineAsync(string screenName);
     }
 }

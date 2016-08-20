@@ -34,6 +34,8 @@ namespace TwitterBackup.Web
             appBundle.Include(
                 "~/Scripts/app/friends/friendsController.js",
                 "~/Scripts/app/friends/friendsService.js",
+                "~/Scripts/app/timeline/timelineController.js",
+                "~/Scripts/app/timeline/timelineService.js",
                 "~/Scripts/app/common/services/notificationService.js",
                 "~/Scripts/app/app.module.js",
                 "~/Scripts/app/app.route.js");

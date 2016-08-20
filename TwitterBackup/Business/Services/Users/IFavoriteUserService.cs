@@ -6,6 +6,8 @@ namespace Business.Services.Users
 {
     public interface IFavoriteUserService
     {
+        IEnumerable<UserModel> GetAll();
+
         Task<IEnumerable<UserModel>> GetAllAsync();
     }
 }

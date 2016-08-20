@@ -6,6 +6,6 @@ namespace DataAccess.Repositories.Statuses
 {
     public interface IStatusRepository
     {
-        Task<IEnumerable<Status>> GetUserTimelineAnsync(string screenName);
+        Task<IEnumerable<Status>> GetUserTimelineAsync(string screenName);
     }
 }

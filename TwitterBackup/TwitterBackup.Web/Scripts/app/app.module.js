@@ -1,12 +1,17 @@
 ﻿var twitterBackupApp = angular.module('twitterbackup', ['ngRoute', 'angular-loading-bar', 'ngAnimate'])
 // controllers
     .controller('friendsController', friendsController)
+    .controller('timelineController', timelineController)
 // values
 	.value('toastr', toastr)
 // services
     .factory('friendsService', ['$http', '$q', function($http, $q) {
             return new friendsService($http, $q);
         }
+    ])
+    .factory('timelineService', ['$http', '$q', function ($http, $q) {
+        return new timelineService($http, $q);
+    }
     ])
     .factory("notificationService", ["toastr", function(toastr) {
             return new notificationService(toastr);
@@ -18,7 +23,7 @@
     }])
 
     // TODO: move to separate file
-.directive('tooltip', function tooltip(){
+.directive('tooltip', function tooltipDirective(){
     return {
         restrict: 'A',
         link: function(scope, element, attrs){

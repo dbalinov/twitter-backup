@@ -13,7 +13,7 @@ namespace DataAccess
         {
             container.Register<IFavoriteUserRepository, FavoriteUserRepository>(Lifestyle.Scoped);
             container.Register<IFriendshipRepository, FriendshipRepository>(Lifestyle.Scoped);
-            container.Register<IStatusRepository, StatusRepository>();
+            container.Register<IStatusRepository, StatusRepository>(Lifestyle.Scoped);
 
             container.Register<ITwitterCredentialsFactory, TwitterCredentialsFactory>(Lifestyle.Scoped);
         }

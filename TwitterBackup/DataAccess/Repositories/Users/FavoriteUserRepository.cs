@@ -16,14 +16,19 @@ namespace DataAccess.Repositories.Users
             this.credentials = credentialsFactory.Create();
         }
 
-        public async Task<IEnumerable<DataAccess.Entities.User>> GetAllAsync()
+        public IEnumerable<Entities.User> GetAll()
         {
             var authenticatedUser = User.GetAuthenticatedUser(this.credentials);
 
-            var users = await ( Auth.ExecuteOperationWithCredentials(
-                this.credentials, () => authenticatedUser.GetFriendsAsync()));
+            var users = Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => authenticatedUser.GetFriends());
 
-            return users.Select(friend => new DataAccess.Entities.User
+            return users.Select(friend => Map(friend));
+        }
+
+        private DataAccess.Entities.User Map(IUser friend)
+        {
+            return new DataAccess.Entities.User
             {
                 Id = friend.IdStr,
                 Name = friend.Name,
@@ -37,7 +42,17 @@ namespace DataAccess.Repositories.Users
                 FriendsCount = friend.FriendsCount,
                 ScreenName = friend.ScreenName,
                 Verified = friend.Verified
-            });
+            };
+        }
+
+        public async Task<IEnumerable<DataAccess.Entities.User>> GetAllAsync()
+        {
+            var authenticatedUser = User.GetAuthenticatedUser(this.credentials);
+
+            var users = await Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => authenticatedUser.GetFriendsAsync());
+
+            return users.Select(friend => Map(friend));
         }
     }
 }

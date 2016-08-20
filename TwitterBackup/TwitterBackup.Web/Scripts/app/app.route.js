@@ -5,8 +5,10 @@ twitterBackupApp.config(function ($routeProvider) {
             templateUrl: '/scripts/app/friends/friendsView.html',
             controller: 'friendsController'
         })
-//    .when('/timeline/:id', {
-//    })
+        .when('/timeline/:screenName', {
+            templateUrl: '/scripts/app/timeline/timelineView.html',
+            controller: 'timelineController'
+        })
         .otherwise({
             redirectTo: '/friends'
         });

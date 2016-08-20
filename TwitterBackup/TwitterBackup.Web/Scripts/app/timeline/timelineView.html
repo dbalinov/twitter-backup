@@ -1,0 +1,29 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <h3>Timeline</h3>
+    </div>
+</div>
+<div class="row">
+    <div ng-repeat="status in statuses" class="col-xs-12 animate-repeat">
+        <div class="row">
+            <div class="col-xs-12">
+                <img src="{{status.CreatedByProfileImageUrl}}" />
+                {{status.Text}}<br />
+                {{status.CreatedAt}}<br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                
+            </div>
+            <div class="col-xs-4">
+                {{status.RetweetCount}}<br />
+                {{status.Retweeted}}
+            </div>
+            <div class="col-xs-4">
+                {{status.FavoriteCount}}<br />
+                {{status.Favorited}}
+            </div>
+        </div>
+    </div> 
+</div>

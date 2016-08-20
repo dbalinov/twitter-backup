@@ -6,6 +6,8 @@ namespace DataAccess.Repositories.Users
 {
     public interface IFavoriteUserRepository
     {
+        IEnumerable<User> GetAll();
+
         Task<IEnumerable<User>> GetAllAsync();
     }
 }

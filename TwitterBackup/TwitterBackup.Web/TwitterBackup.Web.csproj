@@ -207,6 +207,7 @@
     <Compile Include="Controllers\FriendshipController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -261,6 +262,9 @@
     <Content Include="Scripts\app\friends\friendsView.html" />
     <Content Include="Scripts\app\friends\friendsController.js" />
     <Content Include="Scripts\app\friends\friendsService.js" />
+    <Content Include="Scripts\app\timeline\timelineController.js" />
+    <Content Include="Scripts\app\timeline\timelineService.js" />
+    <Content Include="Scripts\app\timeline\timelineView.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -318,7 +322,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\app\dashboard\" />
-    <Folder Include="Scripts\app\timeline\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
