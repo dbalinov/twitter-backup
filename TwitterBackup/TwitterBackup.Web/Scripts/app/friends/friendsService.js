@@ -7,12 +7,8 @@
         var defer = $q.defer();
 
         $http.get('api/friends')
-            .success(function (response) {
-                defer.resolve(response);
-            })
-            .error(function(error) {
-                defer.reject(error);
-            });
+            .success(defer.resolve)
+            .error(defer.reject);
 
         return defer.promise;
     };
@@ -30,9 +26,7 @@
                 friend.Notifications = toAdd;
                 defer.resolve(response);
             })
-            .error(function(error) {
-                defer.reject(error);
-            });
+            .error(defer.reject);
 
         return defer.promise;
     };

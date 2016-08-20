@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using DataAccess.Entities;
 using MongoDB.Driver;
+using System.Web.Configuration;
 
 namespace DataAccess.Repositories.Statuses
 {
@@ -9,11 +10,11 @@ namespace DataAccess.Repositories.Statuses
     {
         private readonly IMongoCollection<Status> collection;
 
-        public StatusStoreRepository()
+        public StatusStoreRepository(IMongoClient client)
         {
-            var connectionString = "mongodb://dbalinov:n0password@ds013216.mlab.com:13216/twitter-backup";
-            IMongoClient client = new MongoClient(connectionString);
-            IMongoDatabase database = client.GetDatabase("twitter-backup");
+            IMongoDatabase database = client.GetDatabase(
+                WebConfigurationManager.AppSettings["mongodb:DatabaseName"]);
+
             this.collection = database.GetCollection<Status>("Statuses");
         }
 

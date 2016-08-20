@@ -13,13 +13,15 @@ namespace TwitterBackup.Web
 
         protected void Application_Start()
         {
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new RazorViewEngine());
+            
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             SimpleInjectorInitializer.Initialize();
-            logger.Trace("applictions start");
         }
 
         protected void Application_Error(object sender, EventArgs e)

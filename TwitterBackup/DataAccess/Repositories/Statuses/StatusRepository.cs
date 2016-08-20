@@ -6,7 +6,6 @@ using Tweetinvi;
 using Tweetinvi.Parameters;
 using Tweetinvi.Models;
 using DataAccess.Credentials;
-using System;
 
 namespace DataAccess.Repositories.Statuses
 {
