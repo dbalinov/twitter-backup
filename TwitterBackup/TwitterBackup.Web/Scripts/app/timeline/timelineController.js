@@ -4,6 +4,7 @@
     var screenName = $routeParams["screenName"];
 
     $scope.items = [];
+    $scope.user = null;
     $scope.busy = false;
 
     $scope.getNext = function () {
@@ -11,8 +12,14 @@
 
         $scope.busy = true;
 
-        timelineService.getNext1(screenName)
-            .then(function (items) {
+        timelineService.getNext(screenName)
+            .then(function (data) {
+
+                if (data.User) {
+                    $scope.user = data.User;
+                }
+
+                var items = data.Statuses;
                 for (var i = 0; i < items.length; i++) {
                     $scope.items.push(items[i]);
                 }

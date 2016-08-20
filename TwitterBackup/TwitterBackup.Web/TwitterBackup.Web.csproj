@@ -208,7 +208,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RetweetController.cs" />
-    <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\StatusStoreController.cs" />
     <Compile Include="Controllers\TimelineController.cs" />
     <Compile Include="Global.asax.cs">
@@ -229,6 +228,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Images\Icons\notifications-off.png" />
     <Content Include="Content\Images\Icons\notifications-on.png" />
     <Content Include="Content\Images\Icons\verified.png" />
@@ -238,6 +239,7 @@
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -260,9 +262,11 @@
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
-    <Content Include="fonts\rosetta-icons-Regular.eot" />
-    <Content Include="fonts\rosetta-icons-Regular.ttf" />
-    <Content Include="fonts\rosetta-icons-Regular.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Properties\PublishProfiles\publish.pubxml" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

@@ -45,7 +45,8 @@ namespace TwitterBackup.Web
             bundles.Add(appBundle);
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/font-awesome.min.css",
                       "~/Content/loading-bar.css",
                       "~/Content/toastr.min.css",
                       "~/Content/site.css"));

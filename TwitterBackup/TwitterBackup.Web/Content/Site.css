@@ -33,31 +33,10 @@ textarea {
      color: #fff!important;
 }
 
-@font-face {
-	font-family: 'rosettaIconFont';
-	src: url(../fonts/rosetta-icons-Regular.woff);
-	src: url(../fonts/rosetta-icons-Regular.ttf);
-}
-
-
-.tw-icon {
-	font-family: 'rosettaIconFont';
-	display: block;
-	font-weight: normal;
-	font-style: normal;
-	text-align: center;
-	-webkit-font-smoothing: antialiased;
-	display: inline-block;
-	vertical-align: middle;
-}
-
-.tw-icon-retweet:before { content: "\f152"; }
-
-.tw-icon-tweet:before { content: "\f029"; }
-
 .navbar-brand {
     padding-top: 10px;
 }
+
 .twitter-card {
     height: 220px;
     position: relative;
@@ -162,16 +141,55 @@ textarea {
   opacity:1;
 }
 
+.tweet-list {
+    border: 1px solid #e1e8ed; 
+    border-radius: 6px;
+    margin: 8px auto;
+}
+
+.tweet {
+    border-bottom: 1px solid #e1e8ed;
+}
 
 .tweet:hover {
     background-color: #f5f8fa;
 }
-.tweet-list {
-   border: 1px solid #e1e8ed; 
+
+.tweet .tweet-text {
+    padding: 15px;
+    padding-bottom: 5px;
 }
-.tweet {
-    border-bottom: 1px solid #e1e8ed;
+.tweet .tweet-date {
+    padding: 5px 15px;
+    color: #ccc;
 }
-.tweet .retweeted {
+.tweet .tweet-image,
+.tweet .tweet-footer {
+    padding: 15px;
+    padding-left: 80px;
+}
+.tweet .tweet-footer {
+    font-size: 16px;
+}
+
+.tweet .tweet-footer a {
+    color: #aab8c2;
+    cursor: pointer;
+}
+
+.tweet .tweet-footer a:hover {
+    opacity: 0.7;
+}
+
+.tweet .tweet-footer a.retweeted {
     color: greenyellow;
 }
+
+.tweet .tweet-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+
+

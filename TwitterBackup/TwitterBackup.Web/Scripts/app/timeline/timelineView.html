@@ -3,48 +3,100 @@
         <h3>Timeline</h3>
     </div>
 </div>
-<div class="tweet-list" infinite-scroll="getNext()" infinite-scroll-disabled="busy" infinite-scroll-distance="1">
-        <div ng-repeat="item in items" class="tweet animate-repeat">
-            <div class="row">
-                <div class="col-xs-12">
-                    {{item.Text}}<br />
-                    {{item.CreatedAtFormatted}}<br />
-                   <div class="row">
-                        <div class="col-sm-offset-2 col-lg-18">
-                            <div ng-repeat="media in item.Entities.Medias">
-                                <div ng-if="media.MediaType != 'photo' && media.MediaType !== 'animated_gif'">
-                                    Unknown media type: {{media.MediaType}}
-                                </div>
-
-                                <div ng-if="media.MediaType == 'photo' || media.MediaType == 'animated_gif'">
-                                    <img ng-src="{{media.MediaUrl}}" class="img-responsive"/>
-                                </div>
-                            </div>
-                        </div>
+<div class="row">
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
+        <div class="twitter-card" ng-if="user">
+            <div class="background-layer">
+                <div class="twitter-banner"
+                     ng-style="{'background-color': '#{{user.ProfileBackgroundColor}}', 'background-image': 'url({{user.ProfileBannerUrl}})' }"></div>
+            </div>
+            <div class="foreground-layer">
+                <div class="profile-image">
+                    <div ng-if="user.ProfileImageUrl != null">
+                        <img ng-src="{{user.ProfileImageUrl}}" alt=""/>
+                    </div>
+                </div>
+                <div class="profile-name">
+                    <div>
+                        <a href="#/timeline/{{user.ScreenName}}">
+                            {{user.Name}}
+                        </a>
+                        <span ng-if="user.Verified">
+                            <img src="./Content/Images/Icons/verified.png"
+                                 alt="Verified account"
+                                 title="Verified account"
+                                 data-toggle="tooltip"
+                                 data-placement="right"
+                                 tooltip />
+                        </span>
+                    </div>
+                    <span>
+                        <a href="https://twitter.com/" target="_blank">@<span>{{user.ScreenName}}</span></a>
+                    </span>
+                </div>
+                <div class="stats">
+                    <div class="col-xs-4">
+                        <p>Tweets</p>
+                        <p>{{user.StatusesCount}}</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <p>Following</p>
+                        <p>{{user.FriendsCount}}</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <p>Followers</p>
+                        <p>{{user.FollowersCount}}</p>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-1">
-                    <a ng-click="save(item)">
-                        <i class="glyphicon glyphicon-bookmark"></i>
-                    </a>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+
+        <div class="tweet-list" infinite-scroll="getNext()" infinite-scroll-disabled="busy" infinite-scroll-distance="1">
+            <div ng-repeat="item in items" class="tweet animate-repeat">
+                <div class="tweet-text">{{item.Text}}</div>
+                <div class="tweet-date">{{item.CreatedAtFormatted}}</div>
+
+                <div ng-repeat="media in item.Entities.Medias">
+                    <div ng-if="media.MediaType == 'photo' || media.MediaType == 'animated_gif'"
+                         class="tweet-image">
+                        <img ng-src="{{media.MediaUrl}}"/>
+                    </div>
                 </div>
-                <div class="col-xs-1">
-                    <a ng-click="retweet(item)" ng-class="{ 'retweeted': item.Retweeted }">
-                        <i class="tw-icon tw-icon-retweet"></i>
-                        <!--{{item.RetweetCount}}-->
-                    </a>
-                </div>
-                <!--<div class="col-xs-1">
+                <div class="tweet-footer">
+                    <div class="row">
+                        <div class="col-xs-1">
+                            <a ng-click="save(item)">
+                                <i class="fa fa-bookmark" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="col-xs-1">
+                            <a ng-click="retweet(item)" ng-class="{ 'retweeted': item.Retweeted }">
+                                <i class="tw-icon tw-icon-retweet"></i>
+                                <i class="fa fa-retweet" aria-hidden="true"></i>
+                                <!--{{item.RetweetCount}}-->
+                            </a>
+                        </div>
+                        <!--<div class="col-xs-1">
             <a ng-click="favorite(item)" ng-class="{ 'favorited': item.Favorited }">
-                <i class="glyphicon glyphicon-heart"></i>
+               <i class="fa fa-heart" aria-hidden="true"></i>
                 {{item.FavoriteCount}}
             </a>
         </div>-->
+                    </div>
+                </div>
+                
             </div>
-
+            <div ng-show="busy" class="tweet">Loading data...</div>
         </div>
-        <div ng-show="busy" class="tweet">Loading data...</div>
+
+
+    </div>
 </div>
 
+
+
+
+
+           
