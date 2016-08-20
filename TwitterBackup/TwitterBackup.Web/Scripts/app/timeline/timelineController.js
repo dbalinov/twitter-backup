@@ -20,12 +20,17 @@
             notificationService.info("The status is alredy retweeted.");
         }
     };
-
+    
     //$scope.favorite = function (status) {
     //    console.log('favorite', status);
     //};
 
     $scope.save = function (status) {
+        timelineService.unsave(status.Id)
+            .then(function () {
+               // status.Retweeted = true;
+                notificationService.info("The status has been saved.");
+            });
         console.log('save', status);
     };
 };

@@ -6,6 +6,7 @@ using Tweetinvi;
 using Tweetinvi.Parameters;
 using Tweetinvi.Models;
 using DataAccess.Credentials;
+using System;
 
 namespace DataAccess.Repositories.Statuses
 {
@@ -18,6 +19,14 @@ namespace DataAccess.Repositories.Statuses
             this.credentials = credentialsFactory.Create();
         }
 
+        public async Task<Status> GetAsync(string statusId)
+        {
+            var tweet = await Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => TweetAsync.GetTweet(long.Parse(statusId)));
+
+            return Map(tweet);
+        }
+
         public async Task<IEnumerable<Status>> GetUserTimelineAsync(string screenName)
         {
             var user = await Auth.ExecuteOperationWithCredentials(
@@ -27,12 +36,17 @@ namespace DataAccess.Repositories.Statuses
             {
                 MaximumNumberOfTweetsToRetrieve = 100,
                 IncludeRTS = true,
-                TrimUser = true
+                TrimUser = true,
             };
             
             var tweets = await user.GetUserTimelineAsync(userTimelineParam);
 
-            return tweets.Select(x => new Status
+            return tweets.Select(x => Map(x));
+        }
+
+        private Status Map(ITweet x)
+        {
+            return new Status
             {
                 Id = x.IdStr,
                 Text = x.FullText,
@@ -49,8 +63,8 @@ namespace DataAccess.Repositories.Statuses
                         MediaType = y.MediaType,
                         MediaUrl = y.MediaURL
                     })
-                } 
-            });
+                }
+            };
         }
 
         public async Task RetweetAsync(string statusId)

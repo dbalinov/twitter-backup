@@ -24,4 +24,23 @@
 
         return defer.promise;
     };
+
+    self.save = function (statusId) {
+        var defer = $q.defer();
+
+        $http.post('api/statusStore/', { StatusId: statusId })
+            .success(defer.resolve)
+            .error(defer.reject);
+
+        return defer.promise;
+    };
+
+    self.unsave = function (statusId) {
+        var defer = $q.defer();
+
+        $http.delete('api/statusStore/', { StatusId: statusId })
+            .success(defer.resolve)
+            .error(defer.reject);
+        return defer.promise;
+    };
 }

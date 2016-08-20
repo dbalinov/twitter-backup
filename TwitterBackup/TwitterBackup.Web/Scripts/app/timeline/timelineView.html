@@ -9,15 +9,20 @@
             <div class="col-xs-12">
                 {{status.Text}}<br/>
                 {{status.CreatedAtFormatted}}<br/>
+                <div class="row">
+                    <div class="col-sm-offset-2 col-lg-18">
+                        <div ng-repeat="media in status.Entities.Medias">
+                            <div ng-if="media.MediaType != 'photo' && media.MediaType !== 'animated_gif'">
+                                Unknown media type: {{media.MediaType}}
+                            </div>
 
-                <div ng-repeat="media in status.Entities.Medias">
-                    <div ng-if="media.MediaType != 'photo' && media.MediaType !== 'animated_gif'">
-                        Unknown media type: {{media.MediaType}}
-                    </div>
-                    <div ng-if="media.MediaType == 'photo' || media.MediaType == 'animated_gif'">
-                        <img ng-src="{{media.MediaUrl}}" />
+                            <div ng-if="media.MediaType == 'photo' || media.MediaType == 'animated_gif'">
+                                <img ng-src="{{media.MediaUrl}}" class="img-responsive" />
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="row">

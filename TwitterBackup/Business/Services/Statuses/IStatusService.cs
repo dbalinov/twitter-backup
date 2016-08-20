@@ -9,5 +9,9 @@ namespace Business.Services.Statuses
         Task<IEnumerable<StatusModel>> GetUserTimelineAsync(string screenName);
 
         Task RetweetAsync(string statusId);
+
+        Task SaveAsync(string statusId);
+
+        Task UnsaveAsync(string statusId);
     }
 }

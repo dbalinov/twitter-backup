@@ -14,6 +14,7 @@ namespace DataAccess
             container.Register<IFriendRepository, FriendRepository>(Lifestyle.Scoped);
             container.Register<IFriendshipRepository, FriendshipRepository>(Lifestyle.Scoped);
             container.Register<IStatusRepository, StatusRepository>(Lifestyle.Scoped);
+            container.Register<IStatusStoreRepository, StatusStoreRepository>(Lifestyle.Scoped);
 
             container.Register<ITwitterCredentialsFactory, TwitterCredentialsFactory>(Lifestyle.Scoped);
         }

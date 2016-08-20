@@ -6,10 +6,10 @@ namespace DataAccess.Repositories.Statuses
 {
     public interface IStatusStoreRepository
     {
-        Task<IEnumerable<Status>> GetAllAsync(long userId);
+        Task<IEnumerable<Status>> GetAllAsync(string userId);
 
-        Task AddAsync(Status status);
+        Task SaveAsync(Status status);
 
-        Task RemoveAsync(long statusId);
+        Task UnsaveAsync(string statusId);
     }
 }
