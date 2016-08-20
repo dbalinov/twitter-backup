@@ -13,7 +13,6 @@
         self.toastr.info(message);
     };
 
-
     self.error = function(messageOptions) {
         if (messageOptions.modelState) {
             for (var key in messageOptions.modelState) {
