@@ -191,5 +191,7 @@ textarea {
     height: auto;
 }
 
-
-
+.tweet.tweet-loading {
+    padding: 15px;
+    text-align: center;    
+}

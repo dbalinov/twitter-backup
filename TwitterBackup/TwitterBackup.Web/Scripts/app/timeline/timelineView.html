@@ -79,19 +79,20 @@
                             </a>
                         </div>
                         <!--<div class="col-xs-1">
-            <a ng-click="favorite(item)" ng-class="{ 'favorited': item.Favorited }">
-               <i class="fa fa-heart" aria-hidden="true"></i>
-                {{item.FavoriteCount}}
-            </a>
-        </div>-->
+                            <a ng-click="favorite(item)" ng-class="{ 'favorited': item.Favorited }">
+                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                {{item.FavoriteCount}}
+                            </a>
+                        </div>-->
                     </div>
                 </div>
-                
+
             </div>
-            <div ng-show="busy" class="tweet">Loading data...</div>
+            <div ng-show="busy" class="tweet tweet-loading">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
+            </div>
         </div>
-
-
     </div>
 </div>
 
