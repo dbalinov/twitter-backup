@@ -19,7 +19,6 @@ namespace DataAccess
 
             container.Register<IUserRepository, UserRepository>(Lifestyle.Scoped);
             container.Register<IFavoriteUserRepository, FavoriteUserRepository>(Lifestyle.Scoped);
-            container.Register<IFriendRepository, FriendRepository>(Lifestyle.Scoped);
             container.Register<IStatusRepository, StatusRepository>(Lifestyle.Scoped);
             container.Register<IStatusStoreRepository, StatusStoreRepository>(Lifestyle.Scoped);
             

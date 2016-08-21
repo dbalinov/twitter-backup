@@ -61,9 +61,9 @@
     <Compile Include="Services\Statuses\IStatusService.cs" />
     <Compile Include="Services\Statuses\StatusService.cs" />
     <Compile Include="Services\Users\FavoriteUserService.cs" />
-    <Compile Include="Services\Users\FriendService.cs" />
     <Compile Include="Services\Users\IFavoriteUserService.cs" />
-    <Compile Include="Services\Users\IFriendService.cs" />
+    <Compile Include="Services\Users\IUserService.cs" />
+    <Compile Include="Services\Users\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

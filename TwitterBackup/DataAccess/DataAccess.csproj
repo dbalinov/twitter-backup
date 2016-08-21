@@ -118,9 +118,7 @@
     <Compile Include="Repositories\Statuses\StatusRepository.cs" />
     <Compile Include="Repositories\Statuses\StatusStoreRepository.cs" />
     <Compile Include="Repositories\Users\FavoriteUserRepository.cs" />
-    <Compile Include="Repositories\Users\FriendRepository.cs" />
     <Compile Include="Repositories\Users\IFavoriteUserRepository.cs" />
-    <Compile Include="Repositories\Users\IFriendRepository.cs" />
     <Compile Include="Repositories\Users\IUserRepository.cs" />
     <Compile Include="Repositories\Users\UserRepository.cs" />
   </ItemGroup>

@@ -33,13 +33,17 @@ namespace TwitterBackup.Web
 
             var appBundle = new ScriptBundle("~/bundles/app");
             appBundle.Include(
-                "~/Scripts/app/friends/friendsController.js",
-                "~/Scripts/app/friends/friendsService.js",
-                "~/Scripts/app/timeline/timelineController.js",
-                "~/Scripts/app/timeline/timelineService.js",
-                "~/Scripts/app/common/services/notificationService.js",
-                "~/Scripts/app/app.module.js",
-                "~/Scripts/app/app.route.js");
+                // controllers
+                "~/app/controllers/baseController.js",
+                "~/app/controllers/favoriteUserController.js",
+                "~/app/controllers/timelineController.js",
+                // services
+                "~/app/services/favoriteUserService.js",
+                "~/app/services/timelineService.js",
+                "~/app/services/notificationService.js",
+                // app
+                "~/app/app.js",
+                "~/app/app.route.js");
 
             appBundle.Transforms.Clear();
             bundles.Add(appBundle);

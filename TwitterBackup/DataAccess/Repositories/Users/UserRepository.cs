@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using DataAccess.Credentials;
 using Tweetinvi;
 using Tweetinvi.Models;
@@ -15,12 +16,28 @@ namespace DataAccess.Repositories.Users
             this.credentials = credentialsFactory.Create();
         }
 
+        public IEnumerable<Entities.User> Search(string query)
+        {
+            var users = Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => Tweetinvi.Search.SearchUsers(query, 9));
+
+            return users.Select(friend => Map(friend));
+        }
+
         public IEnumerable<Entities.User> GetUsersFromIds(IEnumerable<string> ids)
         {
             var users = Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => User.GetUsersFromIds(ids.Select(long.Parse)));
 
             return users.Select(friend => Map(friend));
+        }
+
+        public async Task<Entities.User> GetByScreenNameAsync(string screenName)
+        {
+            var user = await Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => UserAsync.GetUserFromScreenName(screenName));
+
+            return Map(user);
         }
 
         private DataAccess.Entities.User Map(IUser friend)
@@ -40,6 +57,5 @@ namespace DataAccess.Repositories.Users
                 Verified = friend.Verified
             };
         }
-
     }
 }
