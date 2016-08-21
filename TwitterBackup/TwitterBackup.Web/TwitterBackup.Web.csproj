@@ -204,7 +204,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FavoriteUserController.cs" />
-    <Compile Include="Controllers\FriendshipController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RetweetController.cs" />
@@ -214,7 +213,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Messages\FavoriteUser\FavoriteUserRequest.cs" />
-    <Compile Include="Messages\Friendship\FriendshipUpdateRequest.cs" />
     <Compile Include="Messages\StatusIdRequest.cs" />
     <Compile Include="Messages\Timeline\TimelineRequest.cs" />
     <Compile Include="Messages\Timeline\TimelineResponse.cs" />

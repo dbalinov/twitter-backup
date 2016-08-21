@@ -50,9 +50,7 @@
   <ItemGroup>
     <Compile Include="BusinessPackage.cs" />
     <Compile Include="Models\FavoriteUserRelationModel.cs" />
-    <Compile Include="Models\FriendshipModel.cs" />
     <Compile Include="Models\Mapping\FavoriteUserRelationMapper.cs" />
-    <Compile Include="Models\Mapping\FriendshipMapper.cs" />
     <Compile Include="Models\Mapping\StatusMapper.cs" />
     <Compile Include="Models\Mapping\UserMapper.cs" />
     <Compile Include="Models\MediaEntityModel.cs" />
@@ -64,10 +62,8 @@
     <Compile Include="Services\Statuses\StatusService.cs" />
     <Compile Include="Services\Users\FavoriteUserService.cs" />
     <Compile Include="Services\Users\FriendService.cs" />
-    <Compile Include="Services\Users\FriendshipService.cs" />
     <Compile Include="Services\Users\IFavoriteUserService.cs" />
     <Compile Include="Services\Users\IFriendService.cs" />
-    <Compile Include="Services\Users\IFriendshipService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

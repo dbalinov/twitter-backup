@@ -12,7 +12,6 @@ namespace Business
             container.Register<IFavoriteUserService, FavoriteUserService>(Lifestyle.Scoped);
 
             container.Register<IFriendService, FriendService>(Lifestyle.Scoped);
-            container.Register<IFriendshipService, FriendshipService>(Lifestyle.Scoped);
             container.Register<IStatusService, StatusService>(Lifestyle.Scoped);
         }
     }

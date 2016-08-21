@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using DataAccess.Entities;
 using MongoDB.Driver;
 
@@ -11,6 +13,14 @@ namespace DataAccess.Repositories.Users
         public FavoriteUserRepository(IDbContext dbContext)
         {
             this.dbContext = dbContext;
+        }
+
+        public async Task<IEnumerable<string>> GetFavoriteUserIds(string sourceUserId)
+        {
+            var favoriteUsers = await this.dbContext.FavriteUserRelations
+                .FindAsync(x => x.SourceUserId == sourceUserId);
+
+            return favoriteUsers.ToEnumerable().Select(x => x.TargetUserId);
         }
 
         public async Task AddAsync(FavoriteUserRelation relation)

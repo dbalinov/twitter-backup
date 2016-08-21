@@ -10,14 +10,14 @@
     $scope.filterType = $scope.filterTypes.favorites;
 
     $scope.addToFavorites = function (friend) {
-        friendsService.updateFavorite(friend, true)
+        friendsService.addToFavorites(friend)
             .then(function() {
                 notificationService.info(friend.Name + " is added to favorites.");
             });
     };
 
     $scope.removeFromFavorites = function (friend) {
-        friendsService.updateFavorite(friend, false)
+        friendsService.removeFromFavorites(friend, false)
             .then(function () {
                 notificationService.info(friend.Name + " is remoevd from favorites.");
             });
@@ -25,7 +25,7 @@
 
     $scope.friendFilter = function (friend) {
         if ($scope.filterType === $scope.filterTypes.favorites) {
-            return friend.Notifications;
+            return friend.IsFavorite;
         }
 
         return true;

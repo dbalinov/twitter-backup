@@ -1,5 +1,4 @@
 ﻿using DataAccess.Credentials;
-using DataAccess.Repositories.Friendships;
 using DataAccess.Repositories.Statuses;
 using DataAccess.Repositories.Users;
 using MongoDB.Driver;
@@ -18,9 +17,9 @@ namespace DataAccess
 
             container.Register<IDbContext, DbContext>(Lifestyle.Singleton);
 
+            container.Register<IUserRepository, UserRepository>(Lifestyle.Scoped);
             container.Register<IFavoriteUserRepository, FavoriteUserRepository>(Lifestyle.Scoped);
             container.Register<IFriendRepository, FriendRepository>(Lifestyle.Scoped);
-            container.Register<IFriendshipRepository, FriendshipRepository>(Lifestyle.Scoped);
             container.Register<IStatusRepository, StatusRepository>(Lifestyle.Scoped);
             container.Register<IStatusStoreRepository, StatusStoreRepository>(Lifestyle.Scoped);
             

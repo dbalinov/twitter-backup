@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
+﻿using System.Web.Http;
 using Business.Models;
 using Business.Services.Users;
 using System.Threading.Tasks;
@@ -11,21 +10,21 @@ namespace TwitterBackup.Web.Controllers
     [Authorize]
     public class FavoriteUserController : ApiController
     {
-        private readonly IFriendService friendService;
         private readonly IFavoriteUserService favoriteUserService;
         private readonly ITwitterClaimsHelper claimsHelper;
 
-        public FavoriteUserController(IFriendService friendService, IFavoriteUserService favoriteUserService, ITwitterClaimsHelper claimsHelper)
+        public FavoriteUserController(IFavoriteUserService favoriteUserService, ITwitterClaimsHelper claimsHelper)
         {
-            this.friendService = friendService;
             this.favoriteUserService = favoriteUserService;
             this.claimsHelper = claimsHelper;
         }
 
-        public IEnumerable<UserModel> GetFavoriteUsers()
+        public async Task<IHttpActionResult> GetFavoriteUsers()
         {
-            var users = this.friendService.GetAll();
-            return users;
+            var userId = claimsHelper.GetUserId();
+            var users = await this.favoriteUserService.GetFavoriteUsers(userId);
+
+            return Ok(users);
         }
 
         public async Task<IHttpActionResult> Put(FavoriteUserRequest request)
@@ -37,7 +36,7 @@ namespace TwitterBackup.Web.Controllers
             return Ok();
         }
 
-        public async Task<IHttpActionResult> Delete(FavoriteUserRequest request)
+        public async Task<IHttpActionResult> Delete([FromUri]FavoriteUserRequest request)
         {
             var relation = GetRelation(request);
 

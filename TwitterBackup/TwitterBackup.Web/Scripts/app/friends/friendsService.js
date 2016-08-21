@@ -13,17 +13,28 @@
         return defer.promise;
     };
 
-    self.updateFavorite = function (friend, toAdd) {
+    self.addToFavorites = function (friend) {
         var defer = $q.defer();
 
-        var data = {
-            ScreenName: friend.ScreenName,
-            Notifications: toAdd
-        };
+        var data = { UserId: friend.Id };
 
-        $http.put('api/friendship', data)
+        $http.put('api/favoriteUser', data)
+            .success(function(response) {
+                friend.IsSaved = true;
+                defer.resolve(response);
+            })
+            .error(defer.reject);
+      
+        return defer.promise;
+    };
+
+
+    self.removeFromFavorites = function (friend) {
+        var defer = $q.defer();
+
+        $http.delete('api/friendship?userId=' + friend.Id)
             .success(function (response) {
-                friend.Notifications = toAdd;
+                friend.IsSaved = false;
                 defer.resolve(response);
             })
             .error(defer.reject);

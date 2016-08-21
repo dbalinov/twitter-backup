@@ -9,7 +9,6 @@ namespace Business.Models.Mapping
             to.Id = from.Id;
             to.Name = from.Name;
             to.Description = from.Description;
-            to.Notifications = from.Notifications;
             to.ProfileImageUrl = from.ProfileImageUrl;
             to.Url = from.Url;
             to.ProfileBackgroundColor = from.ProfileBackgroundColor;

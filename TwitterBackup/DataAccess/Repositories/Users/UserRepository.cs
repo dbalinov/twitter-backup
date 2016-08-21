@@ -1,22 +1,31 @@
-﻿using Tweetinvi.Models;
-using Tweetinvi;
+﻿using System.Collections.Generic;
+using System.Linq;
 using DataAccess.Credentials;
-using System.Threading.Tasks;
+using Tweetinvi;
+using Tweetinvi.Models;
 
 namespace DataAccess.Repositories.Users
 {
-    internal class FriendRepository : IFriendRepository
+    internal class UserRepository : IUserRepository
     {
         private ITwitterCredentials credentials;
 
-        public FriendRepository(ITwitterCredentialsFactory credentialsFactory)
+        public UserRepository(ITwitterCredentialsFactory credentialsFactory)
         {
             this.credentials = credentialsFactory.Create();
         }
 
-        private Entities.User Map(IUser friend)
+        public IEnumerable<Entities.User> GetUsersFromIds(IEnumerable<string> ids)
         {
-            return new Entities.User
+            var users = Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => User.GetUsersFromIds(ids.Select(long.Parse)));
+
+            return users.Select(friend => Map(friend));
+        }
+
+        private DataAccess.Entities.User Map(IUser friend)
+        {
+            return new DataAccess.Entities.User
             {
                 Id = friend.IdStr,
                 Name = friend.Name,
@@ -32,12 +41,5 @@ namespace DataAccess.Repositories.Users
             };
         }
 
-        public async Task<Entities.User> GetByScreenNameAsync(string screenName)
-        {
-            var user = await Auth.ExecuteOperationWithCredentials(
-                this.credentials, () => UserAsync.GetUserFromScreenName(screenName));
-
-            return Map(user);
-        }
     }
 }
