@@ -6,7 +6,7 @@
     self.getFriends = function () {
         var defer = $q.defer();
 
-        $http.get('api/friends')
+        $http.get('api/favoriteUser')
             .success(defer.resolve)
             .error(defer.reject);
 
