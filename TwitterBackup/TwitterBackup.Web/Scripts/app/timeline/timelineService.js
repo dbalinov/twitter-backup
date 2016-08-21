@@ -5,25 +5,34 @@
 
     self.maxId = null;
     self.trimUser = false;
+    self.noMorePosts = false;
 
     self.getNext = function(screenName) {
         var defer = $q.defer();
 
-        var url = "api/timeline?trimUser=" + self.trimUser +
+        if (self.noMorePosts) {
+            defer.resolve({ Statuses: [] });
+        } else {
+            var url = "api/timeline?trimUser=" + self.trimUser +
             "&screenName=" + screenName;
-        if (self.maxId) {
-            url += "&maxId=" + self.maxId;
+            if (self.maxId) {
+                url += "&maxId=" + self.maxId;
+            }
+
+            $http.get(url)
+                .success(function (data) {
+                    defer.resolve(data);
+                    var items = data.Statuses;
+                    if (items.length > 0) {
+                        self.maxId = items[items.length - 1].Id;
+                    } else {
+                        self.noMorePosts = true;
+                    }
+                })
+                .error(defer.reject);
+
+            self.trimUser = true;
         }
-
-        $http.get(url)
-            .success(function (data) {
-                defer.resolve(data);
-                var items = data.Statuses;
-                self.maxId = items[items.length - 1].Id;
-            })
-            .error(defer.reject);
-
-        self.trimUser = true;
 
         return defer.promise;
     };

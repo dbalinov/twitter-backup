@@ -24,7 +24,7 @@
             <div class="foreground-layer">
                 <div class="profile-image">
                     <div ng-if="friend.ProfileImageUrl != null">
-                        <img ng-src="{{friend.ProfileImageUrl}}" alt="" />
+                        <img ng-src="{{friend.ProfileImageUrl}}" alt=""/>
                     </div>
                 </div>
                 <div class="profile-name">
@@ -82,4 +82,9 @@
             </div>
         </div>
     </div>
+</div>
+<div class="jumbotron" ng-show="(friends | filter: friendFilter).length == 0">
+    <h2>Hello, twitter user!</h2>
+    <p>Please add users to your favorite list in order to view and save their posts.</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Search</a></p>
 </div>

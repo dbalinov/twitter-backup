@@ -48,7 +48,6 @@
                     notificationService.info("The status has been saved.");
                 });
         } else {
-            console.log(status.Id);
             timelineService.unsave(status.Id)
                 .then(function() {
                     status.IsSaved = false;

@@ -72,12 +72,22 @@
                 <div class="tweet-footer">
                     <div class="row">
                         <div class="col-xs-1">
-                            <a ng-click="save(item)" ng-class="{ 'saved': item.IsSaved }">
+                            <a ng-click="save(item)"
+                               ng-class="{ 'saved': item.IsSaved }"
+                               data-original-title="{{ item.IsSaved ? 'Undo Save' : 'Save'}}"
+                               data-toggle="tooltip"
+                               data-placement="bottom"
+                               tooltip>
                                 <i class="fa fa-bookmark" aria-hidden="true"></i>
                             </a>
                         </div>
                         <div class="col-xs-1">
-                            <a ng-click="retweet(item)" ng-class="{ 'retweeted': item.Retweeted }">
+                            <a ng-click="retweet(item)"
+                               ng-class="{ 'retweeted': item.Retweeted }"
+                               data-original-title="{{ item.Retweeted ? 'Retweeted' : 'Retweet'}}"
+                               data-toggle="tooltip"
+                               data-placement="bottom"
+                               tooltip>
                                 <i class="fa fa-retweet" aria-hidden="true"></i>
                             </a>
                         </div>
