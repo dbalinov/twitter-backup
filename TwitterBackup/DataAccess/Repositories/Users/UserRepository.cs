@@ -29,13 +29,13 @@ namespace DataAccess.Repositories.Users
             var users = Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => User.GetUsersFromIds(ids.Select(long.Parse)));
 
-            return users.Select(friend => Map(friend));
+            return users.Select(user => Map(user));
         }
 
-        public async Task<Entities.User> GetByScreenNameAsync(string screenName)
+        public async Task<Entities.User> GetAsync(string userId)
         {
-            var user = await Auth.ExecuteOperationWithCredentials(
-                this.credentials, () => UserAsync.GetUserFromScreenName(screenName));
+            var user = Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => User.GetUserFromId(long.Parse(userId)));
 
             return Map(user);
         }

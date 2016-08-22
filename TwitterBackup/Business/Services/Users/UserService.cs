@@ -24,10 +24,10 @@ namespace Business.Services.Users
             this.claimsHelper = claimsHelper;
         }
 
-        public async Task<UserModel> GetByScreenNameAsync(string screenName)
+        public async Task<UserModel> GetAsync(string userId)
         {
             var mapper = new UserMapper();
-            var user = await this.userRepository.GetByScreenNameAsync(screenName);
+            var user = await this.userRepository.GetAsync(userId);
             return mapper.Map(user, new UserModel());
         }
 

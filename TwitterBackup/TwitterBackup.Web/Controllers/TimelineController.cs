@@ -8,6 +8,7 @@ using TwitterBackup.Web.Messages.Timeline;
 
 namespace TwitterBackup.Web.Controllers
 {
+    [Authorize]
     public class TimelineController : ApiController
     {
         private readonly IStatusService statusService;
@@ -26,19 +27,18 @@ namespace TwitterBackup.Web.Controllers
                 throw new ArgumentNullException("request");
             }
 
-            if (string.IsNullOrEmpty(request.ScreenName))
+            if (string.IsNullOrEmpty(request.UserId))
             {
                 throw new ArgumentException(
-                    "TimelineRequest.ScreenName is required.");
+                    "TimelineRequest.UserId is required.");
             }
 
             var userTask = request.TrimUser 
                 ? Task.FromResult((UserModel)null)
-                : this.userService.GetByScreenNameAsync(
-                    request.ScreenName);
+                : this.userService.GetAsync(request.UserId);
 
             var statusesTask = this.statusService.GetUserTimelineAsync(
-                request.ScreenName, request.MaxId);
+                request.UserId, request.MaxId);
 
             await Task.WhenAll(userTask, statusesTask);
 

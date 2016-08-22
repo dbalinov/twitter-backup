@@ -26,10 +26,10 @@ namespace DataAccess.Repositories.Statuses
             return Map(tweet);
         }
 
-        public async Task<IEnumerable<Status>> GetUserTimelineAsync(string screenName, string maxId = null)
+        public async Task<IEnumerable<Status>> GetUserTimelineAsync(string userId, string maxId = null)
         {
             var user = await Auth.ExecuteOperationWithCredentials(
-                this.credentials, () => UserAsync.GetUserFromScreenName(screenName));
+                this.credentials, () => UserAsync.GetUserFromId(long.Parse(userId)));
             
             var userTimelineParam = new UserTimelineParameters
             {

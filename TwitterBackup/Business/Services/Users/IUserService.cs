@@ -8,6 +8,6 @@ namespace Business.Services.Users
     {
         Task<IEnumerable<UserModel>> SearchAsync(string query);
 
-        Task<UserModel> GetByScreenNameAsync(string screenName);
+        Task<UserModel> GetAsync(string userId);
     }
 }

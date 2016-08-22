@@ -14,25 +14,28 @@ var App;
                 this.$routeParams = $routeParams;
                 this.$timelineService = $timelineService;
                 this.$notificationService = $notificationService;
+                this.items = [];
                 this.busy = false;
+                this.userId = this.$routeParams["userId"];
+                this.getNext();
             }
-            //var screenName = this.$routeParams["screenName"];
-            //$scope.items = [];
             TimelineController.prototype.getNext = function () {
+                var _this = this;
                 if (this.busy)
                     return;
                 this.busy = true;
-                //this.$timelineService.getNext(screenName)
-                //    .then(data => {
-                //                if (data.User) {
-                //                    $scope.user = data.User;
-                //                }
-                //                var items = data.Statuses;
-                //                for (var i = 0; i < items.length; i++) {
-                //                    $scope.items.push(items[i]);
-                //                }
-                //                $scope.busy = false;
-                //            });
+                var trimUser = !!this.user;
+                this.$timelineService.getNext(this.userId, trimUser)
+                    .then(function (data) {
+                    if (data.User) {
+                        _this.user = data.User;
+                    }
+                    var items = data.Statuses;
+                    for (var i = 0; i < items.length; i++) {
+                        _this.items.push(items[i]);
+                    }
+                    _this.busy = false;
+                });
             };
             TimelineController.prototype.retweet = function (status) {
                 var _this = this;
@@ -48,9 +51,20 @@ var App;
                 }
             };
             TimelineController.prototype.save = function (status) {
+                var _this = this;
                 if (!status.IsSaved) {
+                    this.$timelineService.save(status.Id)
+                        .then(function () {
+                        status.IsSaved = true;
+                        _this.$notificationService.info("The status has been saved.");
+                    });
                 }
                 else {
+                    this.$timelineService.unsave(status.Id)
+                        .then(function () {
+                        status.IsSaved = false;
+                        _this.$notificationService.info("The status has been unsaved.");
+                    });
                 }
             };
             return TimelineController;

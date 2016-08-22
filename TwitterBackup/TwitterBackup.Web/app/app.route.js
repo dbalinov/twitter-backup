@@ -9,7 +9,7 @@ twitterBackupApp.config(function ($routeProvider) {
         templateUrl: "/app/templates/searchUser.html",
         controller: "searchUserController"
     })
-        .when('/status/timeline/:screenName', {
+        .when('/status/timeline/:userId', {
         templateUrl: "/app/templates/timeline.html",
         controller: "timelineController"
     })

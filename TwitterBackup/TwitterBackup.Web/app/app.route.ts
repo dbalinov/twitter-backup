@@ -9,16 +9,15 @@ twitterBackupApp.config(($routeProvider: ng.route.IRouteProvider) => {
             templateUrl: "/app/templates/searchUser.html",
             controller: "searchUserController"
         })
-        .when('/status/timeline/:screenName', {
+        .when('/status/timeline/:userId', {
             templateUrl: "/app/templates/timeline.html",
             controller: "timelineController"
         })
-        //.when('/status/saved/:screenName', {
+        //.when('/status/saved/:userId', {
 
         //})
-        //.when('/friends', {
-        //    templateUrl: '/scripts/app/friends/friendsView.html',
-        //    controller: 'friendsController'
+        //.when('/dashboard', {
+
         //})
         .otherwise({
             redirectTo: '/user/favorites'

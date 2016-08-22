@@ -7,18 +7,17 @@ var App;
                 this.$http = $http;
                 this.$q = $q;
                 this.maxId = null;
-                this.trimUser = false;
                 this.noMorePosts = false;
             }
-            TimelineService.prototype.getNext = function (screenName) {
+            TimelineService.prototype.getNext = function (userId, trimUser) {
                 var _this = this;
                 var defer = this.$q.defer();
                 if (this.noMorePosts) {
                     defer.resolve({ Statuses: [] });
                 }
                 else {
-                    var url = "api/timeline?trimUser=" + this.trimUser +
-                        "&screenName=" + screenName;
+                    var url = "api/timeline?trimUser=" + trimUser +
+                        "&userId=" + userId;
                     if (this.maxId) {
                         url += "&maxId=" + this.maxId;
                     }
@@ -34,13 +33,27 @@ var App;
                         }
                     })
                         .error(defer.reject);
-                    this.trimUser = true;
                 }
                 return defer.promise;
             };
             TimelineService.prototype.retweet = function (statusId) {
                 var defer = this.$q.defer();
                 this.$http.post('api/retweet/', { StatusId: statusId })
+                    .success(defer.resolve)
+                    .error(defer.reject);
+                return defer.promise;
+            };
+            TimelineService.prototype.save = function (statusId) {
+                var defer = this.$q.defer();
+                this.$http.post('api/statusStore/', { StatusId: statusId })
+                    .success(defer.resolve)
+                    .error(defer.reject);
+                return defer.promise;
+            };
+            TimelineService.prototype.unsave = function (statusId) {
+                var defer = this.$q.defer();
+                var url = 'api/statusStore/?statusId=' + statusId;
+                this.$http.delete(url)
                     .success(defer.resolve)
                     .error(defer.reject);
                 return defer.promise;

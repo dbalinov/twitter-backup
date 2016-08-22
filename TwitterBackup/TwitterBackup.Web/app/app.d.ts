@@ -18,6 +18,15 @@
         ScreenName: string;
         Verified: boolean;
     }
+
+    export interface Status {
+        Id: string;
+    }
+
+    export interface TimelineResponse {
+        User?: User, 
+        Statuses: Status[]
+    }
 }
 
 interface JQuery {

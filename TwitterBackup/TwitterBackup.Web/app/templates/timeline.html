@@ -5,19 +5,19 @@
 </div>
 <div class="row">
     <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
-        <div user-profile="model.user"></div>
+        <div user-profile="model.user" ng-if="model.user"></div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
         <div class="tweet-list"
-             infinite-scroll="getNext()"
-             infinite-scroll-disabled="busy"
+             infinite-scroll="model.getNext()"
+             infinite-scroll-disabled="model.busy"
              infinite-scroll-distance="1">
             <div class="tweet">
                 Tweets 
                 <a>Saved tweets</a>
             </div>
 
-            <div ng-repeat="item in items" class="tweet animate-repeat">
+            <div ng-repeat="item in model.items" class="tweet animate-repeat">
                 <div class="tweet-text">{{item.Text}}</div>
                 <div class="tweet-date">{{item.CreatedAtFormatted}}</div>
 
@@ -30,7 +30,7 @@
                 <div class="tweet-footer">
                     <div class="row">
                         <div class="col-xs-1">
-                            <a ng-click="save(item)"
+                            <a ng-click="model.save(item)"
                                ng-class="{ 'saved': item.IsSaved }"
                                data-original-title="{{ item.IsSaved ? 'Undo Save' : 'Save'}}"
                                data-toggle="tooltip"
@@ -40,7 +40,7 @@
                             </a>
                         </div>
                         <div class="col-xs-1">
-                            <a ng-click="retweet(item)"
+                            <a ng-click="model.retweet(item)"
                                ng-class="{ 'retweeted': item.Retweeted }"
                                data-original-title="{{ item.Retweeted ? 'Retweeted' : 'Retweet'}}"
                                data-toggle="tooltip"
@@ -53,7 +53,7 @@
                 </div>
 
             </div>
-            <div ng-show="busy" class="tweet tweet-loading">
+            <div ng-show="model.busy" class="tweet tweet-loading">
                 <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                 <span class="sr-only">Loading...</span>
             </div>

@@ -5,6 +5,7 @@ using TwitterBackup.Web.Messages.SearchUser;
 
 namespace TwitterBackup.Web.Controllers
 {
+    [Authorize]
     public class SearchUserController : ApiController
     {
         private readonly IUserService userService;

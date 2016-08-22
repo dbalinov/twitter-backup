@@ -5,6 +5,7 @@ using TwitterBackup.Web.Messages;
 
 namespace TwitterBackup.Web.Controllers
 {
+    [Authorize]
     public class StatusStoreController : ApiController
     {
         private readonly IStatusService statusService;

@@ -1,26 +1,25 @@
 ﻿module App.Services {
     export class TimelineService {
         private maxId = null;
-        private trimUser = false;
         private noMorePosts = false;
 
         constructor(private $http: ng.IHttpService,
             private $q: ng.IQService) {
         }
 
-        public getNext(screenName) : ng.IPromise<any> {
-            var defer = this.$q.defer<{ Statuses: any }>();
+        public getNext(userId, trimUser): ng.IPromise<TimelineResponse> {
+            var defer = this.$q.defer<TimelineResponse>();
 
             if (this.noMorePosts) {
                 defer.resolve({ Statuses: [] });
             } else {
-                var url = "api/timeline?trimUser=" + this.trimUser +
-                    "&screenName=" + screenName;
+                var url = "api/timeline?trimUser=" + trimUser +
+                    "&userId=" + userId;
                 if (this.maxId) {
                     url += "&maxId=" + this.maxId;
                 }
 
-                this.$http.get<{ Statuses: any }>(url)
+                this.$http.get<TimelineResponse>(url)
                     .success(data => {
                         defer.resolve(data);
                         var items = data.Statuses;
@@ -31,14 +30,12 @@
                         }
                     })
                     .error(defer.reject);
-
-                this.trimUser = true;
             }
 
             return defer.promise;
         }
 
-        public retweet(statusId) : ng.IPromise<any>  {
+        public retweet(statusId): ng.IPromise<any>  {
             var defer = this.$q.defer<any>();
 
             this.$http.post<any>('api/retweet/', { StatusId: statusId })
@@ -48,23 +45,25 @@
             return defer.promise;
         }
 
-        //self.save = function (statusId): ng.IPromise<any>  {
-    //    var defer = $q.defer();
+        public save(statusId): ng.IPromise<any> {
+            var defer = this.$q.defer();
 
-    //    $http.post('api/statusStore/', { StatusId: statusId })
-    //        .success(defer.resolve)
-    //        .error(defer.reject);
+            this.$http.post('api/statusStore/', { StatusId: statusId })
+                .success(defer.resolve)
+                .error(defer.reject);
 
-    //    return defer.promise;
-    //};
+            return defer.promise;
+        }
 
-    //self.unsave = function (statusId) : ng.IPromise<any> {
-    //    var defer = $q.defer();
-    //    var url = 'api/statusStore/?statusId=' + statusId;
-    //    $http.delete(url)
-    //        .success(defer.resolve)
-    //        .error(defer.reject);
-    //    return defer.promise;
-    //};
+        public unsave(statusId): ng.IPromise<any> {
+            var defer = this.$q.defer();
+            var url = 'api/statusStore/?statusId=' + statusId;
+
+            this.$http.delete(url)
+                .success(defer.resolve)
+                .error(defer.reject);
+
+            return defer.promise;
+        }
     }
 }

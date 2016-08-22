@@ -8,7 +8,7 @@ namespace DataAccess.Repositories.Statuses
     {
         Task<Status> GetAsync(string statusId);
         
-        Task<IEnumerable<Status>> GetUserTimelineAsync(string screenName, string maxId = null);
+        Task<IEnumerable<Status>> GetUserTimelineAsync(string userId, string maxId = null);
 
         Task RetweetAsync(string statusId);
     }

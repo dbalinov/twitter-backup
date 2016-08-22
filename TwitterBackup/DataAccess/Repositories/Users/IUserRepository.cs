@@ -10,6 +10,6 @@ namespace DataAccess.Repositories.Users
 
         IEnumerable<User> GetUsersFromIds(IEnumerable<string> ids);
 
-        Task<User> GetByScreenNameAsync(string screenName);
+        Task<User> GetAsync(string userId);
     }
 }

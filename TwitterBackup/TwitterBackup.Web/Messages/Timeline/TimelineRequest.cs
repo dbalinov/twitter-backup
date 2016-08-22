@@ -2,7 +2,7 @@
 {
     public class TimelineRequest
     {
-        public string ScreenName { get; set; }
+        public string UserId { get; set; }
 
         public bool TrimUser { get; set; }
 
