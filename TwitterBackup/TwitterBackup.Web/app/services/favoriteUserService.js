@@ -40,3 +40,4 @@ var App;
         Services.FavoriteUserService = FavoriteUserService;
     })(Services = App.Services || (App.Services = {}));
 })(App || (App = {}));
+//# sourceMappingURL=favoriteUserService.js.map

@@ -1,5 +1,6 @@
-﻿using Business.Services.Users;
+﻿using System.Threading.Tasks;
 using System.Web.Http;
+using Business.Services.Users;
 using TwitterBackup.Web.Messages.SearchUser;
 
 namespace TwitterBackup.Web.Controllers
@@ -13,9 +14,9 @@ namespace TwitterBackup.Web.Controllers
             this.userService = userService;
         }
 
-        public IHttpActionResult PostSearch(SearchUserRequest request)
+        public async Task<IHttpActionResult> PostSearch(SearchUserRequest request)
         {
-            var users = this.userService.Search(request.Query);
+            var users = await this.userService.SearchAsync(request.Query);
             return Ok(users);
         }
     }

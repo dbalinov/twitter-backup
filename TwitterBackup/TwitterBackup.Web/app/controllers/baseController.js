@@ -12,3 +12,4 @@ var App;
         Controllers.BaseController = BaseController;
     })(Controllers = App.Controllers || (App.Controllers = {}));
 })(App || (App = {}));
+//# sourceMappingURL=baseController.js.map

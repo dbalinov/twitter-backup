@@ -58,3 +58,4 @@ var App;
         Controllers.TimelineController = TimelineController;
     })(Controllers = App.Controllers || (App.Controllers = {}));
 })(App || (App = {}));
+//# sourceMappingURL=timelineController.js.map

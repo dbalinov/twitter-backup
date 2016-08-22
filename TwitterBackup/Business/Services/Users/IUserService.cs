@@ -6,7 +6,7 @@ namespace Business.Services.Users
 {
     public interface IUserService
     {
-        IEnumerable<UserModel> Search(string query);
+        Task<IEnumerable<UserModel>> SearchAsync(string query);
 
         Task<UserModel> GetByScreenNameAsync(string screenName);
     }

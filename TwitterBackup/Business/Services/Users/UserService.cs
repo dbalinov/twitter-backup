@@ -4,16 +4,24 @@ using System.Threading.Tasks;
 using Business.Models;
 using Business.Models.Mapping;
 using DataAccess.Repositories.Users;
+using Infrastructure.Identity.Claims;
 
 namespace Business.Services.Users
 {
     internal class UserService : IUserService
     {
-        private IUserRepository userRepository;
+        private readonly IUserRepository userRepository;
+        private readonly IFavoriteUserRepository favoriteUserRepository;
+        private readonly ITwitterClaimsHelper claimsHelper;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(
+            IUserRepository userRepository, 
+            IFavoriteUserRepository favoriteUserRepository,
+            ITwitterClaimsHelper claimsHelper)
         {
             this.userRepository = userRepository;
+            this.favoriteUserRepository = favoriteUserRepository;
+            this.claimsHelper = claimsHelper;
         }
 
         public async Task<UserModel> GetByScreenNameAsync(string screenName)
@@ -23,13 +31,20 @@ namespace Business.Services.Users
             return mapper.Map(user, new UserModel());
         }
 
-        public IEnumerable<UserModel> Search(string query)
+        public async Task<IEnumerable<UserModel>> SearchAsync(string query)
         {
-            // TODO: merge with saved users
+            var currentUserId = claimsHelper.GetUserId();
+            var favoriteUserIds = await this.favoriteUserRepository
+                .GetFavoriteUserIds(currentUserId);
+            var favoriteUserIdsList = favoriteUserIds.ToList();
 
             var mapper = new UserMapper();
             var users = this.userRepository.Search(query);
-            return users.Select(user => mapper.Map(user, new UserModel()));
+            var result = users.Select(user => mapper.Map(user, new UserModel())).ToList();
+
+            result.ForEach(user => user.IsFavorite = favoriteUserIdsList.Contains(user.Id));
+
+            return result;
         }
     }
 }

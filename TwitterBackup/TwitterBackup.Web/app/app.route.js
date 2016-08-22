@@ -17,3 +17,4 @@ twitterBackupApp.config(function ($routeProvider) {
         redirectTo: '/user/favorites'
     });
 });
+//# sourceMappingURL=app.route.js.map
