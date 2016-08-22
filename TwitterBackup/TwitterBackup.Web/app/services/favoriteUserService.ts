@@ -20,7 +20,7 @@
 
             this.$http.put('api/favoriteUser', data)
                 .success(response => {
-                    friend.IsSaved = true;
+                    friend.IsFavorite = true;
                     defer.resolve(response);
                 })
                 .error(defer.reject);
@@ -31,9 +31,10 @@
         public removeFromFavorites(friend) : ng.IPromise<any> {
             var defer = this.$q.defer<any>();
 
-            this.$http.delete<any>('api/friendship?userId=' + friend.Id)
+            this.$http.delete<any>('api/favoriteUser?userId=' + friend.Id)
                 .success(response => {
-                    friend.IsSaved = false;
+                    friend.IsFavorite = false;
+
                     defer.resolve(response);
                 })
                 .error(defer.reject);

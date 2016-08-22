@@ -19,7 +19,7 @@ var App;
                 var data = { UserId: friend.Id };
                 this.$http.put('api/favoriteUser', data)
                     .success(function (response) {
-                    friend.IsSaved = true;
+                    friend.IsFavorite = true;
                     defer.resolve(response);
                 })
                     .error(defer.reject);
@@ -27,9 +27,9 @@ var App;
             };
             FavoriteUserService.prototype.removeFromFavorites = function (friend) {
                 var defer = this.$q.defer();
-                this.$http.delete('api/friendship?userId=' + friend.Id)
+                this.$http.delete('api/favoriteUser?userId=' + friend.Id)
                     .success(function (response) {
-                    friend.IsSaved = false;
+                    friend.IsFavorite = false;
                     defer.resolve(response);
                 })
                     .error(defer.reject);

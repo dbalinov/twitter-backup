@@ -6,73 +6,10 @@
 <div class="row">
     <div ng-repeat="user in model.users"
          class="col-xs-12 col-sm-6 col-md-4 col-lg-4 animate-repeat">
-        <div class="twitter-card">
-            <div class="background-layer">
-                <div class="twitter-banner"
-                     ng-style="{'background-color': '#{{user.ProfileBackgroundColor}}', 'background-image': 'url({{user.ProfileBannerUrl}})' }"></div>
-            </div>
-            <div class="foreground-layer">
-                <div class="profile-image">
-                    <div ng-if="user.ProfileImageUrl != null">
-                        <img ng-src="{{user.ProfileImageUrl}}" alt=""/>
-                    </div>
-                </div>
-                <div class="profile-name">
-                    <div>
-                        <a href="#/statuses/timeline/{{user.ScreenName}}">
-                            {{user.Name}}
-                        </a>
-                        <span ng-if="user.Verified">
-                            <img src="./Content/Images/Icons/verified.png"
-                                 alt="Verified account" 
-                                 title="Verified account"
-                                 data-toggle="tooltip"
-                                 data-placement="right"
-                                 tooltip />
-                        </span>
-                        
-                        <div class="profile-buttons">
-                            <span class="notifications-button">
-                                <img src="./Content/Images/Icons/notifications-on.png"
-                                     ng-show="user.Notifications"
-                                     ng-click="removeFromFavorites(user)"
-                                     title="Favorite user"
-                                     data-toggle="tooltip"
-                                     data-placement="bottom"
-                                     tooltip />
-                                <img src="./Content/Images/Icons/notifications-off.png"
-                                     ng-show="!user.Notifications"
-                                     ng-click="addToFavorites(user)"
-                                     title="Add to favorites"
-                                     data-toggle="tooltip"
-                                     data-placement="bottom"
-                                     tooltip />
-                            </span>
-                        </div>
-                    </div>
-                    <span>
-                        <a href="https://twitter.com/" target="_blank">@<span>{{user.ScreenName}}</span></a>
-                    </span>
-                </div>
-                <div class="stats">
-                    <div class="col-xs-4">
-                        <p>Tweets</p>
-                        <p>{{user.StatusesCount}}</p>
-                    </div>
-                    <div class="col-xs-4">
-                        <p>Following</p>
-                        <p>{{user.FriendsCount}}</p>
-                    </div>
-                    <div class="col-xs-4">
-                        <p>Followers</p>
-                        <p>{{user.FollowersCount}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div user-profile="{{user}}"></div>
     </div>
 </div>
-<div class="jumbotron" ng-show="!users.length">
+<div class="jumbotron" ng-show="!model.users.length">
     <h2>Hello, twitter user!</h2>
     <p>Please add users to your favorite list in order to view and save their posts.</p>
     <p><a class="btn btn-primary btn-lg" href="#/user/search" role="button">Search</a></p>

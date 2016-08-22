@@ -26,14 +26,14 @@
                 <div class="profile-buttons">
                     <span class="notifications-button">
                         <img src="./Content/Images/Icons/notifications-on.png"
-                             ng-show="user.Notifications"
+                             ng-show="user.IsFavorite"
                              ng-click="removeFromFavorites(user)"
                              title="Favorite user"
                              data-toggle="tooltip"
                              data-placement="bottom"
                              tooltip />
                         <img src="./Content/Images/Icons/notifications-off.png"
-                             ng-show="!user.Notifications"
+                             ng-show="!user.IsFavorite"
                              ng-click="addToFavorites(user)"
                              title="Add to favorites"
                              data-toggle="tooltip"

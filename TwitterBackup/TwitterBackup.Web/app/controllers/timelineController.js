@@ -16,8 +16,8 @@ var App;
                 this.$notificationService = $notificationService;
                 this.busy = false;
             }
-            //    var screenName = $routeParams["screenName"];
-            //    $scope.items = [];
+            //var screenName = this.$routeParams["screenName"];
+            //$scope.items = [];
             TimelineController.prototype.getNext = function () {
                 if (this.busy)
                     return;

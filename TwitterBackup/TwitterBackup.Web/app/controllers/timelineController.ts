@@ -9,10 +9,10 @@
             private $notificationService: App.Services.NotificationService) {
             super($scope);
         }
+        
+        //var screenName = this.$routeParams["screenName"];
 
-//    var screenName = $routeParams["screenName"];
-
-//    $scope.items = [];
+        //$scope.items = [];
 
         public getNext() {
             if (this.busy) return;

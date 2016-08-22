@@ -5,51 +5,7 @@
 </div>
 <div class="row">
     <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
-        <div class="twitter-card" ng-if="user">
-            <div class="background-layer">
-                <div class="twitter-banner"
-                     ng-style="{'background-color': '#{{user.ProfileBackgroundColor}}', 'background-image': 'url({{user.ProfileBannerUrl}})' }"></div>
-            </div>
-            <div class="foreground-layer">
-                <div class="profile-image">
-                    <div ng-if="user.ProfileImageUrl != null">
-                        <img ng-src="{{user.ProfileImageUrl}}" alt=""/>
-                    </div>
-                </div>
-                <div class="profile-name">
-                    <div>
-                        <a href="#/statuses/timeline/{{user.ScreenName}}">
-                            {{user.Name}}
-                        </a>
-                        <span ng-if="user.Verified">
-                            <img src="./Content/Images/Icons/verified.png"
-                                 alt="Verified account"
-                                 title="Verified account"
-                                 data-toggle="tooltip"
-                                 data-placement="right"
-                                 tooltip />
-                        </span>
-                    </div>
-                    <span>
-                        <a href="https://twitter.com/" target="_blank">@<span>{{user.ScreenName}}</span></a>
-                    </span>
-                </div>
-                <div class="stats">
-                    <div class="col-xs-4">
-                        <p>Tweets</p>
-                        <p>{{user.StatusesCount}}</p>
-                    </div>
-                    <div class="col-xs-4">
-                        <p>Following</p>
-                        <p>{{user.FriendsCount}}</p>
-                    </div>
-                    <div class="col-xs-4">
-                        <p>Followers</p>
-                        <p>{{user.FollowersCount}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div user-profile="{{model.user}}"></div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
 
