@@ -12,9 +12,13 @@
              infinite-scroll="model.getNext()"
              infinite-scroll-disabled="model.busy"
              infinite-scroll-distance="1">
-            <div class="tweet">
-                Tweets 
-                <a>Saved tweets</a>
+            <div class="tweet tweet-header">
+                <span>
+                    Tweets
+                </span>
+                <span>
+                    <a ng-href="#/status/saved/{{model.userId}}">Saved tweets</a>
+                </span>
             </div>
             <div ng-repeat="item in model.items" class="animate-repeat">
                 <div status="item"></div>
@@ -26,9 +30,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-           

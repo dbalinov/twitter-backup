@@ -9,11 +9,10 @@ var App;
     (function (Controllers) {
         var TimelineController = (function (_super) {
             __extends(TimelineController, _super);
-            function TimelineController($scope, $routeParams, $timelineService, $notificationService) {
+            function TimelineController($scope, $routeParams, $timelineService) {
                 _super.call(this, $scope);
                 this.$routeParams = $routeParams;
                 this.$timelineService = $timelineService;
-                this.$notificationService = $notificationService;
                 this.items = [];
                 this.busy = false;
                 this.maxId = null;

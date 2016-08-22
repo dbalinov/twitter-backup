@@ -2,16 +2,15 @@
     export class TimelineController extends BaseController {
         public user: User;
         public items = [];
+        public userId;
 
-        private userId;
         private busy = false;
         private maxId = null;
         private noMorePosts = false;
 
         constructor($scope: IScope<TimelineController>,
             private $routeParams: ng.RouteData,
-            private $timelineService: App.Services.TimelineService,
-            private $notificationService: App.Services.NotificationService) {
+            private $timelineService: App.Services.TimelineService) {
             super($scope);
 
             this.userId = this.$routeParams["userId"];

@@ -153,6 +153,13 @@ textarea {
 .tweet {
     border-bottom: 1px solid #e1e8ed;
 }
+.tweet.tweet-header {
+    padding: 15px;
+    font-size: 1.5em;    
+}
+.tweet.tweet-header span {
+    margin-right: 20px;
+}
 
 .tweet:hover {
     background-color: #f5f8fa;

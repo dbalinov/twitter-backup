@@ -1,1 +1,34 @@
-﻿
+﻿<div class="row">
+    <div class="col-xs-12">
+        <h3>Saved tweets</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
+        <div user-profile="model.user" ng-if="model.user"></div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+        <div class="tweet-list"
+             infinite-scroll="model.getNext()"
+             infinite-scroll-disabled="model.busy"
+             infinite-scroll-distance="1">
+            <div class="tweet tweet-header">
+                <span>
+                    <a ng-href="#/status/timeline/{{model.userId}}">
+                        Tweets
+                    </a>
+                </span>
+                <span>
+                    Saved tweets
+                </span>
+            </div>
+            <div ng-repeat="item in model.items | filter: { IsSaved: true }" class="animate-repeat">
+                <div status="item"></div>
+            </div>
+            <div ng-show="model.busy" class="tweet tweet-loading">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
