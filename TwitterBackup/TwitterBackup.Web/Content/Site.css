@@ -37,6 +37,9 @@ textarea {
     padding-top: 10px;
 }
 
+.search-results-row {
+    min-height: 400px;
+}
 .twitter-card {
     height: 220px;
     position: relative;

@@ -5,11 +5,13 @@
 </div>
 <div class="row">
     <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
-        <div user-profile="{{model.user}}"></div>
+        <div user-profile="model.user"></div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
-
-        <div class="tweet-list" infinite-scroll="getNext()" infinite-scroll-disabled="busy" infinite-scroll-distance="1">
+        <div class="tweet-list"
+             infinite-scroll="getNext()"
+             infinite-scroll-disabled="busy"
+             infinite-scroll-distance="1">
             <div class="tweet">
                 Tweets 
                 <a>Saved tweets</a>

@@ -9,14 +9,17 @@ var App;
     (function (Controllers) {
         var FavoriteUserController = (function (_super) {
             __extends(FavoriteUserController, _super);
-            function FavoriteUserController($scope, $favoriteUserService, $notificationService) {
+            function FavoriteUserController($scope, $favoriteUserService) {
                 var _this = this;
                 _super.call(this, $scope);
                 this.$favoriteUserService = $favoriteUserService;
-                this.$notificationService = $notificationService;
                 this.users = new Array();
+                this.loaded = false;
                 $favoriteUserService.getUsers()
-                    .then(function (users) { return _this.users = users; }, function (error) { return console.log(error); });
+                    .then(function (users) {
+                    _this.users = users;
+                    _this.loaded = true;
+                }, function (error) { return console.log(error); });
             }
             return FavoriteUserController;
         }(Controllers.BaseController));

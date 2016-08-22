@@ -4,12 +4,12 @@
     </div>
 </div>
 <div class="row">
-    <div ng-repeat="user in model.users"
+    <div ng-repeat="user in model.users | filter: { IsFavorite: true }"
          class="col-xs-12 col-sm-6 col-md-4 col-lg-4 animate-repeat">
-        <div user-profile="{{user}}"></div>
+        <div user-profile="user"></div>
     </div>
 </div>
-<div class="jumbotron" ng-show="!model.users.length">
+<div class="jumbotron" ng-show="model.loaded && !(model.users | filter: { IsFavorite: true }).length">
     <h2>Hello, twitter user!</h2>
     <p>Please add users to your favorite list in order to view and save their posts.</p>
     <p><a class="btn btn-primary btn-lg" href="#/user/search" role="button">Search</a></p>

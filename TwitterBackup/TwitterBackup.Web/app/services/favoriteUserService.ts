@@ -13,14 +13,14 @@
             return defer.promise;
         }
 
-        public addToFavorites(friend) : ng.IPromise<any> {
+        public addToFavorites(user: User): ng.IPromise<any> {
             var defer = this.$q.defer();
 
-            var data = { UserId: friend.Id };
+            var data = { UserId: user.Id };
 
             this.$http.put('api/favoriteUser', data)
                 .success(response => {
-                    friend.IsFavorite = true;
+                    user.IsFavorite = true;
                     defer.resolve(response);
                 })
                 .error(defer.reject);
@@ -28,13 +28,12 @@
             return defer.promise;
         }
 
-        public removeFromFavorites(friend) : ng.IPromise<any> {
+        public removeFromFavorites(user: User) : ng.IPromise<any> {
             var defer = this.$q.defer<any>();
 
-            this.$http.delete<any>('api/favoriteUser?userId=' + friend.Id)
+            this.$http.delete<any>('api/favoriteUser?userId=' + user.Id)
                 .success(response => {
-                    friend.IsFavorite = false;
-
+                    user.IsFavorite = false;
                     defer.resolve(response);
                 })
                 .error(defer.reject);

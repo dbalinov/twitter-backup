@@ -14,22 +14,22 @@ var App;
                     .error(defer.reject);
                 return defer.promise;
             };
-            FavoriteUserService.prototype.addToFavorites = function (friend) {
+            FavoriteUserService.prototype.addToFavorites = function (user) {
                 var defer = this.$q.defer();
-                var data = { UserId: friend.Id };
+                var data = { UserId: user.Id };
                 this.$http.put('api/favoriteUser', data)
                     .success(function (response) {
-                    friend.IsFavorite = true;
+                    user.IsFavorite = true;
                     defer.resolve(response);
                 })
                     .error(defer.reject);
                 return defer.promise;
             };
-            FavoriteUserService.prototype.removeFromFavorites = function (friend) {
+            FavoriteUserService.prototype.removeFromFavorites = function (user) {
                 var defer = this.$q.defer();
-                this.$http.delete('api/favoriteUser?userId=' + friend.Id)
+                this.$http.delete('api/favoriteUser?userId=' + user.Id)
                     .success(function (response) {
-                    friend.IsFavorite = false;
+                    user.IsFavorite = false;
                     defer.resolve(response);
                 })
                     .error(defer.reject);
