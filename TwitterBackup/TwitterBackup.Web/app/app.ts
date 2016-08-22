@@ -24,18 +24,6 @@
         cfpLoadingBarProvider.includeSpinner = false;
     }])
 
-    // TODO: move to separate file
-    .directive('tooltip', function tooltipDirective() {
-        return {
-            restrict: 'A',
-            link: function (scope, element, attrs) {
-                $(element).hover(
-                    () => $(element).tooltip('show'),
-                    () => $(element).tooltip('hide'));
-            }
-        };
-    })
-
     .run($rootScope => {
         // Prevent two request at the same time by blocking the screen.
         $rootScope.$on('cfpLoadingBar:started', (evt, e, ee) => {

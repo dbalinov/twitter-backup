@@ -46,3 +46,4 @@ var App;
         Services.TimelineService = TimelineService;
     })(Services = App.Services || (App.Services = {}));
 })(App || (App = {}));
+//# sourceMappingURL=timelineService.js.map

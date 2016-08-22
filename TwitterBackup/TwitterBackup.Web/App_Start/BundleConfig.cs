@@ -46,8 +46,10 @@ namespace TwitterBackup.Web
                 // app
                 "~/app/app.js",
                 "~/app/app.route.js",
+                // directives
                 "~/app/directives/userProfileDirective.js",
-                "~/app/directives/statusDirective.js");
+                "~/app/directives/statusDirective.js",
+                "~/app/directives/tooltipDirective.js");
 
             appBundle.Transforms.Clear();
             bundles.Add(appBundle);

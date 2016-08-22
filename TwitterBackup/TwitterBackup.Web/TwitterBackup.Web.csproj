@@ -362,6 +362,7 @@
     <TypeScriptCompile Include="app\controllers\favoriteUserController.ts" />
     <TypeScriptCompile Include="app\controllers\searchUserController.ts" />
     <TypeScriptCompile Include="app\controllers\timelineController.ts" />
+    <TypeScriptCompile Include="app\directives\tooltipDirective.ts" />
     <TypeScriptCompile Include="app\directives\userProfileDirective.ts" />
     <TypeScriptCompile Include="app\services\favoriteUserService.ts" />
     <TypeScriptCompile Include="app\services\notificationService.ts" />

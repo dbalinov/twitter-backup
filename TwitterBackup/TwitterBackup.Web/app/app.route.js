@@ -13,6 +13,8 @@ twitterBackupApp.config(function ($routeProvider) {
         templateUrl: "/app/templates/timeline.html",
         controller: "timelineController"
     })
+        .when('/status/saved/:userId', {})
+        .when('/dashboard', {})
         .otherwise({
         redirectTo: '/user/favorites'
     });

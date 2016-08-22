@@ -15,14 +15,6 @@ var twitterBackupApp = angular.module('twitterbackup', [
     .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
     }])
-    .directive('tooltip', function tooltipDirective() {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            $(element).hover(function () { return $(element).tooltip('show'); }, function () { return $(element).tooltip('hide'); });
-        }
-    };
-})
     .run(function ($rootScope) {
     // Prevent two request at the same time by blocking the screen.
     $rootScope.$on('cfpLoadingBar:started', function (evt, e, ee) {
