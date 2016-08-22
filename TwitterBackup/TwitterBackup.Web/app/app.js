@@ -10,6 +10,7 @@ var twitterBackupApp = angular.module('twitterbackup', [
     .value("toastr", toastr)
     .factory("$notificationService", ["toastr", function (toastr) { return new App.Services.NotificationService(toastr); }])
     .factory("$favoriteUserService", ["$http", "$q", function ($http, $q) { return new App.Services.FavoriteUserService($http, $q); }])
+    .factory("$searchUserService", ["$http", "$q", function ($http, $q) { return new App.Services.SearchUserService($http, $q); }])
     .factory("$timelineService", ["$http", "$q", function ($http, $q) { return new App.Services.TimelineService($http, $q); }])
     .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
@@ -31,4 +32,3 @@ var twitterBackupApp = angular.module('twitterbackup', [
         $.unblockUI();
     });
 });
-//# sourceMappingURL=app.js.map

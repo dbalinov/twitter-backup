@@ -9,13 +9,15 @@
     .controller("favoriteUserController", App.Controllers.FavoriteUserController)
     .controller("timelineController", App.Controllers.TimelineController)
     .controller("searchUserController", App.Controllers.SearchUserController)
+
     // values
     .value("toastr", toastr)
 
     // services
     .factory("$notificationService", ["toastr", (toastr) => new App.Services.NotificationService(toastr)])
-    .factory("$favoriteUserService", ["$http", "$q", ($http, $q) => new App.Services.FavoriteUserService($http, $q) ])
-    .factory("$timelineService", ["$http", "$q", ($http, $q) => new App.Services.TimelineService($http, $q) ])
+    .factory("$favoriteUserService", ["$http", "$q", ($http, $q) => new App.Services.FavoriteUserService($http, $q)])
+    .factory("$searchUserService", ["$http", "$q",($http, $q) => new App.Services.SearchUserService($http, $q)])
+    .factory("$timelineService", ["$http", "$q", ($http, $q) => new App.Services.TimelineService($http, $q)])
     
     // plugins config
     .config(['cfpLoadingBarProvider', (cfpLoadingBarProvider) => {

@@ -10,8 +10,8 @@ twitterBackupApp.config(($routeProvider: ng.route.IRouteProvider) => {
             controller: "searchUserController"
         })
         .when('/status/timeline/:screenName', {
-            templateUrl: '/app/templates/timeline.html',
-            controller: 'timelineController'
+            templateUrl: "/app/templates/timeline.html",
+            controller: "timelineController"
         })
         //.when('/status/saved/:screenName', {
 

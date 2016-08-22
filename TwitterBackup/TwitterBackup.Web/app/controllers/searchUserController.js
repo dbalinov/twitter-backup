@@ -9,13 +9,18 @@ var App;
     (function (Controllers) {
         var SearchUserController = (function (_super) {
             __extends(SearchUserController, _super);
-            function SearchUserController($scope //,
-                ) {
+            function SearchUserController($scope, $searchUserService) {
                 _super.call(this, $scope);
+                this.$searchUserService = $searchUserService;
+                this.users = Array();
             }
+            SearchUserController.prototype.search = function () {
+                var _this = this;
+                this.$searchUserService.search(this.query)
+                    .then(function (users) { return _this.users = users; });
+            };
             return SearchUserController;
         }(Controllers.BaseController));
         Controllers.SearchUserController = SearchUserController;
     })(Controllers = App.Controllers || (App.Controllers = {}));
 })(App || (App = {}));
-//# sourceMappingURL=searchUserController.js.map

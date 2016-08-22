@@ -3,3 +3,19 @@
         <h3>Search user</h3>
     </div>
 </div>
+<div class="row">
+    <div class="col-xs-6 col-sm-4 col-lg-3">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for..." ng-model="model.query"/>
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="model.search()">Search</button>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div ng-repeat="user in model.users"
+         class="col-xs-12 col-sm-6 col-md-4 col-lg-4 animate-repeat">
+        <div user-profile="{{user}}"></div>
+    </div>
+</div>

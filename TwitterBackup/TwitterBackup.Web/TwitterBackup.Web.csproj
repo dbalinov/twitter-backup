@@ -227,6 +227,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\templates\directives\userProfile.html" />
     <Content Include="app\templates\searchUser.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -332,7 +333,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\directives\" />
     <Folder Include="app\filters\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
@@ -360,8 +360,10 @@
     <TypeScriptCompile Include="app\controllers\favoriteUserController.ts" />
     <TypeScriptCompile Include="app\controllers\searchUserController.ts" />
     <TypeScriptCompile Include="app\controllers\timelineController.ts" />
+    <TypeScriptCompile Include="app\directives\userProfileDirective.ts" />
     <TypeScriptCompile Include="app\services\favoriteUserService.ts" />
     <TypeScriptCompile Include="app\services\notificationService.ts" />
+    <TypeScriptCompile Include="app\services\searchUserService.ts" />
     <TypeScriptCompile Include="app\services\timelineService.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-component-router.d.ts" />

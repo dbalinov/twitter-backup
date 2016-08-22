@@ -11,12 +11,12 @@ namespace TwitterBackup.Web.Controllers
     public class TimelineController : ApiController
     {
         private readonly IStatusService statusService;
-        private readonly IFriendService friendService;
+        private readonly IUserService userService;
 
-        public TimelineController(IStatusService statusService, IFriendService friendService)
+        public TimelineController(IStatusService statusService, IUserService userService)
         {
             this.statusService = statusService;
-            this.friendService = friendService;
+            this.userService = userService;
         }
 
         public async Task<IHttpActionResult> Get([FromUri]TimelineRequest request)
@@ -34,7 +34,7 @@ namespace TwitterBackup.Web.Controllers
 
             var userTask = request.TrimUser 
                 ? Task.FromResult((UserModel)null)
-                : this.friendService.GetByScreenNameAsync(
+                : this.userService.GetByScreenNameAsync(
                     request.ScreenName);
 
             var statusesTask = this.statusService.GetUserTimelineAsync(

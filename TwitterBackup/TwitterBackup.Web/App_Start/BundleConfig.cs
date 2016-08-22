@@ -36,14 +36,17 @@ namespace TwitterBackup.Web
                 // controllers
                 "~/app/controllers/baseController.js",
                 "~/app/controllers/favoriteUserController.js",
+                "~/app/controllers/searchUserController.js",
                 "~/app/controllers/timelineController.js",
                 // services
                 "~/app/services/favoriteUserService.js",
+                "~/app/services/searchUserService.js",
                 "~/app/services/timelineService.js",
                 "~/app/services/notificationService.js",
                 // app
                 "~/app/app.js",
-                "~/app/app.route.js");
+                "~/app/app.route.js",
+                "~/app/directives/userProfileDirective.js");
 
             appBundle.Transforms.Clear();
             bundles.Add(appBundle);
