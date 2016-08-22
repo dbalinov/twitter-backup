@@ -38,11 +38,15 @@ namespace TwitterBackup.Web
                 "~/app/controllers/favoriteUserController.js",
                 "~/app/controllers/searchUserController.js",
                 "~/app/controllers/timelineController.js",
+                "~/app/controllers/savedStatusController.js",
+                "~/app/controllers/dashboardController.js",
                 // services
+                "~/app/services/notificationService.js",
                 "~/app/services/favoriteUserService.js",
                 "~/app/services/searchUserService.js",
+                "~/app/services/statusService.js",
                 "~/app/services/timelineService.js",
-                "~/app/services/notificationService.js",
+                "~/app/services/savedStatusService.js",
                 // app
                 "~/app/app.js",
                 "~/app/app.route.js",

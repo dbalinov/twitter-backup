@@ -14,10 +14,12 @@ twitterBackupApp.config(($routeProvider: ng.route.IRouteProvider) => {
             controller: "timelineController"
         })
         .when('/status/saved/:userId', {
-
+            templateUrl: "app/templates/savedStatus.html",
+            controller: "savedStatusController"
         })
         .when('/dashboard', {
-
+            templateUrl: "app/templates/dashboard.html",
+            controller: "dashboardController"
         })
         .otherwise({
             redirectTo: '/user/favorites'

@@ -2,8 +2,8 @@ var App;
 (function (App) {
     var Directives;
     (function (Directives) {
-        twitterBackupApp.directive("status", ["$compile", "$timelineService", "$notificationService",
-            function ($compile, $timelineService, $notificationService) {
+        twitterBackupApp.directive("status", ["$compile", "$statusService", "$notificationService",
+            function ($compile, $statusService, $notificationService) {
                 return {
                     restrict: "A",
                     replace: true,
@@ -12,7 +12,7 @@ var App;
                     controller: function ($scope, $element) {
                         $scope.retweet = function (status) {
                             if (!status.Retweeted) {
-                                $timelineService.retweet(status.Id)
+                                $statusService.retweet(status.Id)
                                     .then(function () {
                                     status.Retweeted = true;
                                     $notificationService.info("The status has been retweeted.");
@@ -24,14 +24,14 @@ var App;
                         };
                         $scope.save = function (status) {
                             if (!status.IsSaved) {
-                                $timelineService.save(status.Id)
+                                $statusService.save(status.Id)
                                     .then(function () {
                                     status.IsSaved = true;
                                     $notificationService.info("The status has been saved.");
                                 });
                             }
                             else {
-                                $timelineService.unsave(status.Id)
+                                $statusService.unsave(status.Id)
                                     .then(function () {
                                     status.IsSaved = false;
                                     $notificationService.info("The status has been unsaved.");
@@ -44,3 +44,4 @@ var App;
         ]);
     })(Directives = App.Directives || (App.Directives = {}));
 })(App || (App = {}));
+//# sourceMappingURL=statusDirective.js.map

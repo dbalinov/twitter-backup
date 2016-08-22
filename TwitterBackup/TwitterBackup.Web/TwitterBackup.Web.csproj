@@ -227,8 +227,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\templates\dashboard.html" />
     <Content Include="app\templates\directives\status.html" />
     <Content Include="app\templates\directives\userProfile.html" />
+    <Content Include="app\templates\savedStatus.html" />
     <Content Include="app\templates\searchUser.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -334,7 +336,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\filters\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -355,6 +356,8 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\app.d.ts" />
+    <TypeScriptCompile Include="app\controllers\dashboardController.ts" />
+    <TypeScriptCompile Include="app\controllers\savedStatusController.ts" />
     <TypeScriptCompile Include="app\directives\statusDirective.ts" />
     <TypeScriptCompile Include="app\app.route.ts" />
     <TypeScriptCompile Include="app\app.ts" />
@@ -366,7 +369,9 @@
     <TypeScriptCompile Include="app\directives\userProfileDirective.ts" />
     <TypeScriptCompile Include="app\services\favoriteUserService.ts" />
     <TypeScriptCompile Include="app\services\notificationService.ts" />
+    <TypeScriptCompile Include="app\services\savedStatusService.ts" />
     <TypeScriptCompile Include="app\services\searchUserService.ts" />
+    <TypeScriptCompile Include="app\services\statusService.ts" />
     <TypeScriptCompile Include="app\services\timelineService.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-component-router.d.ts" />

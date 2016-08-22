@@ -1,7 +1,7 @@
 ﻿module App.Directives {
-    twitterBackupApp.directive("status", ["$compile", "$timelineService", "$notificationService",
+    twitterBackupApp.directive("status", ["$compile", "$statusService", "$notificationService",
         ($compile: ng.ICompileService,
-         $timelineService: App.Services.TimelineService,
+         $statusService: App.Services.StatusService,
          $notificationService: App.Services.NotificationService) => {
             return {
                 restrict: "A",
@@ -11,7 +11,7 @@
                 controller: ($scope, $element) => {
                     $scope.retweet = (status) => {
                         if (!status.Retweeted) {
-                            $timelineService.retweet(status.Id)
+                            $statusService.retweet(status.Id)
                                 .then(() => {
                                     status.Retweeted = true;
                                     $notificationService.info("The status has been retweeted.");
@@ -23,13 +23,13 @@
 
                     $scope.save = (status) => {
                         if (!status.IsSaved) {
-                            $timelineService.save(status.Id)
+                            $statusService.save(status.Id)
                                 .then(() => {
                                     status.IsSaved = true;
                                     $notificationService.info("The status has been saved.");
                                 });
                         } else {
-                            $timelineService.unsave(status.Id)
+                            $statusService.unsave(status.Id)
                                 .then(() => {
                                     status.IsSaved = false;
                                     $notificationService.info("The status has been unsaved.");

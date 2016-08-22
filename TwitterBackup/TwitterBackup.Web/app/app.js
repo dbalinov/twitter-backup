@@ -7,11 +7,15 @@ var twitterBackupApp = angular.module('twitterbackup', [
     .controller("favoriteUserController", App.Controllers.FavoriteUserController)
     .controller("timelineController", App.Controllers.TimelineController)
     .controller("searchUserController", App.Controllers.SearchUserController)
+    .controller("dashboardController", App.Controllers.DashboardController)
+    .controller("savedStatusController", App.Controllers.SavedStatusController)
     .value("toastr", toastr)
     .factory("$notificationService", ["toastr", function (toastr) { return new App.Services.NotificationService(toastr); }])
     .factory("$favoriteUserService", ["$http", "$q", function ($http, $q) { return new App.Services.FavoriteUserService($http, $q); }])
     .factory("$searchUserService", ["$http", "$q", function ($http, $q) { return new App.Services.SearchUserService($http, $q); }])
+    .factory("$statusService", ["$http", "$q", function ($http, $q) { return new App.Services.StatusService($http, $q); }])
     .factory("$timelineService", ["$http", "$q", function ($http, $q) { return new App.Services.TimelineService($http, $q); }])
+    .factory("$savedStatusService", ["$http", "$q", function ($http, $q) { return new App.Services.SavedStatusService($http, $q); }])
     .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
     }])
