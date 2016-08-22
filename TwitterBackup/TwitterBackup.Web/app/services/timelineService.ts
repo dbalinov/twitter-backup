@@ -1,36 +1,21 @@
 ﻿module App.Services {
     export class TimelineService {
-        private maxId = null;
-        private noMorePosts = false;
-
         constructor(private $http: ng.IHttpService,
             private $q: ng.IQService) {
         }
 
-        public getNext(userId, trimUser): ng.IPromise<TimelineResponse> {
+        public getNext(userId, maxId, trimUser): ng.IPromise<TimelineResponse> {
             var defer = this.$q.defer<TimelineResponse>();
-
-            if (this.noMorePosts) {
-                defer.resolve({ Statuses: [] });
-            } else {
-                var url = "api/timeline?trimUser=" + trimUser +
-                    "&userId=" + userId;
-                if (this.maxId) {
-                    url += "&maxId=" + this.maxId;
-                }
-
-                this.$http.get<TimelineResponse>(url)
-                    .success(data => {
-                        defer.resolve(data);
-                        var items = data.Statuses;
-                        if (items.length > 0) {
-                            this.maxId = items[items.length - 1].Id;
-                        } else {
-                            this.noMorePosts = true;
-                        }
-                    })
-                    .error(defer.reject);
+            
+            var url = "api/timeline?trimUser=" + trimUser +
+                "&userId=" + userId;
+            if (maxId) {
+                url += "&maxId=" + maxId;
             }
+
+            this.$http.get<TimelineResponse>(url)
+                .success(defer.resolve)
+                .error(defer.reject);
 
             return defer.promise;
         }

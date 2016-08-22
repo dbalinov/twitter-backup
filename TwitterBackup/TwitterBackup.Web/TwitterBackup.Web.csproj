@@ -227,6 +227,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\templates\directives\status.html" />
     <Content Include="app\templates\directives\userProfile.html" />
     <Content Include="app\templates\searchUser.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -354,6 +355,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\app.d.ts" />
+    <TypeScriptCompile Include="app\directives\statusDirective.ts" />
     <TypeScriptCompile Include="app\app.route.ts" />
     <TypeScriptCompile Include="app\app.ts" />
     <TypeScriptCompile Include="app\controllers\baseController.ts" />

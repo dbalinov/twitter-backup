@@ -3,8 +3,10 @@
         public user: User;
         public items = [];
 
-        private busy = false;
         private userId;
+        private busy = false;
+        private maxId = null;
+        private noMorePosts = false;
 
         constructor($scope: IScope<TimelineController>,
             private $routeParams: ng.RouteData,
@@ -22,47 +24,29 @@
             this.busy = true;
             var trimUser = !!this.user;
 
-            this.$timelineService.getNext(this.userId, trimUser)
+            if (this.noMorePosts) {
+                return;
+            }
+
+            this.$timelineService.getNext(this.userId, this.maxId, trimUser)
                 .then(data => {
                     if (data.User) {
                         this.user = data.User;
                     }
-
                     var items = data.Statuses;
-                    for (var i = 0; i < items.length; i++) {
-                        this.items.push(items[i]);
+
+                    if (items.length > 0) {
+                        for (var i = 0; i < items.length; i++) {
+                            this.items.push(items[i]);
+                        }
+
+                        this.maxId = items[items.length - 1].Id;
+                    } else {
+                        this.noMorePosts = true;
                     }
 
                     this.busy = false;
                 });
-        }
-
-        public retweet(status) {
-            if (!status.Retweeted) {
-                this.$timelineService.retweet(status.Id)
-                    .then(() => {
-                        status.Retweeted = true;
-                        this.$notificationService.info("The status has been retweeted.");
-                    });
-            } else {
-                this.$notificationService.info("The status is alredy retweeted.");
-            }
-        }
-
-        public save(status) {
-            if (!status.IsSaved) {
-                this.$timelineService.save(status.Id)
-                    .then(() => {
-                        status.IsSaved = true;
-                        this.$notificationService.info("The status has been saved.");
-                    });
-            } else {
-                this.$timelineService.unsave(status.Id)
-                    .then(() => {
-                        status.IsSaved = false;
-                        this.$notificationService.info("The status has been unsaved.");
-                    });
-            }
         }
     }
 }

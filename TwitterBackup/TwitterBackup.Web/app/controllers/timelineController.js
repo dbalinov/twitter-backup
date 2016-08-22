@@ -16,6 +16,8 @@ var App;
                 this.$notificationService = $notificationService;
                 this.items = [];
                 this.busy = false;
+                this.maxId = null;
+                this.noMorePosts = false;
                 this.userId = this.$routeParams["userId"];
                 this.getNext();
             }
@@ -25,51 +27,29 @@ var App;
                     return;
                 this.busy = true;
                 var trimUser = !!this.user;
-                this.$timelineService.getNext(this.userId, trimUser)
+                if (this.noMorePosts) {
+                    return;
+                }
+                this.$timelineService.getNext(this.userId, this.maxId, trimUser)
                     .then(function (data) {
                     if (data.User) {
                         _this.user = data.User;
                     }
                     var items = data.Statuses;
-                    for (var i = 0; i < items.length; i++) {
-                        _this.items.push(items[i]);
+                    if (items.length > 0) {
+                        for (var i = 0; i < items.length; i++) {
+                            _this.items.push(items[i]);
+                        }
+                        _this.maxId = items[items.length - 1].Id;
+                    }
+                    else {
+                        _this.noMorePosts = true;
                     }
                     _this.busy = false;
                 });
-            };
-            TimelineController.prototype.retweet = function (status) {
-                var _this = this;
-                if (!status.Retweeted) {
-                    this.$timelineService.retweet(status.Id)
-                        .then(function () {
-                        status.Retweeted = true;
-                        _this.$notificationService.info("The status has been retweeted.");
-                    });
-                }
-                else {
-                    this.$notificationService.info("The status is alredy retweeted.");
-                }
-            };
-            TimelineController.prototype.save = function (status) {
-                var _this = this;
-                if (!status.IsSaved) {
-                    this.$timelineService.save(status.Id)
-                        .then(function () {
-                        status.IsSaved = true;
-                        _this.$notificationService.info("The status has been saved.");
-                    });
-                }
-                else {
-                    this.$timelineService.unsave(status.Id)
-                        .then(function () {
-                        status.IsSaved = false;
-                        _this.$notificationService.info("The status has been unsaved.");
-                    });
-                }
             };
             return TimelineController;
         }(Controllers.BaseController));
         Controllers.TimelineController = TimelineController;
     })(Controllers = App.Controllers || (App.Controllers = {}));
 })(App || (App = {}));
-//# sourceMappingURL=timelineController.js.map

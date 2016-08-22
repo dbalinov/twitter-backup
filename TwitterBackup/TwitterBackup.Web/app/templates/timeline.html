@@ -16,42 +16,8 @@
                 Tweets 
                 <a>Saved tweets</a>
             </div>
-
-            <div ng-repeat="item in model.items" class="tweet animate-repeat">
-                <div class="tweet-text">{{item.Text}}</div>
-                <div class="tweet-date">{{item.CreatedAtFormatted}}</div>
-
-                <div ng-repeat="media in item.Entities.Medias">
-                    <div ng-if="media.MediaType == 'photo' || media.MediaType == 'animated_gif'"
-                         class="tweet-image">
-                        <img ng-src="{{media.MediaUrl}}"/>
-                    </div>
-                </div>
-                <div class="tweet-footer">
-                    <div class="row">
-                        <div class="col-xs-1">
-                            <a ng-click="model.save(item)"
-                               ng-class="{ 'saved': item.IsSaved }"
-                               data-original-title="{{ item.IsSaved ? 'Undo Save' : 'Save'}}"
-                               data-toggle="tooltip"
-                               data-placement="bottom"
-                               tooltip>
-                                <i class="fa fa-bookmark" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="col-xs-1">
-                            <a ng-click="model.retweet(item)"
-                               ng-class="{ 'retweeted': item.Retweeted }"
-                               data-original-title="{{ item.Retweeted ? 'Retweeted' : 'Retweet'}}"
-                               data-toggle="tooltip"
-                               data-placement="bottom"
-                               tooltip>
-                                <i class="fa fa-retweet" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
+            <div ng-repeat="item in model.items" class="animate-repeat">
+                <div status="item"></div>
             </div>
             <div ng-show="model.busy" class="tweet tweet-loading">
                 <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>

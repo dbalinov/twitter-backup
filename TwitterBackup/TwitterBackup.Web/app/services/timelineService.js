@@ -6,34 +6,17 @@ var App;
             function TimelineService($http, $q) {
                 this.$http = $http;
                 this.$q = $q;
-                this.maxId = null;
-                this.noMorePosts = false;
             }
-            TimelineService.prototype.getNext = function (userId, trimUser) {
-                var _this = this;
+            TimelineService.prototype.getNext = function (userId, maxId, trimUser) {
                 var defer = this.$q.defer();
-                if (this.noMorePosts) {
-                    defer.resolve({ Statuses: [] });
+                var url = "api/timeline?trimUser=" + trimUser +
+                    "&userId=" + userId;
+                if (maxId) {
+                    url += "&maxId=" + maxId;
                 }
-                else {
-                    var url = "api/timeline?trimUser=" + trimUser +
-                        "&userId=" + userId;
-                    if (this.maxId) {
-                        url += "&maxId=" + this.maxId;
-                    }
-                    this.$http.get(url)
-                        .success(function (data) {
-                        defer.resolve(data);
-                        var items = data.Statuses;
-                        if (items.length > 0) {
-                            _this.maxId = items[items.length - 1].Id;
-                        }
-                        else {
-                            _this.noMorePosts = true;
-                        }
-                    })
-                        .error(defer.reject);
-                }
+                this.$http.get(url)
+                    .success(defer.resolve)
+                    .error(defer.reject);
                 return defer.promise;
             };
             TimelineService.prototype.retweet = function (statusId) {
@@ -63,4 +46,3 @@ var App;
         Services.TimelineService = TimelineService;
     })(Services = App.Services || (App.Services = {}));
 })(App || (App = {}));
-//# sourceMappingURL=timelineService.js.map

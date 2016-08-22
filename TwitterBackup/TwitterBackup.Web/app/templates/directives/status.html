@@ -1,0 +1,35 @@
+﻿<div class="tweet">
+    <div class="tweet-text">{{status.Text}}</div>
+    <div class="tweet-date">{{status.CreatedAtFormatted}}</div>
+
+    <div ng-repeat="media in status.Entities.Medias">
+        <div ng-if="media.MediaType == 'photo' || media.MediaType == 'animated_gif'"
+             class="tweet-image">
+            <img ng-src="{{media.MediaUrl}}" />
+        </div>
+    </div>
+    <div class="tweet-footer">
+        <div class="row">
+            <div class="col-xs-1">
+                <a ng-click="save(status)"
+                   ng-class="{ 'saved': status.IsSaved }"
+                   data-original-title="{{ status.IsSaved ? 'Undo Save' : 'Save'}}"
+                   data-toggle="tooltip"
+                   data-placement="bottom"
+                   tooltip>
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="col-xs-1">
+                <a ng-click="retweet(status)"
+                   ng-class="{ 'retweeted': status.Retweeted }"
+                   data-original-title="{{ status.Retweeted ? 'Retweeted' : 'Retweet'}}"
+                   data-toggle="tooltip"
+                   data-placement="bottom"
+                   tooltip>
+                    <i class="fa fa-retweet" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

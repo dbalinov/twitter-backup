@@ -23,4 +23,3 @@ var App;
             }]);
     })(Directives = App.Directives || (App.Directives = {}));
 })(App || (App = {}));
-//# sourceMappingURL=userProfileDirective.js.map

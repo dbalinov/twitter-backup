@@ -1,7 +1,7 @@
 ﻿<div class="twitter-card">
     <div class="background-layer">
         <div class="twitter-banner"
-             ng-style="{'background-color': '#' + user.ProfileBackgroundColor, 'background-image': 'url(' + user.ProfileBannerUrl + ')' }"></div>
+             ng-style="{'background-color': '#' + user.ProfileBackgroundColor, 'background-image': user.ProfileBannerUrl ? 'url(' + user.ProfileBannerUrl + ')' : 'none' }"></div>
     </div>
     <div class="foreground-layer">
         <div class="profile-image">
