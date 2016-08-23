@@ -52,5 +52,34 @@ namespace Business.Services.Users
         {
             return this.userRepository.RegisterUserAsync(userId);
         }
+
+        public async Task<IList<DashboardUserModel>> GetDashboardUsersAsync()
+        {
+            var mapper = new UserMapper();
+            var registerUsers = await this.userRepository.GetRegisterUsersAsync();
+            var userIds = registerUsers.Select(x => x.UserId).ToList();
+
+            var users = this.userRepository.GetUsersFromIds(userIds);
+
+            var userModels = users
+                .Select(x => mapper.Map(x, new DashboardUserModel()))
+                .ToList();
+
+            var favoriteUserCount = this.userRepository.GetFavoriteUserCount(userIds);
+
+            userModels.ForEach(user =>
+            {
+                var count = favoriteUserCount.FirstOrDefault(x => x.Item1 == user.Id);
+                if (count != null)
+                {
+                    user.FavoriteUsersCount = count.Item2;
+                }
+            });
+            
+         // int DownloadsCount 
+         // int RetweetsCount
+
+            return userModels;
+        }
     }
 }

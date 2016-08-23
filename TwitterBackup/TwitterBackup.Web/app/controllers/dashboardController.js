@@ -10,10 +10,15 @@ var App;
         var DashboardController = (function (_super) {
             __extends(DashboardController, _super);
             function DashboardController($scope, $dashboardService) {
+                var _this = this;
                 _super.call(this, $scope);
                 this.$dashboardService = $dashboardService;
                 $dashboardService.getData()
                     .then(function (data) {
+                    _this.downloadsCount = data.DownloadsCount;
+                    _this.retweetsCount = data.RetweetsCount;
+                    _this.retweetsCountIsAccurate = data.RetweetsCountIsAccurate;
+                    _this.users = data.Users;
                 }, function (error) { return console.log(error); });
             }
             return DashboardController;

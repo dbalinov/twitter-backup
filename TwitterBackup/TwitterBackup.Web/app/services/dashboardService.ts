@@ -4,8 +4,8 @@
             private $q: ng.IQService) {
         }
 
-        public getData(): ng.IPromise<any>  {
-            var defer = this.$q.defer();
+        public getData(): ng.IPromise<DashboardResponse>  {
+            var defer = this.$q.defer<DashboardResponse>();
 
             this.$http.get('api/dashboard')
                 .success(defer.resolve)

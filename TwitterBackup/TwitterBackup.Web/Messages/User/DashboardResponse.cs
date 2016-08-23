@@ -6,7 +6,7 @@ namespace TwitterBackup.Web.Messages.User
 {
     public class DashboardResponse
     {
-        public List<DashboardUserModel> Users { get; set; }
+        public IList<DashboardUserModel> Users { get; set; }
 
         public int DownloadsCount
         {

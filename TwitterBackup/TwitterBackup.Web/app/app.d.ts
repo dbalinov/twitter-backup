@@ -24,8 +24,15 @@
     }
 
     export interface TimelineResponse {
-        User?: User, 
-        Statuses: Status[]
+        User?: User;
+        Statuses: Status[];
+    }
+
+    export interface DashboardResponse {
+        DownloadsCount: number;
+        RetweetsCount: number;
+        RetweetsCountIsAccurate: boolean;
+        Users: Array<any>;
     }
 }
 

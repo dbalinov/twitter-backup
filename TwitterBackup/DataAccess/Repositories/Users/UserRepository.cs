@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DataAccess.Credentials;
 using DataAccess.Entities;
+using MongoDB.Driver;
 using Tweetinvi;
 using Tweetinvi.Models;
 using User = Tweetinvi.User;
@@ -67,6 +68,24 @@ namespace DataAccess.Repositories.Users
         {
             var userRegister = new UserRegister { UserId = userId };
             await this.dbContext.UserRegisters.InsertOneAsync(userRegister);
+        }
+
+        public async Task<IEnumerable<UserRegister>> GetRegisterUsersAsync()
+        {
+            var users = await this.dbContext.UserRegisters.FindAsync(
+                FilterDefinition<UserRegister>.Empty);
+
+            return users.ToEnumerable();
+        }
+
+        public IEnumerable<Tuple<string, int>> GetFavoriteUserCount(IEnumerable<string> userIds)
+        {
+            var favoriteUserCount = this.dbContext.FavriteUserRelations
+                .Aggregate(new AggregateOptions { AllowDiskUse = true })
+                .Group(x => x.SourceUserId, x => new Tuple<string, int>(x.Key, x.Count()))
+                .ToEnumerable();
+
+            return favoriteUserCount;
         }
     }
 }

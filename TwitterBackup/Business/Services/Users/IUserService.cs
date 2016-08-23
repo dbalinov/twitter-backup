@@ -11,5 +11,7 @@ namespace Business.Services.Users
         Task<UserModel> GetAsync(string userId);
 
         Task RegisterUserAsync(string userId);
+
+        Task<IList<DashboardUserModel>> GetDashboardUsersAsync();
     }
 }

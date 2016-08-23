@@ -1,18 +1,26 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
-using Business.Models;
+﻿using System.Web.Http;
+using Business.Services.Users;
 using TwitterBackup.Web.Messages.User;
+using System.Threading.Tasks;
 
 namespace TwitterBackup.Web.Controllers
 {
     [Authorize]
     public class DashboardController : ApiController
     {
-        public IHttpActionResult GetData()
-        {
-            var data = new DashboardResponse();
+        private readonly IUserService userService;
 
-            data.Users = new List<DashboardUserModel>();
+        public DashboardController(IUserService userService)
+        {
+            this.userService = userService;
+        }
+
+        public async Task<IHttpActionResult> GetData()
+        {
+            var data = new DashboardResponse
+            {
+                Users = await userService.GetDashboardUsersAsync()
+            };
 
             return Ok(data);
         }

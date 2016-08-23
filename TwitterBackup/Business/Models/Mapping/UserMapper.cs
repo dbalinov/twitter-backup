@@ -21,5 +21,15 @@ namespace Business.Models.Mapping
 
             return to;
         }
+
+        public DashboardUserModel Map(User from, DashboardUserModel to)
+        {
+            to.Id = from.Id;
+            to.Name = from.Name;
+            to.ProfileImageUrl = from.ProfileImageUrl;
+            to.ScreenName = from.ScreenName;
+
+            return to;
+        }
     }
 }

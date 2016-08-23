@@ -3,3 +3,82 @@
         <h3>Dashboard</h3>
     </div>
 </div>
+<div class="row info-box">
+    <div class="col-xs-4">
+        <div class="panel panel-default info-box-users">
+            <div class="panel-body">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                <div>
+                    Users<br />
+                    {{model.users.length}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="panel panel-default info-box-downloads">
+            <div class="panel-body">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
+                <div>
+                    Downloads<br/>
+                    {{model.downloadsCount}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="panel panel-default info-box-retweets">
+            <div class="panel-body">
+                <i class="fa fa-retweet" aria-hidden="true"></i>
+                <div>
+                    Retweers<br/>
+                    {{model.retweetsCount}}
+                    <span ng-if="!model.retweetsCountIsAccurate">+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table table-condensed table-striped">
+    <tr>
+        <th colspan="2">User</th>
+        <th>Favorite users</th>
+        <th>Downloads</th>
+        <th>Retweets</th>
+    </tr>
+    <tr ng-repeat="user in model.users">
+        <td>
+            <img ng-src="{{ user.ProfileImageUrl }}" alt="" />
+        </td>
+        <td>
+            {{ user.Name }}<br/>
+            {{ user.ScreenName }}
+        </td>
+        <td>{{ user.FavoriteUsersCount }}</td>
+        <td>{{ user.DownloadsCount }}</td>
+        <td>{{ user.RetweetsCount }}</td>
+    </tr>
+</table>
+
+<style>
+    .info-box .panel-body div {
+        color: #fff;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .info-box .panel-body i.fa {
+         font-size: 100px;
+         float: left;
+         padding-right: 20px;
+         color: #fff;
+     }
+    .info-box-users {
+        background: #67c2ef;
+    }
+    .info-box-downloads {
+        background-color: #ff5454;
+    }
+    .info-box-retweets {
+        background-color: #fabb3d;
+    }
+</style>

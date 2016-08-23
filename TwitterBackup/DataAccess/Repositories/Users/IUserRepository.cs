@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DataAccess.Entities;
 
@@ -13,5 +14,9 @@ namespace DataAccess.Repositories.Users
         Task<User> GetAsync(string userId);
 
         Task RegisterUserAsync(string userId);
+
+        Task<IEnumerable<UserRegister>> GetRegisterUsersAsync();
+
+        IEnumerable<Tuple<string, int>> GetFavoriteUserCount(IEnumerable<string> userIds);
     }
 }
