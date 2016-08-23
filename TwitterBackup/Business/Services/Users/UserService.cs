@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Models;
@@ -45,6 +46,11 @@ namespace Business.Services.Users
             result.ForEach(user => user.IsFavorite = favoriteUserIdsList.Contains(user.Id));
 
             return result;
+        }
+
+        public Task RegisterUserAsync(string userId)
+        {
+            return this.userRepository.RegisterUserAsync(userId);
         }
     }
 }

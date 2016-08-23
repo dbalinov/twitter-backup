@@ -11,5 +11,7 @@ namespace DataAccess.Repositories.Users
         IEnumerable<User> GetUsersFromIds(IEnumerable<string> ids);
 
         Task<User> GetAsync(string userId);
+
+        Task RegisterUserAsync(string userId);
     }
 }

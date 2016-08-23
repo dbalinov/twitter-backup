@@ -9,5 +9,7 @@ namespace Business.Services.Users
         Task<IEnumerable<UserModel>> SearchAsync(string query);
 
         Task<UserModel> GetAsync(string userId);
+
+        Task RegisterUserAsync(string userId);
     }
 }

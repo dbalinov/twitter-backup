@@ -9,7 +9,7 @@ namespace DataAccess.Repositories.Users
 {
     public class FavoriteUserRepository : IFavoriteUserRepository
     {
-        private IDbContext dbContext;
+        private readonly IDbContext dbContext;
 
         public FavoriteUserRepository(IDbContext dbContext)
         {

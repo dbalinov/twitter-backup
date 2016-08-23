@@ -23,5 +23,10 @@ namespace DataAccess
         {
             get { return database.GetCollection<FavoriteUserRelation>("FavriteUserRelations"); }
         }
+
+        public IMongoCollection<UserRegister> UserRegisters
+        {
+            get { return database.GetCollection<UserRegister>("UserRegisters"); }
+        }
     }
 }

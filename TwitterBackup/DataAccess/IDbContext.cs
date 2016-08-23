@@ -8,5 +8,7 @@ namespace DataAccess
         IMongoCollection<Status> Statuses { get; }
 
         IMongoCollection<FavoriteUserRelation> FavriteUserRelations { get; }
+
+        IMongoCollection<UserRegister> UserRegisters { get; }
     }
 }

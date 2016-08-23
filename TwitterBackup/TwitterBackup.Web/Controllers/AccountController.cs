@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TwitterBackup.Web.Models;
+using Business.Services.Users;
 
 namespace TwitterBackup.Web.Controllers
 {
@@ -503,6 +504,13 @@ namespace TwitterBackup.Web.Controllers
                     {
                         await UserManager.AddClaimAsync(user.Id, tokenClaim);
                     }
+                }
+
+                var userIdClaim = tokenClaims.FirstOrDefault(c => c.Type == "urn:tokens:twitter:userid");
+                if (userIdClaim != null)
+                {
+                    var userService = DependencyResolver.Current.GetService<IUserService>();
+                    await userService.RegisterUserAsync(userIdClaim.Value);
                 }
             }
         }
