@@ -110,6 +110,7 @@
     <Compile Include="Entities\MongoEntity.cs" />
     <Compile Include="Entities\Status.cs" />
     <Compile Include="Entities\StatusEntities.cs" />
+    <Compile Include="Entities\StatusListParams.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="IDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

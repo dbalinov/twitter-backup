@@ -25,17 +25,16 @@ namespace DataAccess.Repositories.Statuses
             return statuses.ToEnumerable().Select(x => x.StatusId);
         }
 
-        public async Task<IEnumerable<Status>> GetAllSavedAsync(string createdById, string maxId)
+        public async Task<IEnumerable<Status>> GetAllSavedAsync(StatusListParams statusListParams)
         {
-            var savedUserId = claimsHelper.GetUserId();
-            
             var userFilter = new ExpressionFilterDefinition<Status>(
-                x => x.SavedByUserId == savedUserId && x.CreatedById == createdById);
+                x => x.SavedByUserId == statusListParams.SavedByUserId &&
+                     x.CreatedById == statusListParams.CreatedByUserId);
             
             var maxIdFilter = new JsonFilterDefinition<Status>(
-                "{ StatusId: { $lt: '"+ maxId + "' } }");
+                "{ StatusId: { $lt: '"+ statusListParams.MaxId + "' } }");
 
-            var complexFilter = string.IsNullOrEmpty(maxId)
+            var complexFilter = string.IsNullOrEmpty(statusListParams.MaxId)
                 ? userFilter
                 : userFilter & maxIdFilter;
 

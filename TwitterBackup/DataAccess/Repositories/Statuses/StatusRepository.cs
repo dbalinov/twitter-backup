@@ -26,21 +26,21 @@ namespace DataAccess.Repositories.Statuses
             return Map(tweet);
         }
 
-        public async Task<IEnumerable<Status>> GetUserTimelineAsync(string userId, string maxId = null)
+        public async Task<IEnumerable<Status>> GetUserTimelineAsync(StatusListParams statusListParams)
         {
             var user = await Auth.ExecuteOperationWithCredentials(
-                this.credentials, () => UserAsync.GetUserFromId(long.Parse(userId)));
+                this.credentials, () => UserAsync.GetUserFromId(long.Parse(statusListParams.CreatedByUserId)));
             
             var userTimelineParam = new UserTimelineParameters
             {
-                MaximumNumberOfTweetsToRetrieve = 5,
+                MaximumNumberOfTweetsToRetrieve = statusListParams.Count ?? 100,
                 IncludeRTS = true,
                 TrimUser = true
             };
 
-            if (!string.IsNullOrEmpty(maxId))
+            if (!string.IsNullOrEmpty(statusListParams.MaxId))
             {
-                userTimelineParam.MaxId = long.Parse(maxId) - 1;
+                userTimelineParam.MaxId = long.Parse(statusListParams.MaxId) - 1;
             }
 
             var tweets = await Auth.ExecuteOperationWithCredentials(
@@ -55,10 +55,7 @@ namespace DataAccess.Repositories.Statuses
             {
                 StatusId = x.IdStr,
                 Text = x.FullText,
-                //RetweetCount = x.RetweetCount,
                 Retweeted = x.Retweeted,
-                //FavoriteCount = x.FavoriteCount,
-                //Favorited = x.Favorited,
                 CreatedAt = x.CreatedAt,
                 CreatedById = x.CreatedBy.IdStr,
                 Entities = new StatusEntities

@@ -11,6 +11,8 @@
     <AssemblyName>Business</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,10 +53,12 @@
     <Compile Include="BusinessPackage.cs" />
     <Compile Include="Models\FavoriteUserRelationModel.cs" />
     <Compile Include="Models\Mapping\FavoriteUserRelationMapper.cs" />
+    <Compile Include="Models\Mapping\StatusListParamsMapper.cs" />
     <Compile Include="Models\Mapping\StatusMapper.cs" />
     <Compile Include="Models\Mapping\UserMapper.cs" />
     <Compile Include="Models\MediaEntityModel.cs" />
     <Compile Include="Models\StatusEntitiesModel.cs" />
+    <Compile Include="Models\StatusListParamsModel.cs" />
     <Compile Include="Models\StatusModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

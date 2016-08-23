@@ -14,7 +14,6 @@
             super($scope);
 
             this.userId = this.$routeParams["userId"];
-            //this.getNext();
         }
 
         public getNext() {

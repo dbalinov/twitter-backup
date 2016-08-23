@@ -8,7 +8,10 @@
             var defer = this.$q.defer<TimelineResponse>();
             
             var url = "api/timeline?trimUser=" + trimUser +
-                "&userId=" + userId + "&savedOnly=" + savedOnly;
+                "&userId=" + userId +
+                "&savedOnly=" + savedOnly +
+                "&count=" + 5;
+
             if (maxId) {
                 url += "&maxId=" + maxId;
             }

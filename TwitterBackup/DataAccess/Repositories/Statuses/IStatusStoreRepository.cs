@@ -8,7 +8,7 @@ namespace DataAccess.Repositories.Statuses
     {
         Task<IEnumerable<string>> GetSavedStatusIdsAsync();
 
-        Task<IEnumerable<Status>> GetAllSavedAsync(string createdByUserId, string maxId);
+        Task<IEnumerable<Status>> GetAllSavedAsync(StatusListParams statusListParams);
 
         Task SaveAsync(Status status);
 

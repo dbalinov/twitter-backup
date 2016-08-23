@@ -9,5 +9,7 @@
         public string MaxId { get; set; }
 
         public bool SavedOnly { get; set; }
+
+        public int? Count { get; set; }
     }
 }

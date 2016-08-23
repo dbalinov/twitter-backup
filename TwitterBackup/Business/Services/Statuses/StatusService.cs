@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Business.Models;
 using Business.Models.Mapping;
+using DataAccess.Entities;
 using DataAccess.Repositories.Statuses;
 
 namespace Business.Services.Statuses
@@ -18,10 +19,12 @@ namespace Business.Services.Statuses
             this.statusStoreRepository = statusStoreRepository;
         }
 
-        public async Task<IEnumerable<StatusModel>> GetUserTimelineAsync(string userId, string maxId)
+        public async Task<IEnumerable<StatusModel>> GetUserTimelineAsync(StatusListParamsModel statusListParams)
         {
             var mapper = new StatusMapper();
-            var statuses = await this.statusRepository.GetUserTimelineAsync(userId, maxId);
+            var paramsMapper = new StatusListParamsMapper();
+            var paramsModel = paramsMapper.Map(statusListParams, new StatusListParams());
+            var statuses = await this.statusRepository.GetUserTimelineAsync(paramsModel);
 
             var statusModels = statuses
                 .Select(x => mapper.Map(x, new StatusModel()))
@@ -35,11 +38,12 @@ namespace Business.Services.Statuses
             return statusModels;
         }
 
-        public async Task<IEnumerable<StatusModel>> GetAllSavedAsync(string createdByUserId, string maxId)
+        public async Task<IEnumerable<StatusModel>> GetAllSavedAsync(StatusListParamsModel statusListParams)
         {
             var mapper = new StatusMapper();
-
-            var savedStatuses = await this.statusStoreRepository.GetAllSavedAsync(createdByUserId, maxId);
+            var paramsMapper = new StatusListParamsMapper();
+            var paramsModel = paramsMapper.Map(statusListParams, new StatusListParams());
+            var savedStatuses = await this.statusStoreRepository.GetAllSavedAsync(paramsModel);
 
             var statusModels = savedStatuses.Select(x => mapper.Map(x, new StatusModel())).ToList();
             statusModels.ForEach(x => x.IsSaved = true);

@@ -18,7 +18,6 @@ var App;
                 this.maxId = null;
                 this.noMorePosts = false;
                 this.userId = this.$routeParams["userId"];
-                //this.getNext();
             }
             SavedStatusController.prototype.getNext = function () {
                 var _this = this;
