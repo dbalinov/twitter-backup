@@ -46,7 +46,6 @@ namespace TwitterBackup.Web
                 "~/app/services/searchUserService.js",
                 "~/app/services/statusService.js",
                 "~/app/services/timelineService.js",
-                "~/app/services/savedStatusService.js",
                 // app
                 "~/app/app.js",
                 "~/app/app.route.js",

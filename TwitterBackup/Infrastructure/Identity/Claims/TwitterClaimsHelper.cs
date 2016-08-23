@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Security.Claims;
 using System.Threading;
+using System.Web;
 
 namespace Infrastructure.Identity.Claims
 {
@@ -23,7 +24,7 @@ namespace Infrastructure.Identity.Claims
 
         private static string GetClaimValue(string claimName)
         {
-            var principal = Thread.CurrentPrincipal as ClaimsPrincipal;
+            var principal = HttpContext.Current.User as ClaimsPrincipal;
 
             if (principal == null)
             {

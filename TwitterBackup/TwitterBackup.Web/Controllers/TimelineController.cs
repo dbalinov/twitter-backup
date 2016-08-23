@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using Business.Models;
 using Business.Services.Statuses;
@@ -37,8 +38,9 @@ namespace TwitterBackup.Web.Controllers
                 ? Task.FromResult((UserModel)null)
                 : this.userService.GetAsync(request.UserId);
 
-            var statusesTask = this.statusService.GetUserTimelineAsync(
-                request.UserId, request.MaxId);
+            var statusesTask = request.SavedOnly 
+                ? this.statusService.GetAllSavedAsync(request.UserId, request.MaxId)
+                : this.statusService.GetUserTimelineAsync(request.UserId, request.MaxId);
 
             await Task.WhenAll(userTask, statusesTask);
 

@@ -9,27 +9,25 @@ var App;
     (function (Controllers) {
         var SavedStatusController = (function (_super) {
             __extends(SavedStatusController, _super);
-            function SavedStatusController($scope, $routeParams, $savedStatusService) {
+            function SavedStatusController($scope, $routeParams, $timelineService) {
                 _super.call(this, $scope);
                 this.$routeParams = $routeParams;
-                this.$savedStatusService = $savedStatusService;
+                this.$timelineService = $timelineService;
                 this.items = [];
                 this.busy = false;
                 this.maxId = null;
                 this.noMorePosts = false;
                 this.userId = this.$routeParams["userId"];
-                this.getNext();
+                //this.getNext();
             }
             SavedStatusController.prototype.getNext = function () {
                 var _this = this;
-                if (this.busy)
-                    return;
-                this.busy = true;
-                var trimUser = !!this.user;
-                if (this.noMorePosts) {
+                if (this.busy || this.noMorePosts) {
                     return;
                 }
-                this.$savedStatusService.getNext(this.userId, this.maxId, trimUser)
+                this.busy = true;
+                var trimUser = !!this.user;
+                this.$timelineService.getNext(this.userId, this.maxId, trimUser, true)
                     .then(function (data) {
                     if (data.User) {
                         _this.user = data.User;
@@ -40,11 +38,10 @@ var App;
                             _this.items.push(items[i]);
                         }
                         _this.maxId = items[items.length - 1].Id;
-                    }
-                    else {
-                        _this.noMorePosts = true;
+                        console.log(_this.maxId, items);
                     }
                     _this.busy = false;
+                    _this.noMorePosts = items.length !== 5;
                 });
             };
             return SavedStatusController;

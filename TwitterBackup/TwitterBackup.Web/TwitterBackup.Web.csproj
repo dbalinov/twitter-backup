@@ -369,7 +369,6 @@
     <TypeScriptCompile Include="app\directives\userProfileDirective.ts" />
     <TypeScriptCompile Include="app\services\favoriteUserService.ts" />
     <TypeScriptCompile Include="app\services\notificationService.ts" />
-    <TypeScriptCompile Include="app\services\savedStatusService.ts" />
     <TypeScriptCompile Include="app\services\searchUserService.ts" />
     <TypeScriptCompile Include="app\services\statusService.ts" />
     <TypeScriptCompile Include="app\services\timelineService.ts" />

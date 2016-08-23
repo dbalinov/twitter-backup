@@ -4,11 +4,11 @@
             private $q: ng.IQService) {
         }
 
-        public getNext(userId, maxId, trimUser): ng.IPromise<TimelineResponse> {
+        public getNext(userId, maxId, trimUser, savedOnly): ng.IPromise<TimelineResponse> {
             var defer = this.$q.defer<TimelineResponse>();
             
             var url = "api/timeline?trimUser=" + trimUser +
-                "&userId=" + userId;
+                "&userId=" + userId + "&savedOnly=" + savedOnly;
             if (maxId) {
                 url += "&maxId=" + maxId;
             }

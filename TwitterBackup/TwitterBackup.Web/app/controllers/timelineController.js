@@ -22,14 +22,12 @@ var App;
             }
             TimelineController.prototype.getNext = function () {
                 var _this = this;
-                if (this.busy)
-                    return;
-                this.busy = true;
-                var trimUser = !!this.user;
-                if (this.noMorePosts) {
+                if (this.busy || this.noMorePosts) {
                     return;
                 }
-                this.$timelineService.getNext(this.userId, this.maxId, trimUser)
+                this.busy = true;
+                var trimUser = !!this.user;
+                this.$timelineService.getNext(this.userId, this.maxId, trimUser, false)
                     .then(function (data) {
                     if (data.User) {
                         _this.user = data.User;
@@ -41,10 +39,8 @@ var App;
                         }
                         _this.maxId = items[items.length - 1].Id;
                     }
-                    else {
-                        _this.noMorePosts = true;
-                    }
                     _this.busy = false;
+                    _this.noMorePosts = items.length !== 5;
                 });
             };
             return TimelineController;

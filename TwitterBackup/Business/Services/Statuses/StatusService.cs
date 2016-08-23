@@ -18,7 +18,7 @@ namespace Business.Services.Statuses
             this.statusStoreRepository = statusStoreRepository;
         }
 
-        public async Task<IEnumerable<StatusModel>> GetUserTimelineAsync(string userId, string maxId = null)
+        public async Task<IEnumerable<StatusModel>> GetUserTimelineAsync(string userId, string maxId)
         {
             var mapper = new StatusMapper();
             var statuses = await this.statusRepository.GetUserTimelineAsync(userId, maxId);
@@ -31,6 +31,18 @@ namespace Business.Services.Statuses
             var savedStatusIdsList = savedStatusIds.ToList();
 
             statusModels.ForEach(x => x.IsSaved = savedStatusIdsList.Contains(x.Id));
+
+            return statusModels;
+        }
+
+        public async Task<IEnumerable<StatusModel>> GetAllSavedAsync(string createdByUserId, string maxId)
+        {
+            var mapper = new StatusMapper();
+
+            var savedStatuses = await this.statusStoreRepository.GetAllSavedAsync(createdByUserId, maxId);
+
+            var statusModels = savedStatuses.Select(x => mapper.Map(x, new StatusModel())).ToList();
+            statusModels.ForEach(x => x.IsSaved = true);
 
             return statusModels;
         }

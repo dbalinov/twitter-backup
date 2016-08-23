@@ -7,10 +7,10 @@ var App;
                 this.$http = $http;
                 this.$q = $q;
             }
-            TimelineService.prototype.getNext = function (userId, maxId, trimUser) {
+            TimelineService.prototype.getNext = function (userId, maxId, trimUser, savedOnly) {
                 var defer = this.$q.defer();
                 var url = "api/timeline?trimUser=" + trimUser +
-                    "&userId=" + userId;
+                    "&userId=" + userId + "&savedOnly=" + savedOnly;
                 if (maxId) {
                     url += "&maxId=" + maxId;
                 }

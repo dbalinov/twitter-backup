@@ -7,5 +7,7 @@
         public bool TrimUser { get; set; }
 
         public string MaxId { get; set; }
+
+        public bool SavedOnly { get; set; }
     }
 }

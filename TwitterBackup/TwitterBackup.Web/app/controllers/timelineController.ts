@@ -18,20 +18,19 @@
         }
 
         public getNext() {
-            if (this.busy) return;
+            if (this.busy || this.noMorePosts) {
+                return;
+            }
 
             this.busy = true;
             var trimUser = !!this.user;
 
-            if (this.noMorePosts) {
-                return;
-            }
-
-            this.$timelineService.getNext(this.userId, this.maxId, trimUser)
+            this.$timelineService.getNext(this.userId, this.maxId, trimUser, false)
                 .then(data => {
                     if (data.User) {
                         this.user = data.User;
                     }
+
                     var items = data.Statuses;
 
                     if (items.length > 0) {
@@ -40,11 +39,10 @@
                         }
 
                         this.maxId = items[items.length - 1].Id;
-                    } else {
-                        this.noMorePosts = true;
                     }
 
                     this.busy = false;
+                    this.noMorePosts = items.length !== 5;
                 });
         }
     }
