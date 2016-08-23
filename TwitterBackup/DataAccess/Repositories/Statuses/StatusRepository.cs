@@ -46,6 +46,8 @@ namespace DataAccess.Repositories.Statuses
             var tweets = await Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => user.GetUserTimelineAsync(userTimelineParam));
 
+            tweets = tweets ?? Enumerable.Empty<ITweet>();
+
             return tweets.Select(Map);
         }
 
