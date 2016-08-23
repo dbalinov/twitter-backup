@@ -9,9 +9,12 @@ var App;
     (function (Controllers) {
         var DashboardController = (function (_super) {
             __extends(DashboardController, _super);
-            function DashboardController($scope //,
-                ) {
+            function DashboardController($scope, $dashboardService) {
                 _super.call(this, $scope);
+                this.$dashboardService = $dashboardService;
+                $dashboardService.getData()
+                    .then(function (data) {
+                }, function (error) { return console.log(error); });
             }
             return DashboardController;
         }(Controllers.BaseController));

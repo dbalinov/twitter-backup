@@ -15,6 +15,7 @@ var twitterBackupApp = angular.module('twitterbackup', [
     .factory("$searchUserService", ["$http", "$q", function ($http, $q) { return new App.Services.SearchUserService($http, $q); }])
     .factory("$statusService", ["$http", "$q", function ($http, $q) { return new App.Services.StatusService($http, $q); }])
     .factory("$timelineService", ["$http", "$q", function ($http, $q) { return new App.Services.TimelineService($http, $q); }])
+    .factory("$dashboardService", ["$http", "$q", function ($http, $q) { return new App.Services.DashboardService($http, $q); }])
     .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
     }])

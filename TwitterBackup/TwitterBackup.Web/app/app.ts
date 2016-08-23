@@ -23,7 +23,8 @@
     .factory("$searchUserService", ["$http", "$q",($http, $q) => new App.Services.SearchUserService($http, $q)])
     .factory("$statusService", ["$http", "$q", ($http, $q) => new App.Services.StatusService($http, $q)])
     .factory("$timelineService", ["$http", "$q", ($http, $q) => new App.Services.TimelineService($http, $q)])
-    
+    .factory("$dashboardService", ["$http", "$q", ($http, $q) => new App.Services.DashboardService($http, $q)])
+
     // plugins config
     .config(['cfpLoadingBarProvider', (cfpLoadingBarProvider) => {
         cfpLoadingBarProvider.includeSpinner = false;

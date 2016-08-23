@@ -1,4 +1,4 @@
-﻿namespace TwitterBackup.Web.Messages.FavoriteUser
+﻿namespace TwitterBackup.Web.Messages.User
 {
     public class FavoriteUserRequest
     {

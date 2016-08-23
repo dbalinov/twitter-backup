@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessPackage.cs" />
+    <Compile Include="Models\DashboardUserModel.cs" />
     <Compile Include="Models\FavoriteUserRelationModel.cs" />
     <Compile Include="Models\Mapping\FavoriteUserRelationMapper.cs" />
     <Compile Include="Models\Mapping\StatusListParamsMapper.cs" />
