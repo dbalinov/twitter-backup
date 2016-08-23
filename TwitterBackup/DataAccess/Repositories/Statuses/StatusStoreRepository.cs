@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataAccess.Entities;
@@ -60,6 +61,16 @@ namespace DataAccess.Repositories.Statuses
             var userId = this.claimsHelper.GetUserId();
             await this.dbContext.Statuses.DeleteOneAsync(
                 x => x.StatusId == statusId && x.SavedByUserId == userId);
+        }
+
+        public IEnumerable<Tuple<string, int>> GetDownloadStatusCount(IEnumerable<string> userIds)
+        {
+            var downloadStatusCount = this.dbContext.Statuses
+                .Aggregate(new AggregateOptions { AllowDiskUse = true })
+                .Group(x => x.SavedByUserId, x => new Tuple<string, int>(x.Key, x.Count()))
+                .ToEnumerable();
+
+            return downloadStatusCount;
         }
     }
 }

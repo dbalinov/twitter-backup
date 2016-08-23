@@ -6,6 +6,7 @@ using Business.Models;
 using Business.Models.Mapping;
 using DataAccess.Repositories.Users;
 using Infrastructure.Identity.Claims;
+using DataAccess.Repositories.Statuses;
 
 namespace Business.Services.Users
 {
@@ -13,15 +14,18 @@ namespace Business.Services.Users
     {
         private readonly IUserRepository userRepository;
         private readonly IFavoriteUserRepository favoriteUserRepository;
+        private readonly IStatusStoreRepository statusStoreRepository;
         private readonly ITwitterClaimsHelper claimsHelper;
 
         public UserService(
             IUserRepository userRepository, 
             IFavoriteUserRepository favoriteUserRepository,
+            IStatusStoreRepository statusStoreRepository,
             ITwitterClaimsHelper claimsHelper)
         {
             this.userRepository = userRepository;
             this.favoriteUserRepository = favoriteUserRepository;
+            this.statusStoreRepository = statusStoreRepository;
             this.claimsHelper = claimsHelper;
         }
 
@@ -66,18 +70,24 @@ namespace Business.Services.Users
                 .ToList();
 
             var favoriteUserCount = this.userRepository.GetFavoriteUserCount(userIds);
+            var downloadStatusCount = this.statusStoreRepository.GetDownloadStatusCount(userIds);
 
             userModels.ForEach(user =>
             {
-                var count = favoriteUserCount.FirstOrDefault(x => x.Item1 == user.Id);
-                if (count != null)
+                var userCount = favoriteUserCount.FirstOrDefault(x => x.Item1 == user.Id);
+                if (userCount != null)
                 {
-                    user.FavoriteUsersCount = count.Item2;
+                    user.FavoriteUsersCount = userCount.Item2;
+                }
+
+                var statusCount = downloadStatusCount.FirstOrDefault(x => x.Item1 == user.Id);
+                if (statusCount != null)
+                {
+                    user.DownloadsCount = statusCount.Item2;
                 }
             });
             
-         // int DownloadsCount 
-         // int RetweetsCount
+            // int RetweetsCount
 
             return userModels;
         }

@@ -46,7 +46,11 @@ namespace Business.Services.Statuses
             var savedStatuses = await this.statusStoreRepository.GetAllSavedAsync(paramsModel);
 
             var statusModels = savedStatuses.Select(x => mapper.Map(x, new StatusModel())).ToList();
-            statusModels.ForEach(x => x.IsSaved = true);
+            statusModels.ForEach(x =>
+            {
+                x.IsSaved = true;
+                x.CreatedAt = x.CreatedAt.ToLocalTime();
+            });
 
             return statusModels;
         }

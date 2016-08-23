@@ -1,6 +1,7 @@
-﻿using DataAccess.Entities;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DataAccess.Entities;
 
 namespace DataAccess.Repositories.Statuses
 {
@@ -13,5 +14,7 @@ namespace DataAccess.Repositories.Statuses
         Task SaveAsync(Status status);
 
         Task UnsaveAsync(string statusId);
+
+        IEnumerable<Tuple<string, int>> GetDownloadStatusCount(IEnumerable<string> userIds);
     }
 }
