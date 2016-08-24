@@ -69,6 +69,12 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Controllers\DashboardControllerTest.cs" />
+    <Compile Include="Controllers\FavoriteUserControllerTest.cs" />
+    <Compile Include="Controllers\RetweetControllerTest.cs" />
+    <Compile Include="Controllers\SearchUserControllerTest.cs" />
+    <Compile Include="Controllers\StatusStoreControllerTest.cs" />
+    <Compile Include="Controllers\TimelineControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

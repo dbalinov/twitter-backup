@@ -22,10 +22,50 @@ namespace Business.Test.Services.Statuses
             this.statusService = new StatusService(this.statusRepository, this.statusStoreRepository);
         }
 
-        //Task<IEnumerable<StatusModel>> GetUserTimelineAsync(StatusListParamsModel statusListParams);
+        // TODO: add regions
 
-        //Task<IEnumerable<StatusModel>> GetAllSavedAsync(StatusListParamsModel statusListParams);
-        
+        // 1. null params
+        // 2. null  statuses.
+        // 3. valid,  saved status test
+        //public async Task<IEnumerable<StatusModel>> GetUserTimelineAsync(StatusListParamsModel statusListParams)
+        //{
+        //    var mapper = new StatusMapper();
+        //    var paramsMapper = new StatusListParamsMapper();
+        //    var paramsModel = paramsMapper.Map(statusListParams, new StatusListParams());
+        //    var statuses = await this.statusRepository.GetUserTimelineAsync(paramsModel);
+
+        //    var statusModels = statuses
+        //        .Select(x => mapper.Map(x, new StatusModel()))
+        //        .ToList();
+
+        //    var savedStatusIds = await this.statusStoreRepository.GetSavedStatusIdsAsync();
+        //    var savedStatusIdsList = savedStatusIds.ToList();
+
+        //    statusModels.ForEach(x => x.IsSaved = savedStatusIdsList.Contains(x.Id));
+
+        //    return statusModels;
+        //}
+
+        // 1. null params test
+        // 2. saved statuses null
+        // 3. valid, all are saved.
+        //public async Task<IEnumerable<StatusModel>> GetAllSavedAsync(StatusListParamsModel statusListParams)
+        //{
+        //    var mapper = new StatusMapper();
+        //    var paramsMapper = new StatusListParamsMapper();
+        //    var paramsModel = paramsMapper.Map(statusListParams, new StatusListParams());
+        //    var savedStatuses = await this.statusStoreRepository.GetAllSavedAsync(paramsModel);
+
+        //    var statusModels = savedStatuses.Select(x => mapper.Map(x, new StatusModel())).ToList();
+        //    statusModels.ForEach(x =>
+        //    {
+        //        x.IsSaved = true;
+        //        x.CreatedAt = x.CreatedAt.ToLocalTime();
+        //    });
+
+        //    return statusModels;
+        //}
+
         [Fact]
         public async Task RetweetAsync()
         {
