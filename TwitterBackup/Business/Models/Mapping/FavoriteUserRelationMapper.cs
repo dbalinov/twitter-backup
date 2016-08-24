@@ -2,7 +2,7 @@
 
 namespace Business.Models.Mapping
 {
-    public class FavoriteUserRelationMapper
+    internal class FavoriteUserRelationMapper
     {
         public FavoriteUserRelation Map(FavoriteUserRelationModel from, FavoriteUserRelation to)
         {

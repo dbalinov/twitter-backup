@@ -2,7 +2,7 @@
 
 namespace Business.Models.Mapping
 {
-    public class UserMapper
+    internal class UserMapper
     {
         public UserModel Map(User from, UserModel to)
         {

@@ -2,7 +2,7 @@
 
 namespace Business.Models.Mapping
 {
-    public class StatusListParamsMapper
+    internal class StatusListParamsMapper
     {
         public StatusListParams Map(StatusListParamsModel from, StatusListParams to)
         {

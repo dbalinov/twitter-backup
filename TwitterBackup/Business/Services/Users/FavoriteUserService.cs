@@ -8,7 +8,7 @@ using DataAccess.Repositories.Users;
 
 namespace Business.Services.Users
 {
-    public class FavoriteUserService : IFavoriteUserService
+    internal class FavoriteUserService : IFavoriteUserService
     {
         private readonly IFavoriteUserRepository favoriteUserRepository;
         private readonly IUserRepository userRepository;
