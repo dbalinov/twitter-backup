@@ -360,6 +360,7 @@
     <TypeScriptCompile Include="app\app.d.ts" />
     <TypeScriptCompile Include="app\controllers\dashboardController.ts" />
     <TypeScriptCompile Include="app\controllers\savedStatusController.ts" />
+    <TypeScriptCompile Include="app\controllers\timelineBaseController.ts" />
     <TypeScriptCompile Include="app\directives\statusDirective.ts" />
     <TypeScriptCompile Include="app\app.route.ts" />
     <TypeScriptCompile Include="app\app.ts" />

@@ -7,10 +7,11 @@
     // controllers
     .controller("baseController", App.Controllers.BaseController)
     .controller("favoriteUserController", App.Controllers.FavoriteUserController)
+    .controller("timelineBaseController", App.Controllers.TimelineBaseController)
     .controller("timelineController", App.Controllers.TimelineController)
+    .controller("savedStatusController", App.Controllers.SavedStatusController)
     .controller("searchUserController", App.Controllers.SearchUserController)
     .controller("dashboardController", App.Controllers.DashboardController)
-    .controller("savedStatusController", App.Controllers.SavedStatusController)
 
     // values
     .value("toastr", toastr)

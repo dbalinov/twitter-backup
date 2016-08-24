@@ -10,40 +10,11 @@ var App;
         var TimelineController = (function (_super) {
             __extends(TimelineController, _super);
             function TimelineController($scope, $routeParams, $timelineService) {
-                _super.call(this, $scope);
-                this.$routeParams = $routeParams;
-                this.$timelineService = $timelineService;
-                this.items = [];
-                this.busy = false;
-                this.maxId = null;
-                this.noMorePosts = false;
-                this.userId = this.$routeParams["userId"];
+                _super.call(this, $scope, $routeParams, $timelineService);
+                this.savedOnly = false;
             }
-            TimelineController.prototype.getNext = function () {
-                var _this = this;
-                if (this.busy || this.noMorePosts) {
-                    return;
-                }
-                this.busy = true;
-                var trimUser = !!this.user;
-                this.$timelineService.getNext(this.userId, this.maxId, trimUser, false)
-                    .then(function (data) {
-                    if (data.User) {
-                        _this.user = data.User;
-                    }
-                    var items = data.Statuses;
-                    if (items.length > 0) {
-                        for (var i = 0; i < items.length; i++) {
-                            _this.items.push(items[i]);
-                        }
-                        _this.maxId = items[items.length - 1].Id;
-                    }
-                    _this.busy = false;
-                    _this.noMorePosts = items.length !== 5;
-                });
-            };
             return TimelineController;
-        }(Controllers.BaseController));
+        }(Controllers.TimelineBaseController));
         Controllers.TimelineController = TimelineController;
     })(Controllers = App.Controllers || (App.Controllers = {}));
 })(App || (App = {}));
