@@ -14,17 +14,20 @@ namespace Business.Services.Users
         private readonly IUserRepository userRepository;
         private readonly IFavoriteUserRepository favoriteUserRepository;
         private readonly IStatusStoreRepository statusStoreRepository;
+        private readonly IStatusRepository statusRepository;
         private readonly ITwitterClaimsHelper claimsHelper;
 
         public UserService(
             IUserRepository userRepository, 
             IFavoriteUserRepository favoriteUserRepository,
             IStatusStoreRepository statusStoreRepository,
+            IStatusRepository statusRepository,
             ITwitterClaimsHelper claimsHelper)
         {
             this.userRepository = userRepository;
             this.favoriteUserRepository = favoriteUserRepository;
             this.statusStoreRepository = statusStoreRepository;
+            this.statusRepository = statusRepository;
             this.claimsHelper = claimsHelper;
         }
 
@@ -95,9 +98,10 @@ namespace Business.Services.Users
                 {
                     user.DownloadsCount = statusCount.Item2;
                 }
+                
+                user.RetweetsCount = this.statusRepository.GetRetweetsCountForUser(user.Id);
+                user.RetweetsCountIsAccurate = user.RetweetsCount < 200;
             });
-            
-            // int RetweetsCount
 
             return userModels;
         }

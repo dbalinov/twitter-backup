@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataAccess.Credentials;
 using DataAccess.Entities;
 using Tweetinvi;
 using Tweetinvi.Parameters;
 using Tweetinvi.Models;
-using DataAccess.Credentials;
 
 namespace DataAccess.Repositories.Statuses
 {
@@ -74,6 +74,26 @@ namespace DataAccess.Repositories.Statuses
             var tweetId = long.Parse(statusId);
             var tweet = await Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => TweetAsync.PublishRetweet(tweetId));
+        }
+
+        public int GetRetweetsCountForUser(string userId)
+        {
+            var user = Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => Tweetinvi.User.GetUserFromId(long.Parse(userId)));
+
+            var userTimelineParam = new UserTimelineParameters
+            {
+                MaximumNumberOfTweetsToRetrieve = 200,
+                IncludeRTS = true,
+                TrimUser = true,
+                IncludeEntities = false,
+                ExcludeReplies = true,                
+            };
+
+            var tweets = Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => user.GetUserTimeline(userTimelineParam));
+
+            return tweets.Count(x => x.IsRetweet);
         }
     }
 }

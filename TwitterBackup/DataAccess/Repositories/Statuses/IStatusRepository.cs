@@ -11,5 +11,7 @@ namespace DataAccess.Repositories.Statuses
         Task<IEnumerable<Status>> GetUserTimelineAsync(StatusListParams statusListParams);
 
         Task RetweetAsync(string statusId);
+
+        int GetRetweetsCountForUser(string userId);
     }
 }
