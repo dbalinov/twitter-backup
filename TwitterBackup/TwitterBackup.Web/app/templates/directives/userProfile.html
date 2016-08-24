@@ -11,7 +11,7 @@
         </div>
         <div class="profile-name">
             <div>
-                <a ng-href="#/status/timeline/{{user.Id}}">
+                <a ng-click="openTimeline(user)">
                     {{user.Name}}
                 </a>
                 <span ng-if="user.Verified">
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <span>
-                <a ng-href="#/status/timeline/{{user.Id}}" target="_blank">@<span>{{user.ScreenName}}</span></a>
+                <a ng-click="openTimeline(user)">@<span>{{user.ScreenName}}</span></a>
             </span>
         </div>
         <div class="stats">

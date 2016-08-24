@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Models;
@@ -31,25 +30,36 @@ namespace Business.Services.Users
 
         public async Task<UserModel> GetAsync(string userId)
         {
+            var favoriteUserIds = await FavoriteUserIds();
+
             var mapper = new UserMapper();
             var user = await this.userRepository.GetAsync(userId);
-            return mapper.Map(user, new UserModel());
+
+            var userModel = mapper.Map(user, new UserModel());
+            userModel.IsFavorite = favoriteUserIds.Contains(user.Id);
+            return userModel;
         }
 
         public async Task<IEnumerable<UserModel>> SearchAsync(string query)
         {
-            var currentUserId = claimsHelper.GetUserId();
-            var favoriteUserIds = await this.favoriteUserRepository
-                .GetFavoriteUserIds(currentUserId);
-            var favoriteUserIdsList = favoriteUserIds.ToList();
+            var favoriteUserIds = await FavoriteUserIds();
 
             var mapper = new UserMapper();
             var users = this.userRepository.Search(query);
             var result = users.Select(user => mapper.Map(user, new UserModel())).ToList();
 
-            result.ForEach(user => user.IsFavorite = favoriteUserIdsList.Contains(user.Id));
+            result.ForEach(user => user.IsFavorite = favoriteUserIds.Contains(user.Id));
 
             return result;
+        }
+
+        private async Task<List<string>> FavoriteUserIds()
+        {
+            var currentUserId = claimsHelper.GetUserId();
+            var favoriteUserIds = await this.favoriteUserRepository
+                .GetFavoriteUserIds(currentUserId);
+            var favoriteUserIdsList = favoriteUserIds.ToList();
+            return favoriteUserIdsList;
         }
 
         public Task RegisterUserAsync(string userId)
