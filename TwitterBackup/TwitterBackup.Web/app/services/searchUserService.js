@@ -19,4 +19,3 @@ var App;
         Services.SearchUserService = SearchUserService;
     })(Services = App.Services || (App.Services = {}));
 })(App || (App = {}));
-//# sourceMappingURL=searchUserService.js.map

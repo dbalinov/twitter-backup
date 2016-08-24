@@ -43,6 +43,7 @@ namespace TwitterBackup.Web
                 "~/app/controllers/dashboardController.js",
                 // services
                 "~/app/services/notificationService.js",
+                "~/app/services/authInterceptor.js",
                 "~/app/services/favoriteUserService.js",
                 "~/app/services/searchUserService.js",
                 "~/app/services/statusService.js",

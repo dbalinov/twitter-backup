@@ -44,4 +44,3 @@ var App;
         ]);
     })(Directives = App.Directives || (App.Directives = {}));
 })(App || (App = {}));
-//# sourceMappingURL=statusDirective.js.map

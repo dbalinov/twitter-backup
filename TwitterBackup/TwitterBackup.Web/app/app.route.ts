@@ -21,6 +21,9 @@ twitterBackupApp.config(($routeProvider: ng.route.IRouteProvider) => {
             templateUrl: "app/templates/dashboard.html",
             controller: "dashboardController"
         })
+        .when('/unauthorized', {
+            templateUrl: "app/templates/unauthorized.html"
+        })
         .otherwise({
             redirectTo: '/user/favorites'
         });

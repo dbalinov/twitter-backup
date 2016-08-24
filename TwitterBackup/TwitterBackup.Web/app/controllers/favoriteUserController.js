@@ -26,4 +26,3 @@ var App;
         Controllers.FavoriteUserController = FavoriteUserController;
     })(Controllers = App.Controllers || (App.Controllers = {}));
 })(App || (App = {}));
-//# sourceMappingURL=favoriteUserController.js.map

@@ -34,4 +34,3 @@ var App;
         Services.StatusService = StatusService;
     })(Services = App.Services || (App.Services = {}));
 })(App || (App = {}));
-//# sourceMappingURL=statusService.js.map

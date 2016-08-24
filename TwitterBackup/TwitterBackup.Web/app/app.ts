@@ -1,8 +1,8 @@
-﻿var twitterBackupApp = angular.module('twitterbackup', [
-    'ngRoute',
-    'ngAnimate',
-    'angular-loading-bar',
-    'infinite-scroll'])
+﻿var twitterBackupApp = angular.module("twitterbackup", [
+    "ngRoute",
+    "ngAnimate",
+    "angular-loading-bar",
+    "infinite-scroll"])
 
     // controllers
     .controller("baseController", App.Controllers.BaseController)
@@ -18,6 +18,8 @@
 
     // services
     .factory("$notificationService", ["toastr", (toastr) => new App.Services.NotificationService(toastr)])
+    .factory("$authInterceptor", ["$q", "$location", "$notificationService",
+        ($q, $location, $notificationService) => new App.Services.AuthInterceptor($q, $location, $notificationService)])
 
     // data services
     .factory("$favoriteUserService", ["$http", "$q", ($http, $q) => new App.Services.FavoriteUserService($http, $q)])
@@ -27,16 +29,18 @@
     .factory("$dashboardService", ["$http", "$q", ($http, $q) => new App.Services.DashboardService($http, $q)])
 
     // plugins config
-    .config(['cfpLoadingBarProvider', (cfpLoadingBarProvider) => {
+    .config(["cfpLoadingBarProvider", (cfpLoadingBarProvider) => {
         cfpLoadingBarProvider.includeSpinner = false;
     }])
-
+    .config(($httpProvider: ng.IHttpProvider) => {
+        $httpProvider.interceptors.push("$authInterceptor");
+    })
     .run($rootScope => {
         // Prevent two request at the same time by blocking the screen.
-        $rootScope.$on('cfpLoadingBar:started', (evt, e, ee) => {
+        $rootScope.$on("cfpLoadingBar:started", (evt, e, ee) => {
             $.blockUI({ message: null, overlayCSS: { opacity: 0 } });
         });
-        $rootScope.$on('cfpLoadingBar:completed', (evt) => {
+        $rootScope.$on("cfpLoadingBar:completed", (evt) => {
             $.unblockUI();
         });
     });

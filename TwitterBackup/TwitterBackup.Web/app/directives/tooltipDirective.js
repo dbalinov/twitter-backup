@@ -13,4 +13,3 @@ var App;
         });
     })(Directives = App.Directives || (App.Directives = {}));
 })(App || (App = {}));
-//# sourceMappingURL=tooltipDirective.js.map

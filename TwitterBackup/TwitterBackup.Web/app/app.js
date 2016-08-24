@@ -1,8 +1,8 @@
-var twitterBackupApp = angular.module('twitterbackup', [
-    'ngRoute',
-    'ngAnimate',
-    'angular-loading-bar',
-    'infinite-scroll'])
+var twitterBackupApp = angular.module("twitterbackup", [
+    "ngRoute",
+    "ngAnimate",
+    "angular-loading-bar",
+    "infinite-scroll"])
     .controller("baseController", App.Controllers.BaseController)
     .controller("favoriteUserController", App.Controllers.FavoriteUserController)
     .controller("timelineBaseController", App.Controllers.TimelineBaseController)
@@ -12,21 +12,25 @@ var twitterBackupApp = angular.module('twitterbackup', [
     .controller("dashboardController", App.Controllers.DashboardController)
     .value("toastr", toastr)
     .factory("$notificationService", ["toastr", function (toastr) { return new App.Services.NotificationService(toastr); }])
+    .factory("$authInterceptor", ["$q", "$location", "$notificationService",
+    function ($q, $location, $notificationService) { return new App.Services.AuthInterceptor($q, $location, $notificationService); }])
     .factory("$favoriteUserService", ["$http", "$q", function ($http, $q) { return new App.Services.FavoriteUserService($http, $q); }])
     .factory("$searchUserService", ["$http", "$q", function ($http, $q) { return new App.Services.SearchUserService($http, $q); }])
     .factory("$statusService", ["$http", "$q", function ($http, $q) { return new App.Services.StatusService($http, $q); }])
     .factory("$timelineService", ["$http", "$q", function ($http, $q) { return new App.Services.TimelineService($http, $q); }])
     .factory("$dashboardService", ["$http", "$q", function ($http, $q) { return new App.Services.DashboardService($http, $q); }])
-    .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
+    .config(["cfpLoadingBarProvider", function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
     }])
+    .config(function ($httpProvider) {
+    $httpProvider.interceptors.push("$authInterceptor");
+})
     .run(function ($rootScope) {
     // Prevent two request at the same time by blocking the screen.
-    $rootScope.$on('cfpLoadingBar:started', function (evt, e, ee) {
+    $rootScope.$on("cfpLoadingBar:started", function (evt, e, ee) {
         $.blockUI({ message: null, overlayCSS: { opacity: 0 } });
     });
-    $rootScope.$on('cfpLoadingBar:completed', function (evt) {
+    $rootScope.$on("cfpLoadingBar:completed", function (evt) {
         $.unblockUI();
     });
 });
-//# sourceMappingURL=app.js.map

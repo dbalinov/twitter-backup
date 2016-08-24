@@ -234,6 +234,7 @@
     <Content Include="app\templates\directives\userProfile.html" />
     <Content Include="app\templates\savedStatus.html" />
     <Content Include="app\templates\searchUser.html" />
+    <Content Include="app\templates\unauthorized.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -370,6 +371,7 @@
     <TypeScriptCompile Include="app\controllers\timelineController.ts" />
     <TypeScriptCompile Include="app\directives\tooltipDirective.ts" />
     <TypeScriptCompile Include="app\directives\userProfileDirective.ts" />
+    <TypeScriptCompile Include="app\services\authInterceptor.ts" />
     <TypeScriptCompile Include="app\services\dashboardService.ts" />
     <TypeScriptCompile Include="app\services\favoriteUserService.ts" />
     <TypeScriptCompile Include="app\services\notificationService.ts" />

@@ -18,4 +18,3 @@ var App;
         Controllers.SavedStatusController = SavedStatusController;
     })(Controllers = App.Controllers || (App.Controllers = {}));
 })(App || (App = {}));
-//# sourceMappingURL=savedStatusController.js.map

@@ -19,4 +19,3 @@ var App;
         Services.DashboardService = DashboardService;
     })(Services = App.Services || (App.Services = {}));
 })(App || (App = {}));
-//# sourceMappingURL=dashboardService.js.map

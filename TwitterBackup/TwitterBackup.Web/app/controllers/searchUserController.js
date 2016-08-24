@@ -24,4 +24,3 @@ var App;
         Controllers.SearchUserController = SearchUserController;
     })(Controllers = App.Controllers || (App.Controllers = {}));
 })(App || (App = {}));
-//# sourceMappingURL=searchUserController.js.map
