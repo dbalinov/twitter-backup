@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TwitterBackup.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class DashboardController : ApiController
     {
         private readonly IUserService userService;

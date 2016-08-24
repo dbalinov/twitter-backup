@@ -35,7 +35,14 @@ namespace TwitterBackup.Web
                     // This is a security feature which is used when you change a password or add an external login to your account.  
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
                         validateInterval: TimeSpan.FromMinutes(30),
-                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
+                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager)),
+                    OnApplyRedirect = ctx =>
+                    {
+                        if (!IsAjaxRequest(ctx.Request))
+                        {
+                            ctx.Response.Redirect(ctx.RedirectUri);
+                        }
+                    }
                 }
             });            
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
@@ -90,6 +97,29 @@ namespace TwitterBackup.Web
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+        }
+
+        private static bool IsAjaxRequest(IOwinRequest request)
+        {
+            if (request == null || request.Headers == null)
+            {
+                return false;
+            }
+
+            var accept = request.Headers["Accept"];
+            if (accept == null)
+            {
+                return false;
+            }
+
+            accept = accept.ToLowerInvariant();
+            var isAjax = accept.Contains("application/json") || 
+                accept == "text/json" ||
+                accept == "application/xml" ||
+                accept == "text/xml" || 
+                request.Headers["X-Requested-With"] == "XMLHttpRequest";
+
+            return isAjax;
         }
     }
 }
