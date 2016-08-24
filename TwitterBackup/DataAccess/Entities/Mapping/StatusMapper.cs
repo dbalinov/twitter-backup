@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Tweetinvi.Models;
 
-namespace DataAccess.Entities.Mappers
+namespace DataAccess.Entities.Mapping
 {
     public class StatusMapper
     {

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DataAccess.Credentials;
 using DataAccess.Entities;
-using DataAccess.Entities.Mappers;
+using DataAccess.Entities.Mapping;
 using Tweetinvi;
 using Tweetinvi.Parameters;
 using Tweetinvi.Models;

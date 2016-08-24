@@ -1,4 +1,4 @@
-﻿namespace DataAccess.Entities.Mappers
+﻿namespace DataAccess.Entities.Mapping
 {
     public class UserMap
     {

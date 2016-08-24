@@ -69,7 +69,14 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Mapping\FavoriteUserRelationMapperTest.cs" />
+    <Compile Include="Mapping\StatusListParamsMapperTest.cs" />
+    <Compile Include="Mapping\StatusMapperTest.cs" />
+    <Compile Include="Mapping\UserMapperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Statuses\StatusServiceTest.cs" />
+    <Compile Include="Services\Users\FavoriteUserServiceTest.cs" />
+    <Compile Include="Services\Users\UserServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Business.csproj">

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using DataAccess.Credentials;
 using DataAccess.Entities;
+using DataAccess.Entities.Mapping;
 using MongoDB.Driver;
 using Tweetinvi;
 using Tweetinvi.Models;
 using User = Tweetinvi.User;
-using DataAccess.Entities.Mappers;
 
 namespace DataAccess.Repositories.Users
 {
