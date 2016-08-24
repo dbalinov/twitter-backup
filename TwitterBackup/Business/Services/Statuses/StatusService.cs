@@ -63,7 +63,10 @@ namespace Business.Services.Statuses
         public async Task SaveAsync(string statusId)
         {
             var status = await this.statusRepository.GetAsync(statusId);
-            await this.statusStoreRepository.SaveAsync(status);
+            if (status != null)
+            {
+                await this.statusStoreRepository.SaveAsync(status);
+            }
         }
 
         public async Task UnsaveAsync(string statusId)

@@ -7,7 +7,7 @@ namespace Business.Test.Mapping
 {
     public class UserMapperTest
     {
-        public readonly UserMapper mapper;
+        private readonly UserMapper mapper;
 
         public UserMapperTest()
         {
