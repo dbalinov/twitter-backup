@@ -53,22 +53,20 @@ namespace DataAccess.Repositories.Statuses
 
         private Status Map(ITweet x)
         {
-            return new Status
+            var media = x.Entities.Medias.FirstOrDefault();
+           
+            var status = new Status
             {
                 StatusId = x.IdStr,
                 Text = x.FullText,
                 Retweeted = x.Retweeted,
                 CreatedAt = x.CreatedAt,
                 CreatedById = x.CreatedBy.IdStr,
-                Entities = new StatusEntities
-                {
-                    Medias = x.Entities.Medias.Select(y => new MediaEntity
-                    {
-                        MediaType = y.MediaType,
-                        MediaUrl = y.MediaURL
-                    })
-                }
+                MediaType = media != null ? media.MediaType: null,
+                MediaUrl = media != null ? media.MediaURL : null
             };
+
+            return status;
         }
 
         public async Task RetweetAsync(string statusId)

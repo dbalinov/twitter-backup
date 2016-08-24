@@ -57,8 +57,6 @@
     <Compile Include="Models\Mapping\StatusListParamsMapper.cs" />
     <Compile Include="Models\Mapping\StatusMapper.cs" />
     <Compile Include="Models\Mapping\UserMapper.cs" />
-    <Compile Include="Models\MediaEntityModel.cs" />
-    <Compile Include="Models\StatusEntitiesModel.cs" />
     <Compile Include="Models\StatusListParamsModel.cs" />
     <Compile Include="Models\StatusModel.cs" />
     <Compile Include="Models\UserModel.cs" />

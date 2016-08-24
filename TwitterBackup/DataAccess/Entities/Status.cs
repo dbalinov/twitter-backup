@@ -11,11 +11,13 @@ namespace DataAccess.Entities
         public bool Retweeted { get; set; }
 
         public DateTime CreatedAt { get; set; }
-
-        public StatusEntities Entities { get; set; }
-
+        
         public string CreatedById { get; set; }
 
         public string SavedByUserId { get; set; }
+
+        public string MediaType { get; set; }
+
+        public string MediaUrl { get; set; }
     }
 }

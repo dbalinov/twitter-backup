@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using DataAccess.Entities;
+﻿using DataAccess.Entities;
 
 namespace Business.Models.Mapping
 {
@@ -9,19 +8,10 @@ namespace Business.Models.Mapping
         {
             to.Id = from.StatusId;
             to.Text = from.Text;
-            //to.RetweetCount = from.RetweetCount;
             to.Retweeted = from.Retweeted;
-            //to.FavoriteCount = from.FavoriteCount;
-            //to.Favorited = from.Favorited;
             to.CreatedAt = from.CreatedAt;
-            to.Entities = new StatusEntitiesModel
-            {
-                Medias = from.Entities.Medias.Select(x => new MediaEntityModel
-                {
-                    MediaType = x.MediaType,
-                    MediaUrl = x.MediaUrl
-                })
-            };
+            to.MediaType = from.MediaType;
+            to.MediaUrl = from.MediaUrl;
 
             return to;
         }

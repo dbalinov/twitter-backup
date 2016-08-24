@@ -106,10 +106,8 @@
     <Compile Include="DataAccessPackage.cs" />
     <Compile Include="DbContext.cs" />
     <Compile Include="Entities\FavoriteUserRelation.cs" />
-    <Compile Include="Entities\MediaEntity.cs" />
     <Compile Include="Entities\MongoEntity.cs" />
     <Compile Include="Entities\Status.cs" />
-    <Compile Include="Entities\StatusEntities.cs" />
     <Compile Include="Entities\StatusListParams.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserRegister.cs" />

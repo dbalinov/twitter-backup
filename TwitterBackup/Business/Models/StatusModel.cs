@@ -11,10 +11,12 @@ namespace Business.Models
         public bool Retweeted { get; set; }
 
         public DateTime CreatedAt { get; set; }
-
-        public StatusEntitiesModel Entities { get; set; }
         
         public bool IsSaved { get; set; }
+
+        public string MediaType { get; set; }
+
+        public string MediaUrl { get; set; }
 
         public string CreatedAtFormatted
         {
