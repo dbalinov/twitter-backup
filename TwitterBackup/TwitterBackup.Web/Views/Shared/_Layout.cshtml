@@ -17,16 +17,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#/">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")#/user/favorites">
                 <span><img src="~/Content/Images/Twitter_logo_white_32.png" alt="logo" /></span>
                 Twitter Backup
             </a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="#/user/favorites">Home</a></li>
-                <li><a href="#/user/search">Search</a></li>
-                <li><a href="#/dashboard">Dashboard</a></li>
+                <li><a href="@Url.Action("Index", "Home")#/user/favorites">Home</a></li>
+                <li><a href="@Url.Action("Index", "Home")#/user/search">Search</a></li>
+                <li><a href="@Url.Action("Index", "Home")#/dashboard">Dashboard</a></li>
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
