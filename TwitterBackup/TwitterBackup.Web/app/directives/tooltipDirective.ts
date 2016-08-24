@@ -1,5 +1,5 @@
 ﻿module App.Directives {
-    twitterBackupApp.directive('tooltip',
+    twitterBackupApp.directive("tooltip",
     () => {
         return {
             restrict: 'A',
