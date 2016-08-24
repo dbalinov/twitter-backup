@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DataAccess.Credentials;
 using DataAccess.Entities;
+using DataAccess.Entities.Mappers;
 using Tweetinvi;
 using Tweetinvi.Parameters;
 using Tweetinvi.Models;
@@ -22,8 +23,8 @@ namespace DataAccess.Repositories.Statuses
         {
             var tweet = await Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => TweetAsync.GetTweet(long.Parse(statusId)));
-
-            return Map(tweet);
+            var mapper = new StatusMapper();
+            return mapper.Map(tweet, new Status());
         }
 
         public async Task<IEnumerable<Status>> GetUserTimelineAsync(StatusListParams statusListParams)
@@ -48,27 +49,10 @@ namespace DataAccess.Repositories.Statuses
 
             tweets = tweets ?? Enumerable.Empty<ITweet>();
 
-            return tweets.Select(Map);
+            var mapper = new StatusMapper();
+            return tweets.Select(x => mapper.Map(x, new Status()));
         }
-
-        private Status Map(ITweet x)
-        {
-            var media = x.Entities.Medias.FirstOrDefault();
-           
-            var status = new Status
-            {
-                StatusId = x.IdStr,
-                Text = x.FullText,
-                Retweeted = x.Retweeted,
-                CreatedAt = x.CreatedAt,
-                CreatedById = x.CreatedBy.IdStr,
-                MediaType = media != null ? media.MediaType: null,
-                MediaUrl = media != null ? media.MediaURL : null
-            };
-
-            return status;
-        }
-
+        
         public async Task RetweetAsync(string statusId)
         {
             var tweetId = long.Parse(statusId);

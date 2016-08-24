@@ -8,6 +8,7 @@ using MongoDB.Driver;
 using Tweetinvi;
 using Tweetinvi.Models;
 using User = Tweetinvi.User;
+using DataAccess.Entities.Mappers;
 
 namespace DataAccess.Repositories.Users
 {
@@ -27,7 +28,8 @@ namespace DataAccess.Repositories.Users
             var users = Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => Tweetinvi.Search.SearchUsers(query, 9));
 
-            return users.Select(friend => Map(friend));
+            var mapper = new UserMap();
+            return users.Select(user => mapper.Map(user, new Entities.User()));
         }
 
         public IEnumerable<Entities.User> GetUsersFromIds(IEnumerable<string> ids)
@@ -35,7 +37,8 @@ namespace DataAccess.Repositories.Users
             var users = Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => User.GetUsersFromIds(ids.Select(long.Parse)));
 
-            return users.Select(user => Map(user));
+            var mapper = new UserMap();
+            return users.Select(user => mapper.Map(user, new Entities.User()));
         }
 
         public async Task<Entities.User> GetAsync(string userId)
@@ -43,25 +46,8 @@ namespace DataAccess.Repositories.Users
             var user = await Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => UserAsync.GetUserFromId(long.Parse(userId)));
 
-            return Map(user);
-        }
-
-        private DataAccess.Entities.User Map(IUser friend)
-        {
-            return new DataAccess.Entities.User
-            {
-                Id = friend.IdStr,
-                Name = friend.Name,
-                Description = friend.Description,
-                ProfileImageUrl = friend.ProfileImageUrl.Replace("_normal", "_bigger"),
-                ProfileBackgroundColor = friend.ProfileBackgroundColor,
-                ProfileBannerUrl = friend.ProfileBannerURL,
-                FollowersCount = friend.FollowersCount,
-                StatusesCount = friend.StatusesCount,
-                FriendsCount = friend.FriendsCount,
-                ScreenName = friend.ScreenName,
-                Verified = friend.Verified
-            };
+            var mapper = new UserMap();
+            return mapper.Map(user, new Entities.User());
         }
 
         public async Task RegisterUserAsync(string userId)
