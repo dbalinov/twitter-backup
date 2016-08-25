@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using NSubstitute;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http.Results;
 using TwitterBackup.Business.Models;
 using TwitterBackup.Business.Services.Users;
-using NSubstitute;
 using TwitterBackup.Web.Controllers;
 using TwitterBackup.Web.Models.User;
 using Xunit;

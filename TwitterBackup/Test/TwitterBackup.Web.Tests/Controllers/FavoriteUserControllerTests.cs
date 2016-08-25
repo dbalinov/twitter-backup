@@ -1,7 +1,13 @@
-﻿using TwitterBackup.Business.Services.Users;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Web.Http.Results;
 using NSubstitute;
-using TwitterBackup.Web.Controllers;
+using TwitterBackup.Business.Models;
+using TwitterBackup.Business.Services.Users;
 using TwitterBackup.Infrastructure.Identity.Claims;
+using TwitterBackup.Web.Controllers;
+using TwitterBackup.Web.Models.User;
+using Xunit;
 
 namespace TwitterBackup.Web.Tests.Controllers
 {
