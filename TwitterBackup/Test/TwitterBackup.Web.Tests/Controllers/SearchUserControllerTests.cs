@@ -18,7 +18,7 @@ namespace TwitterBackup.Web.Tests.Controllers
 
         public SearchUserControllerTests()
         {
-            this.userService = Substitute.For<IUserService>(); ;
+            this.userService = Substitute.For<IUserService>();
 
             this.searchUserController = new SearchUserController(this.userService);
         }

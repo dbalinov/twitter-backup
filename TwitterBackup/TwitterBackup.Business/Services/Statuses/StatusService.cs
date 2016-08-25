@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using TwitterBackup.Business.Models;
@@ -21,6 +22,11 @@ namespace TwitterBackup.Business.Services.Statuses
 
         public async Task<IEnumerable<StatusModel>> GetUserTimelineAsync(StatusListParamsModel statusListParams)
         {
+            if (statusListParams == null)
+            {
+                throw new ArgumentNullException("statusListParams");
+            }
+
             var mapper = new StatusMapper();
             var paramsMapper = new StatusListParamsMapper();
             var paramsModel = paramsMapper.Map(statusListParams, new StatusListParams());
@@ -40,6 +46,11 @@ namespace TwitterBackup.Business.Services.Statuses
 
         public async Task<IEnumerable<StatusModel>> GetAllSavedAsync(StatusListParamsModel statusListParams)
         {
+            if (statusListParams == null)
+            {
+                throw new ArgumentNullException("statusListParams");
+            }
+
             var mapper = new StatusMapper();
             var paramsMapper = new StatusListParamsMapper();
             var paramsModel = paramsMapper.Map(statusListParams, new StatusListParams());

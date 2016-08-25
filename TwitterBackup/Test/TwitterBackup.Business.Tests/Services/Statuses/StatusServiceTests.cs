@@ -1,8 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using NSubstitute;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using TwitterBackup.Business.Models;
 using TwitterBackup.Business.Services.Statuses;
 using TwitterBackup.DataAccess.Entities;
 using TwitterBackup.DataAccess.Repositories.Statuses;
-using NSubstitute;
 using Xunit;
 
 namespace TwitterBackup.Business.Tests.Services.Statuses
@@ -22,50 +26,77 @@ namespace TwitterBackup.Business.Tests.Services.Statuses
             this.statusService = new StatusService(this.statusRepository, this.statusStoreRepository);
         }
 
-        // TODO: add regions
+        [Fact]
+        public async Task GetUserTimelineAsyncNullArgumentTest()
+        {
+            // Act
+            await Assert.ThrowsAsync<ArgumentNullException>(
+                () => this.statusService.GetUserTimelineAsync(null));
+        }
 
-        // 1. null params
-        // 2. null  statuses.
-        // 3. valid,  saved status test
-        //public async Task<IEnumerable<StatusModel>> GetUserTimelineAsync(StatusListParamsModel statusListParams)
-        //{
-        //    var mapper = new StatusMapper();
-        //    var paramsMapper = new StatusListParamsMapper();
-        //    var paramsModel = paramsMapper.Map(statusListParams, new StatusListParams());
-        //    var statuses = await this.statusRepository.GetUserTimelineAsync(paramsModel);
+        [Fact]
+        public async Task GetUserTimelineAsyncTest()
+        {
+            // Arrange
+            var statuses = new List<Status>
+            {
+                new Status { StatusId = "statusId 1" },
+                new Status { StatusId = "statusId 2" }
+            };
 
-        //    var statusModels = statuses
-        //        .Select(x => mapper.Map(x, new StatusModel()))
-        //        .ToList();
+            this.statusRepository.GetUserTimelineAsync(Arg.Any<StatusListParams>())
+                .Returns(statuses);
 
-        //    var savedStatusIds = await this.statusStoreRepository.GetSavedStatusIdsAsync();
-        //    var savedStatusIdsList = savedStatusIds.ToList();
+            this.statusStoreRepository.GetSavedStatusIdsAsync()
+                .Returns(new List<string> { "statusId 1" });
 
-        //    statusModels.ForEach(x => x.IsSaved = savedStatusIdsList.Contains(x.Id));
+            // Act
+            var resut = await this.statusService.GetUserTimelineAsync(
+                new StatusListParamsModel());
 
-        //    return statusModels;
-        //}
+            // Assert
+            Assert.NotNull(resut);
+            Assert.Equal(resut.Count(), statuses.Count);
+            Assert.Equal(resut.First().Id, statuses.First().StatusId);
+            Assert.True(resut.First().IsSaved);
+            Assert.False(resut.Last().IsSaved);
+        }
+        
+        [Fact]
+        public async Task GetAllSavedAsyncNullArgumentTest()
+        {
+            // Act
+            await Assert.ThrowsAsync<ArgumentNullException>(
+                () => this.statusService.GetAllSavedAsync(null));
+        }
 
-        // 1. null params test
-        // 2. saved statuses null
-        // 3. valid, all are saved.
-        //public async Task<IEnumerable<StatusModel>> GetAllSavedAsync(StatusListParamsModel statusListParams)
-        //{
-        //    var mapper = new StatusMapper();
-        //    var paramsMapper = new StatusListParamsMapper();
-        //    var paramsModel = paramsMapper.Map(statusListParams, new StatusListParams());
-        //    var savedStatuses = await this.statusStoreRepository.GetAllSavedAsync(paramsModel);
+        [Fact]
+        public async Task GetAllSavedAsyncTest()
+        {
+            // Arrange
+            var statuses = new List<Status>
+            {
+                new Status { StatusId = "statusId 1" },
+                new Status { StatusId = "statusId 2" }
+            };
 
-        //    var statusModels = savedStatuses.Select(x => mapper.Map(x, new StatusModel())).ToList();
-        //    statusModels.ForEach(x =>
-        //    {
-        //        x.IsSaved = true;
-        //        x.CreatedAt = x.CreatedAt.ToLocalTime();
-        //    });
+            this.statusStoreRepository.GetAllSavedAsync(Arg.Any<StatusListParams>())
+                .Returns(statuses);
 
-        //    return statusModels;
-        //}
+            this.statusStoreRepository.GetSavedStatusIdsAsync()
+                .Returns(new List<string> { "statusId 1" });
 
+            // Act
+            var resut = await this.statusService.GetAllSavedAsync(
+                new StatusListParamsModel());
+
+            // Assert
+            Assert.NotNull(resut);
+            Assert.Equal(resut.Count(), statuses.Count);
+            Assert.Equal(resut.First().Id, statuses.First().StatusId);
+            Assert.All(resut, x => Assert.True(x.IsSaved));
+        }
+        
         [Fact]
         public async Task RetweetAsync()
         {
