@@ -7,7 +7,7 @@ using MongoDB.Bson;
 
 namespace TwitterBackup.DataAccess.Repositories.Users
 {
-    public class FavoriteUserRepository : IFavoriteUserRepository
+    internal class FavoriteUserRepository : IFavoriteUserRepository
     {
         private readonly IDbContext dbContext;
 

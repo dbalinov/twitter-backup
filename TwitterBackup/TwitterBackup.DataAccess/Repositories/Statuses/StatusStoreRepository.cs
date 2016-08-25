@@ -8,7 +8,7 @@ using MongoDB.Driver;
 
 namespace TwitterBackup.DataAccess.Repositories.Statuses
 {
-    public class StatusStoreRepository : IStatusStoreRepository
+    internal class StatusStoreRepository : IStatusStoreRepository
     {
         private readonly IDbContext dbContext;
         private readonly ITwitterClaimsHelper claimsHelper;

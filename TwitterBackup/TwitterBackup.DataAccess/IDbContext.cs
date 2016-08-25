@@ -3,7 +3,7 @@ using MongoDB.Driver;
 
 namespace TwitterBackup.DataAccess
 {
-    public interface IDbContext
+    internal interface IDbContext
     {
         IMongoCollection<Status> Statuses { get; }
 
