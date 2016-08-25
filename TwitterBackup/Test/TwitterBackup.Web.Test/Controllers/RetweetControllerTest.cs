@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Business.Services.Statuses;
+using TwitterBackup.Web.Controllers;
+using NSubstitute;
 
 namespace TwitterBackup.Web.Test.Controllers
 {
-    class RetweetControllerTest
+    public class RetweetControllerTest
     {
+        private readonly IStatusService statusService;
+
+        private readonly RetweetController retweetController;
+        
+        public RetweetControllerTest()
+        {
+            this.statusService = Substitute.For<IStatusService>();
+
+            this.retweetController = new RetweetController(this.statusService);
+        }
     }
 }

@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Business.Services.Users;
+using NSubstitute;
+using TwitterBackup.Web.Controllers;
 
 namespace TwitterBackup.Web.Test.Controllers
 {
-    class SearchUserControllerTest
+    public class SearchUserControllerTest
     {
+        private readonly IUserService userService;
+
+        private readonly SearchUserController searchUserController;
+
+        public SearchUserControllerTest()
+        {
+            this.userService = Substitute.For<IUserService>(); ;
+
+            this.searchUserController = new SearchUserController(this.userService);
+        }
     }
 }
