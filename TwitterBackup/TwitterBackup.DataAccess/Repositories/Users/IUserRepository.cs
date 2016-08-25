@@ -10,6 +10,8 @@ namespace TwitterBackup.DataAccess.Repositories.Users
         IEnumerable<User> Search(string query);
 
         IEnumerable<User> GetUsersFromIds(IEnumerable<string> ids);
+        
+        Task<IEnumerable<User>> GetFriendsAsync(string userId);
 
         Task<User> GetAsync(string userId);
 

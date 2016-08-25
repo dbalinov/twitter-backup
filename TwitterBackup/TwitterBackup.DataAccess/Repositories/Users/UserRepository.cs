@@ -38,6 +38,15 @@ namespace TwitterBackup.DataAccess.Repositories.Users
             return users.Select(user => mapper.Map(user, new Entities.User()));
         }
 
+        public async Task<IEnumerable<Entities.User>> GetFriendsAsync(string userId)
+        {
+            var users = await Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => UserAsync.GetFriends(long.Parse(userId)));
+
+            var mapper = new UserMap();
+            return users.Select(user => mapper.Map(user, new Entities.User()));
+        }
+
         public async Task<Entities.User> GetAsync(string userId)
         {
             var user = await Auth.ExecuteOperationWithCredentials(

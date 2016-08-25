@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TwitterBackup.Business.Models;
@@ -11,6 +12,8 @@ namespace TwitterBackup.Business.Services.Users
 {
     internal class UserService : IUserService
     {
+        private const int CountOfRecommendedUsers = 9;
+
         private readonly IUserRepository userRepository;
         private readonly IFavoriteUserRepository favoriteUserRepository;
         private readonly IStatusStoreRepository statusStoreRepository;
@@ -53,6 +56,23 @@ namespace TwitterBackup.Business.Services.Users
 
             result.ForEach(user => user.IsFavorite = favoriteUserIds.Contains(user.Id));
 
+            return result;
+        }
+
+        public async Task<IEnumerable<UserModel>> GetRecommendedUsersAsync()
+        {
+            var favoriteUserIds = await FavoriteUserIds();
+
+            var mapper = new UserMapper();
+            var userId = claimsHelper.GetUserId();
+            var users = await this.userRepository.GetFriendsAsync(userId);
+
+            var result = users
+                .Where(user => !favoriteUserIds.Contains(user.Id))
+                .OrderBy(x => Guid.NewGuid()) // Randomize
+                .Take(CountOfRecommendedUsers)
+                .Select(user => mapper.Map(user, new UserModel())).ToList();
+            
             return result;
         }
 

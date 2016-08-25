@@ -6,9 +6,11 @@ namespace TwitterBackup.Business.Services.Users
 {
     public interface IUserService
     {
-        Task<IEnumerable<UserModel>> SearchAsync(string query);
-
         Task<UserModel> GetAsync(string userId);
+
+        Task<IEnumerable<UserModel>> SearchAsync(string query);
+        
+        Task<IEnumerable<UserModel>> GetRecommendedUsersAsync();
 
         Task RegisterUserAsync(string userId);
 

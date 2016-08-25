@@ -15,6 +15,12 @@ namespace TwitterBackup.Web.Controllers
             this.userService = userService;
         }
 
+        public async Task<IHttpActionResult> GetFriends()
+        {
+            var users = await this.userService.GetRecommendedUsersAsync();
+            return Ok(users);
+        }
+
         public async Task<IHttpActionResult> PostSearch(SearchUserRequest request)
         {
             var users = await this.userService.SearchAsync(request.Query);

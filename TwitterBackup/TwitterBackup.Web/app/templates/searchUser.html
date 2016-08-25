@@ -20,8 +20,20 @@
     </div>
 </div>
 <div class="row search-results-row">
-    <div ng-repeat="user in model.users"
-         class="col-xs-12 col-sm-6 col-md-4 col-lg-4 animate-repeat">
-        <div user-profile="user"></div>
+    <div class="col-xs-12">
+        <div ng-if="model.users.length">
+            <h4>Search results</h4>
+            <div ng-repeat="user in model.users"
+                 class="col-xs-12 col-sm-6 col-md-4 col-lg-4 animate-repeat">
+                <div user-profile="user"></div>
+            </div>
+        </div>
+        <div ng-if="model.users.length == 0 && model.recommendedUsers.length != 0">
+            <h4>Recommendations</h4>
+            <div ng-repeat="user in model.recommendedUsers"
+                 class="col-xs-12 col-sm-6 col-md-4 col-lg-4 animate-repeat">
+                <div user-profile="user"></div>
+            </div>
+        </div>
     </div>
 </div> 
