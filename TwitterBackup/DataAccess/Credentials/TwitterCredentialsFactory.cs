@@ -1,5 +1,5 @@
 ﻿using System.Web.Configuration;
-using Infrastructure.Identity.Claims;
+using TwitterBackup.Infrastructure.Identity.Claims;
 using Tweetinvi.Models;
 
 namespace DataAccess.Credentials

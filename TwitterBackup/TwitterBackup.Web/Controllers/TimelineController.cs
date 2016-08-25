@@ -4,7 +4,7 @@ using System.Web.Http;
 using Business.Models;
 using Business.Services.Statuses;
 using Business.Services.Users;
-using Infrastructure.Identity.Claims;
+using TwitterBackup.Infrastructure.Identity.Claims;
 using TwitterBackup.Web.Messages.Status;
 
 namespace TwitterBackup.Web.Controllers

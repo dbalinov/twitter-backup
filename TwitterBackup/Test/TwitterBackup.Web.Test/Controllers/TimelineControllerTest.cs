@@ -1,6 +1,6 @@
 ﻿using Business.Services.Statuses;
 using Business.Services.Users;
-using Infrastructure.Identity.Claims;
+using TwitterBackup.Infrastructure.Identity.Claims;
 using NSubstitute;
 using TwitterBackup.Web.Controllers;
 

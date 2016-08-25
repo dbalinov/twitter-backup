@@ -125,9 +125,9 @@
     <Compile Include="Repositories\Users\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+    <ProjectReference Include="..\Infrastructure\TwitterBackup.Infrastructure.csproj">
       <Project>{2319cbe1-ecfa-4abb-9474-1a84405d6481}</Project>
-      <Name>Infrastructure</Name>
+      <Name>TwitterBackup.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

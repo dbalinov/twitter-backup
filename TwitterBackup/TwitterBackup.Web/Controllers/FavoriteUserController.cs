@@ -2,7 +2,7 @@
 using Business.Models;
 using Business.Services.Users;
 using System.Threading.Tasks;
-using Infrastructure.Identity.Claims;
+using TwitterBackup.Infrastructure.Identity.Claims;
 using TwitterBackup.Web.Messages.User;
 
 namespace TwitterBackup.Web.Controllers

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataAccess.Entities;
-using Infrastructure.Identity.Claims;
+using TwitterBackup.Infrastructure.Identity.Claims;
 using MongoDB.Driver;
 
 namespace DataAccess.Repositories.Statuses

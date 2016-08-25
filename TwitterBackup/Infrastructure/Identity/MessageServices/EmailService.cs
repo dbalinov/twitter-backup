@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 
-namespace Infrastructure.Identity.MessageServices
+namespace TwitterBackup.Infrastructure.Identity.MessageServices
 {
     public class EmailService : IIdentityMessageService
     {

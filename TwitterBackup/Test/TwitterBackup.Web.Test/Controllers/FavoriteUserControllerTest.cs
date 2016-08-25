@@ -1,7 +1,7 @@
 ﻿using Business.Services.Users;
 using NSubstitute;
 using TwitterBackup.Web.Controllers;
-using Infrastructure.Identity.Claims;
+using TwitterBackup.Infrastructure.Identity.Claims;
 
 namespace TwitterBackup.Web.Test.Controllers
 {

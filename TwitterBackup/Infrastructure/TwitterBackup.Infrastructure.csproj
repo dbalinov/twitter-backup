@@ -7,8 +7,8 @@
     <ProjectGuid>{2319CBE1-ECFA-4ABB-9474-1A84405D6481}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Infrastructure</RootNamespace>
-    <AssemblyName>Infrastructure</AssemblyName>
+    <RootNamespace>TwitterBackup.Infrastructure</RootNamespace>
+    <AssemblyName>TwitterBackup.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

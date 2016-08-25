@@ -1,9 +1,8 @@
 ﻿using System.Linq;
 using System.Security.Claims;
-using System.Threading;
 using System.Web;
 
-namespace Infrastructure.Identity.Claims
+namespace TwitterBackup.Infrastructure.Identity.Claims
 {
     public class TwitterClaimsHelper : ITwitterClaimsHelper
     {

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Business.Models;
 using Business.Models.Mapping;
 using DataAccess.Repositories.Users;
-using Infrastructure.Identity.Claims;
+using TwitterBackup.Infrastructure.Identity.Claims;
 using DataAccess.Repositories.Statuses;
 
 namespace Business.Services.Users

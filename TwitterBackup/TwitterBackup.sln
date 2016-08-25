@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.Test", "Test\Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterBackup.Web.Test", "Test\TwitterBackup.Web.Test\TwitterBackup.Web.Test.csproj", "{6C7F3CF2-37E0-42F6-9A6E-3DA121F0F1E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{2319CBE1-ECFA-4ABB-9474-1A84405D6481}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterBackup.Infrastructure", "Infrastructure\TwitterBackup.Infrastructure.csproj", "{2319CBE1-ECFA-4ABB-9474-1A84405D6481}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

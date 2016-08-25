@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using TwitterBackup.Web.Models;
-using Infrastructure.Identity.MessageServices;
+using TwitterBackup.Infrastructure.Identity.MessageServices;
 
 namespace TwitterBackup.Web
 {

@@ -95,9 +95,9 @@
       <Project>{69bfb9fb-37a8-4cbc-a938-e1e663f191e2}</Project>
       <Name>Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Infrastructure\Infrastructure.csproj">
+    <ProjectReference Include="..\..\Infrastructure\TwitterBackup.Infrastructure.csproj">
       <Project>{2319cbe1-ecfa-4abb-9474-1a84405d6481}</Project>
-      <Name>Infrastructure</Name>
+      <Name>TwitterBackup.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\TwitterBackup.Web\TwitterBackup.Web.csproj">
       <Project>{b8b1aa91-863e-4930-961c-cac8de480224}</Project>

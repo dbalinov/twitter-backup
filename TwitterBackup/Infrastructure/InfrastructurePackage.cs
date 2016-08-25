@@ -1,8 +1,8 @@
-﻿using Infrastructure.Identity.Claims;
+﻿using TwitterBackup.Infrastructure.Identity.Claims;
 using SimpleInjector;
 using SimpleInjector.Packaging;
 
-namespace Infrastructure
+namespace TwitterBackup.Infrastructure
 {
     public class InfrastructurePackage : IPackage
     {
