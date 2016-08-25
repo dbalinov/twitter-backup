@@ -2,7 +2,7 @@
 using TwitterBackup.Web.Controllers;
 using NSubstitute;
 
-namespace TwitterBackup.Web.Test.Controllers
+namespace TwitterBackup.Web.Tests.Controllers
 {
     public class RetweetControllerTest
     {

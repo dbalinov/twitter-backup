@@ -4,13 +4,13 @@ using Business.Models.Mapping;
 using DataAccess.Entities;
 using Xunit;
 
-namespace Business.Test.Mapping
+namespace TwitterBackup.Business.Tests.Mapping
 {
-    public class StatusMapperTest
+    public class StatusMapperTests
     {
         private readonly StatusMapper mapper;
 
-        public StatusMapperTest()
+        public StatusMapperTests()
         {
             this.mapper = new StatusMapper();
         }

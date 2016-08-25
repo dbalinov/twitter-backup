@@ -3,13 +3,13 @@ using Business.Models;
 using DataAccess.Entities;
 using Xunit;
 
-namespace Business.Test.Mapping
+namespace TwitterBackup.Business.Tests.Mapping
 {
-    public class StatusListParamsMapperTest
+    public class StatusListParamsMapperTests
     {
         private readonly StatusListParamsMapper mapper;
 
-        public StatusListParamsMapperTest()
+        public StatusListParamsMapperTests()
         {
             this.mapper = new StatusListParamsMapper();
         }

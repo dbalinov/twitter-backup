@@ -3,13 +3,13 @@ using Business.Models;
 using Business.Models.Mapping;
 using DataAccess.Entities;
 
-namespace Business.Test.Mapping
+namespace TwitterBackup.Business.Tests.Mapping
 {
-    public class UserMapperTest
+    public class UserMapperTests
     {
         private readonly UserMapper mapper;
 
-        public UserMapperTest()
+        public UserMapperTests()
         {
             this.mapper = new UserMapper();
         }

@@ -4,7 +4,7 @@ using TwitterBackup.Infrastructure.Identity.Claims;
 using NSubstitute;
 using TwitterBackup.Web.Controllers;
 
-namespace TwitterBackup.Web.Test.Controllers
+namespace TwitterBackup.Web.Tests.Controllers
 {
     public class TimelineControllerTest
     {

@@ -5,16 +5,16 @@ using DataAccess.Repositories.Statuses;
 using NSubstitute;
 using Xunit;
 
-namespace Business.Test.Services.Statuses
+namespace TwitterBackup.Business.Tests.Services.Statuses
 {
-    public class StatusServiceTest
+    public class StatusServiceTests
     {
         private readonly IStatusRepository statusRepository;
         private readonly IStatusStoreRepository statusStoreRepository;
 
         private readonly StatusService statusService;
 
-        public StatusServiceTest()
+        public StatusServiceTests()
         {
             this.statusRepository = Substitute.For<IStatusRepository>();
             this.statusStoreRepository = Substitute.For<IStatusStoreRepository>();

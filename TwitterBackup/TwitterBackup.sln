@@ -11,11 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "TwitterBackup
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "TwitterBackup.Business\Business.csproj", "{69BFB9FB-37A8-4CBC-A938-E1E663F191E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business.Test", "Test\TwitterBackup.Business.Test\Business.Test.csproj", "{55B9AEDE-C4D9-458C-9713-7C924066A9B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterBackup.Business.Tests", "Test\TwitterBackup.Business.Test\TwitterBackup.Business.Tests.csproj", "{55B9AEDE-C4D9-458C-9713-7C924066A9B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.Test", "Test\TwitterBackup.DataAccess.Test\DataAccess.Test.csproj", "{476B5D8C-8BCC-4044-A223-1EEEA5C0A6AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterBackup.DataAccess.Tests", "Test\TwitterBackup.DataAccess.Test\TwitterBackup.DataAccess.Tests.csproj", "{476B5D8C-8BCC-4044-A223-1EEEA5C0A6AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterBackup.Web.Test", "Test\TwitterBackup.Web.Test\TwitterBackup.Web.Test.csproj", "{6C7F3CF2-37E0-42F6-9A6E-3DA121F0F1E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterBackup.Web.Tests", "Test\TwitterBackup.Web.Test\TwitterBackup.Web.Tests.csproj", "{6C7F3CF2-37E0-42F6-9A6E-3DA121F0F1E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterBackup.Infrastructure", "TwitterBackup.Infrastructure\TwitterBackup.Infrastructure.csproj", "{2319CBE1-ECFA-4ABB-9474-1A84405D6481}"
 EndProject

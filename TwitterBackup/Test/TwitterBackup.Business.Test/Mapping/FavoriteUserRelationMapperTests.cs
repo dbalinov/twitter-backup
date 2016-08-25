@@ -3,13 +3,13 @@ using Business.Models.Mapping;
 using DataAccess.Entities;
 using Xunit;
 
-namespace Business.Test.Mapping
+namespace TwitterBackup.Business.Tests.Mapping
 {
-    public class FavoriteUserRelationMapperTest
+    public class FavoriteUserRelationMapperTests
     {
         private readonly FavoriteUserRelationMapper mapper;
 
-        public FavoriteUserRelationMapperTest()
+        public FavoriteUserRelationMapperTests()
         {
             this.mapper = new FavoriteUserRelationMapper();
         }

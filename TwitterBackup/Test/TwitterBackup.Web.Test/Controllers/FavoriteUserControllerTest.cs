@@ -3,7 +3,7 @@ using NSubstitute;
 using TwitterBackup.Web.Controllers;
 using TwitterBackup.Infrastructure.Identity.Claims;
 
-namespace TwitterBackup.Web.Test.Controllers
+namespace TwitterBackup.Web.Tests.Controllers
 {
     public class FavoriteUserControllerTest
     {

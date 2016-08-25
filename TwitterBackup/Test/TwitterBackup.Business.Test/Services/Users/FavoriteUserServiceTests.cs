@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Test.Services.Users
+namespace TwitterBackup.Business.Tests.Services.Users
 {
-    public class UserServiceTest
+    public class FavoriteUserServiceTests
     {
     }
 }

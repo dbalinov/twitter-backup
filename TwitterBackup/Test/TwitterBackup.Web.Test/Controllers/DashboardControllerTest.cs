@@ -8,7 +8,7 @@ using TwitterBackup.Web.Controllers;
 using TwitterBackup.Web.Messages.User;
 using Xunit;
 
-namespace TwitterBackup.Web.Test.Controllers
+namespace TwitterBackup.Web.Tests.Controllers
 {
     public class DashboardControllerTest
     {
