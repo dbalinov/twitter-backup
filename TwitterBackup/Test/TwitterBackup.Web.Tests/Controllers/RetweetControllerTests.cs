@@ -1,16 +1,16 @@
-﻿using Business.Services.Statuses;
+﻿using TwitterBackup.Business.Services.Statuses;
 using TwitterBackup.Web.Controllers;
 using NSubstitute;
 
 namespace TwitterBackup.Web.Tests.Controllers
 {
-    public class RetweetControllerTest
+    public class RetweetControllerTests
     {
         private readonly IStatusService statusService;
 
         private readonly RetweetController retweetController;
         
-        public RetweetControllerTest()
+        public RetweetControllerTests()
         {
             this.statusService = Substitute.For<IStatusService>();
 

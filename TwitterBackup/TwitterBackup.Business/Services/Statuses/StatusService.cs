@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using Business.Models;
-using Business.Models.Mapping;
-using DataAccess.Entities;
-using DataAccess.Repositories.Statuses;
+using TwitterBackup.Business.Models;
+using TwitterBackup.Business.Models.Mapping;
+using TwitterBackup.DataAccess.Entities;
+using TwitterBackup.DataAccess.Repositories.Statuses;
 
-namespace Business.Services.Statuses
+namespace TwitterBackup.Business.Services.Statuses
 {
     internal class StatusService : IStatusService
     {

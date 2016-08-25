@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DataAccess.Entities;
+using TwitterBackup.DataAccess.Entities;
 using MongoDB.Driver;
 using MongoDB.Bson;
 
-namespace DataAccess.Repositories.Users
+namespace TwitterBackup.DataAccess.Repositories.Users
 {
     public class FavoriteUserRepository : IFavoriteUserRepository
     {

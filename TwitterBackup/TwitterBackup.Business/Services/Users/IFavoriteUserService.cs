@@ -1,8 +1,8 @@
-﻿using Business.Models;
+﻿using TwitterBackup.Business.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Business.Services.Users
+namespace TwitterBackup.Business.Services.Users
 {
     public interface IFavoriteUserService
     {

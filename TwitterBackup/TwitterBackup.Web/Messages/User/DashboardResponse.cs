@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Business.Models;
+using TwitterBackup.Business.Models;
 
 namespace TwitterBackup.Web.Messages.User
 {

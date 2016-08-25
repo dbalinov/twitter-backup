@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Business.Models;
+using TwitterBackup.Business.Models;
 
 namespace TwitterBackup.Web.Messages.Status
 {

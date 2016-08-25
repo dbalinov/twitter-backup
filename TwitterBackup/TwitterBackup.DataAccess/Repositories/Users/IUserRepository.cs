@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DataAccess.Entities;
+using TwitterBackup.DataAccess.Entities;
 
-namespace DataAccess.Repositories.Users
+namespace TwitterBackup.DataAccess.Repositories.Users
 {
     public interface IUserRepository
     {

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DataAccess.Entities;
+using TwitterBackup.DataAccess.Entities;
 using TwitterBackup.Infrastructure.Identity.Claims;
 using MongoDB.Driver;
 
-namespace DataAccess.Repositories.Statuses
+namespace TwitterBackup.DataAccess.Repositories.Statuses
 {
     public class StatusStoreRepository : IStatusStoreRepository
     {

@@ -1,4 +1,4 @@
-﻿namespace DataAccess.Entities
+﻿namespace TwitterBackup.DataAccess.Entities
 {
     public class FavoriteUserRelation : MongoEntity
     {

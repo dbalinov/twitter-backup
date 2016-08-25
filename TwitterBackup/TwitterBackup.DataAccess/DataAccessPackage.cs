@@ -1,12 +1,12 @@
-﻿using DataAccess.Credentials;
-using DataAccess.Repositories.Statuses;
-using DataAccess.Repositories.Users;
+﻿using TwitterBackup.DataAccess.Credentials;
+using TwitterBackup.DataAccess.Repositories.Statuses;
+using TwitterBackup.DataAccess.Repositories.Users;
 using MongoDB.Driver;
 using SimpleInjector;
 using SimpleInjector.Packaging;
 using System.Web.Configuration;
 
-namespace DataAccess
+namespace TwitterBackup.DataAccess
 {
     public class DataAccessPackage : IPackage
     {

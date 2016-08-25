@@ -1,8 +1,8 @@
 ﻿using System.Web.Configuration;
-using DataAccess.Entities;
+using TwitterBackup.DataAccess.Entities;
 using MongoDB.Driver;
 
-namespace DataAccess
+namespace TwitterBackup.DataAccess
 {
     internal class DbContext : IDbContext
     {

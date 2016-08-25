@@ -351,9 +351,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TwitterBackup.Business\Business.csproj">
+    <ProjectReference Include="..\TwitterBackup.Business\TwitterBackup.Business.csproj">
       <Project>{69bfb9fb-37a8-4cbc-a938-e1e663f191e2}</Project>
-      <Name>Business</Name>
+      <Name>TwitterBackup.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\TwitterBackup.Infrastructure\TwitterBackup.Infrastructure.csproj">
       <Project>{2319cbe1-ecfa-4abb-9474-1a84405d6481}</Project>

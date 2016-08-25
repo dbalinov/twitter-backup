@@ -1,6 +1,6 @@
-﻿using Business.Models.Mapping;
-using Business.Models;
-using DataAccess.Entities;
+﻿using TwitterBackup.Business.Models.Mapping;
+using TwitterBackup.Business.Models;
+using TwitterBackup.DataAccess.Entities;
 using Xunit;
 
 namespace TwitterBackup.Business.Tests.Mapping

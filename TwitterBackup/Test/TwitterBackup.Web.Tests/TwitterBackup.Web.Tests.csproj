@@ -82,18 +82,18 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Controllers\DashboardControllerTest.cs" />
-    <Compile Include="Controllers\FavoriteUserControllerTest.cs" />
-    <Compile Include="Controllers\RetweetControllerTest.cs" />
-    <Compile Include="Controllers\SearchUserControllerTest.cs" />
-    <Compile Include="Controllers\StatusStoreControllerTest.cs" />
-    <Compile Include="Controllers\TimelineControllerTest.cs" />
+    <Compile Include="Controllers\DashboardControllerTests.cs" />
+    <Compile Include="Controllers\FavoriteUserControllerTests.cs" />
+    <Compile Include="Controllers\RetweetControllerTests.cs" />
+    <Compile Include="Controllers\SearchUserControllerTests.cs" />
+    <Compile Include="Controllers\StatusStoreControllerTests.cs" />
+    <Compile Include="Controllers\TimelineControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TwitterBackup.Business\Business.csproj">
+    <ProjectReference Include="..\..\TwitterBackup.Business\TwitterBackup.Business.csproj">
       <Project>{69bfb9fb-37a8-4cbc-a938-e1e663f191e2}</Project>
-      <Name>Business</Name>
+      <Name>TwitterBackup.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\TwitterBackup.Infrastructure\TwitterBackup.Infrastructure.csproj">
       <Project>{2319cbe1-ecfa-4abb-9474-1a84405d6481}</Project>

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Business.Models;
-using Business.Services.Statuses;
-using Business.Services.Users;
+using TwitterBackup.Business.Models;
+using TwitterBackup.Business.Services.Statuses;
+using TwitterBackup.Business.Services.Users;
 using TwitterBackup.Infrastructure.Identity.Claims;
 using TwitterBackup.Web.Messages.Status;
 

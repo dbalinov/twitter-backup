@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Business.Models;
-using Business.Models.Mapping;
-using DataAccess.Repositories.Users;
+using TwitterBackup.Business.Models;
+using TwitterBackup.Business.Models.Mapping;
+using TwitterBackup.DataAccess.Repositories.Users;
 using TwitterBackup.Infrastructure.Identity.Claims;
-using DataAccess.Repositories.Statuses;
+using TwitterBackup.DataAccess.Repositories.Statuses;
 
-namespace Business.Services.Users
+namespace TwitterBackup.Business.Services.Users
 {
     internal class UserService : IUserService
     {

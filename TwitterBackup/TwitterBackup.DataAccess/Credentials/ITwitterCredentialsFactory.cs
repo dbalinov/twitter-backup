@@ -1,6 +1,6 @@
 ﻿using Tweetinvi.Models;
 
-namespace DataAccess.Credentials
+namespace TwitterBackup.DataAccess.Credentials
 {
     public interface ITwitterCredentialsFactory
     {

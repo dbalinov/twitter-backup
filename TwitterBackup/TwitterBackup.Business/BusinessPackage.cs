@@ -1,5 +1,5 @@
-﻿using Business.Services.Statuses;
-using Business.Services.Users;
+﻿using TwitterBackup.Business.Services.Statuses;
+using TwitterBackup.Business.Services.Users;
 using SimpleInjector;
 using SimpleInjector.Packaging;
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataAccess.Entities
+namespace TwitterBackup.DataAccess.Entities
 {
     public class Status : MongoEntity
     {

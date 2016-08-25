@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Business.Models;
+using TwitterBackup.Business.Models;
 using System.Collections.Generic;
 
-namespace Business.Services.Users
+namespace TwitterBackup.Business.Services.Users
 {
     public interface IUserService
     {

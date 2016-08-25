@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Business.Models;
-using Business.Models.Mapping;
-using DataAccess.Entities;
-using DataAccess.Repositories.Users;
+using TwitterBackup.Business.Models;
+using TwitterBackup.Business.Models.Mapping;
+using TwitterBackup.DataAccess.Entities;
+using TwitterBackup.DataAccess.Repositories.Users;
 
-namespace Business.Services.Users
+namespace TwitterBackup.Business.Services.Users
 {
     internal class FavoriteUserService : IFavoriteUserService
     {

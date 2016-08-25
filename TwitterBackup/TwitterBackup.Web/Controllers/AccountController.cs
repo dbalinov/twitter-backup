@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TwitterBackup.Web.Models;
-using Business.Services.Users;
+using TwitterBackup.Business.Services.Users;
 
 namespace TwitterBackup.Web.Controllers
 {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http.Results;
-using Business.Models;
-using Business.Services.Users;
+using TwitterBackup.Business.Models;
+using TwitterBackup.Business.Services.Users;
 using NSubstitute;
 using TwitterBackup.Web.Controllers;
 using TwitterBackup.Web.Messages.User;
@@ -10,12 +10,12 @@ using Xunit;
 
 namespace TwitterBackup.Web.Tests.Controllers
 {
-    public class DashboardControllerTest
+    public class DashboardControllerTests
     {
         private readonly IUserService userService;
         private readonly DashboardController dashboardController;
 
-        public DashboardControllerTest()
+        public DashboardControllerTests()
         {
             this.userService = Substitute.For<IUserService>();
             this.dashboardController = new DashboardController(this.userService);

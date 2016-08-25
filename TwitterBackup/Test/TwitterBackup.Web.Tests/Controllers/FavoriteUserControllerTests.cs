@@ -1,11 +1,11 @@
-﻿using Business.Services.Users;
+﻿using TwitterBackup.Business.Services.Users;
 using NSubstitute;
 using TwitterBackup.Web.Controllers;
 using TwitterBackup.Infrastructure.Identity.Claims;
 
 namespace TwitterBackup.Web.Tests.Controllers
 {
-    public class FavoriteUserControllerTest
+    public class FavoriteUserControllerTests
     {
         private readonly IFavoriteUserService favoriteUserService;
         private readonly ITwitterClaimsHelper claimsHelper;
@@ -13,7 +13,7 @@ namespace TwitterBackup.Web.Tests.Controllers
         private readonly FavoriteUserController dashboardController;
   
 
-        public FavoriteUserControllerTest()
+        public FavoriteUserControllerTests()
         {
             this.favoriteUserService = Substitute.For<IFavoriteUserService>();
             this.claimsHelper = Substitute.For<ITwitterClaimsHelper>();

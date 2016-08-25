@@ -7,8 +7,8 @@
     <ProjectGuid>{69BFB9FB-37A8-4CBC-A938-E1E663F191E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Business</RootNamespace>
-    <AssemblyName>Business</AssemblyName>
+    <RootNamespace>TwitterBackup.Business</RootNamespace>
+    <AssemblyName>TwitterBackup.Business</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -72,9 +72,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TwitterBackup.DataAccess\DataAccess.csproj">
+    <ProjectReference Include="..\TwitterBackup.DataAccess\TwitterBackup.DataAccess.csproj">
       <Project>{c5bf0329-9db9-43f2-bb26-8e18c6b9fa5b}</Project>
-      <Name>DataAccess</Name>
+      <Name>TwitterBackup.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\TwitterBackup.Infrastructure\TwitterBackup.Infrastructure.csproj">
       <Project>{2319cbe1-ecfa-4abb-9474-1a84405d6481}</Project>

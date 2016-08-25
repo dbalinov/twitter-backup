@@ -1,8 +1,8 @@
-﻿using Business.Models;
+﻿using TwitterBackup.Business.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Business.Services.Statuses
+namespace TwitterBackup.Business.Services.Statuses
 {
     public interface IStatusService
     {

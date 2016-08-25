@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Business.Services.Statuses;
-using DataAccess.Entities;
-using DataAccess.Repositories.Statuses;
+using TwitterBackup.Business.Services.Statuses;
+using TwitterBackup.DataAccess.Entities;
+using TwitterBackup.DataAccess.Repositories.Statuses;
 using NSubstitute;
 using Xunit;
 

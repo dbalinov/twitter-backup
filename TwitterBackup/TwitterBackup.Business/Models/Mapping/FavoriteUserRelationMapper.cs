@@ -1,6 +1,6 @@
-﻿using DataAccess.Entities;
+﻿using TwitterBackup.DataAccess.Entities;
 
-namespace Business.Models.Mapping
+namespace TwitterBackup.Business.Models.Mapping
 {
     internal class FavoriteUserRelationMapper
     {

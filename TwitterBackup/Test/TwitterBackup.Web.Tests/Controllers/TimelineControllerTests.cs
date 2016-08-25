@@ -1,12 +1,12 @@
-﻿using Business.Services.Statuses;
-using Business.Services.Users;
+﻿using TwitterBackup.Business.Services.Statuses;
+using TwitterBackup.Business.Services.Users;
 using TwitterBackup.Infrastructure.Identity.Claims;
 using NSubstitute;
 using TwitterBackup.Web.Controllers;
 
 namespace TwitterBackup.Web.Tests.Controllers
 {
-    public class TimelineControllerTest
+    public class TimelineControllerTests
     {
         private readonly IStatusService statusService;
         private readonly IUserService userService;
@@ -14,7 +14,7 @@ namespace TwitterBackup.Web.Tests.Controllers
 
         private readonly TimelineController timelineController;
 
-        public TimelineControllerTest()
+        public TimelineControllerTests()
         {
             this.statusService = Substitute.For<IStatusService>();
             this.userService = Substitute.For<IUserService>(); ;

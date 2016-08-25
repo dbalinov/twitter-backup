@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DataAccess.Credentials;
-using DataAccess.Entities;
-using DataAccess.Entities.Mapping;
+using TwitterBackup.DataAccess.Credentials;
+using TwitterBackup.DataAccess.Entities.Mapping;
 using MongoDB.Driver;
 using Tweetinvi;
-using Tweetinvi.Models;
-using User = Tweetinvi.User;
 
-namespace DataAccess.Repositories.Users
+namespace TwitterBackup.DataAccess.Repositories.Users
 {
     internal class UserRepository : IUserRepository
     {
-        private readonly ITwitterCredentials credentials;
+        private readonly Tweetinvi.Models.ITwitterCredentials credentials;
         private readonly IDbContext dbContext;
         
         public UserRepository(ITwitterCredentialsFactory credentialsFactory, IDbContext dbContext)
@@ -52,14 +49,14 @@ namespace DataAccess.Repositories.Users
 
         public async Task RegisterUserAsync(string userId)
         {
-            var userRegister = new UserRegister { UserId = userId };
+            var userRegister = new Entities.UserRegister { UserId = userId };
             await this.dbContext.UserRegisters.InsertOneAsync(userRegister);
         }
 
-        public async Task<IEnumerable<UserRegister>> GetRegisterUsersAsync()
+        public async Task<IEnumerable<Entities.UserRegister>> GetRegisterUsersAsync()
         {
             var users = await this.dbContext.UserRegisters.FindAsync(
-                FilterDefinition<UserRegister>.Empty);
+                FilterDefinition<Entities.UserRegister>.Empty);
 
             return users.ToEnumerable();
         }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Business.Models
+namespace TwitterBackup.Business.Models
 {
     public class StatusModel
     {

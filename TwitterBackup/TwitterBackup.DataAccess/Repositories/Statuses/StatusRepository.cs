@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DataAccess.Credentials;
-using DataAccess.Entities;
-using DataAccess.Entities.Mapping;
+using TwitterBackup.DataAccess.Credentials;
+using TwitterBackup.DataAccess.Entities;
+using TwitterBackup.DataAccess.Entities.Mapping;
 using Tweetinvi;
 using Tweetinvi.Parameters;
 using Tweetinvi.Models;
 
-namespace DataAccess.Repositories.Statuses
+namespace TwitterBackup.DataAccess.Repositories.Statuses
 {
     internal class StatusRepository : IStatusRepository
     {

@@ -2,7 +2,7 @@
 using TwitterBackup.Infrastructure.Identity.Claims;
 using Tweetinvi.Models;
 
-namespace DataAccess.Credentials
+namespace TwitterBackup.DataAccess.Credentials
 {
     internal class TwitterCredentialsFactory : ITwitterCredentialsFactory
     {

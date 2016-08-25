@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 
-namespace DataAccess.Entities
+namespace TwitterBackup.DataAccess.Entities
 {
     public abstract class MongoEntity
     {

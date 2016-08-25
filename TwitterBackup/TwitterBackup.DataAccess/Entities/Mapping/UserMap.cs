@@ -1,4 +1,4 @@
-﻿namespace DataAccess.Entities.Mapping
+﻿namespace TwitterBackup.DataAccess.Entities.Mapping
 {
     public class UserMap
     {

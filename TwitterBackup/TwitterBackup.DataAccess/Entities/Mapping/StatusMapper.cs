@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Tweetinvi.Models;
 
-namespace DataAccess.Entities.Mapping
+namespace TwitterBackup.DataAccess.Entities.Mapping
 {
     public class StatusMapper
     {

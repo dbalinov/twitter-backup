@@ -1,8 +1,8 @@
-﻿using DataAccess.Entities;
+﻿using TwitterBackup.DataAccess.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DataAccess.Repositories.Users
+namespace TwitterBackup.DataAccess.Repositories.Users
 {
     public interface IFavoriteUserRepository
     {
