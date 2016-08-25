@@ -1,9 +1,9 @@
-﻿<div class="row">
+﻿<div class="row" ng-if="model.loaded">
     <div class="col-xs-12">
         <h3>Dashboard</h3>
     </div>
 </div>
-<div class="row info-box">
+<div class="row info-box" ng-if="model.loaded">
     <div class="col-xs-4">
         <div class="panel panel-default info-box-users">
             <div class="panel-body">
@@ -39,7 +39,7 @@
         </div>
     </div>
 </div>
-<table class="table table-condensed table-striped">
+<table class="table table-condensed table-striped" ng-if="model.loaded">
     <tr>
         <th colspan="2">User</th>
         <th>Favorite users</th>
