@@ -5,6 +5,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using TwitterBackup.Business.Services.Users;
+using TwitterBackup.Infrastructure.Identity.Claims;
 using TwitterBackup.Web.Models;
 
 namespace TwitterBackup.Web.Controllers
@@ -62,6 +64,9 @@ namespace TwitterBackup.Web.Controllers
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : "";
 
+            var userService = DependencyResolver.Current.GetService<IUserService>();
+            var claimsHelper = DependencyResolver.Current.GetService<ITwitterClaimsHelper>();
+
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
@@ -69,8 +74,10 @@ namespace TwitterBackup.Web.Controllers
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                User = await userService.GetAsync(claimsHelper.GetUserId())
             };
+
             return View(model);
         }
 

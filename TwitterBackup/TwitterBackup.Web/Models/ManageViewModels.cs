@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using TwitterBackup.Business.Models;
 
 namespace TwitterBackup.Web.Models
 {
@@ -12,6 +13,7 @@ namespace TwitterBackup.Web.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        public UserModel User { get; set; }
     }
 
     public class ManageLoginsViewModel

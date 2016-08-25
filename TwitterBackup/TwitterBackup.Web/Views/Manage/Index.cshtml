@@ -10,6 +10,18 @@
     <h4>Change your account settings</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>Profile image:</dt>
+        <dd>
+            <img src="@Model.User.ProfileImageUrl" alt="profile image" class="img-thumbnail"/>
+        </dd>
+        <dt>Name:</dt>
+        <dd>
+            @Model.User.Name
+        </dd>
+        <dt>Screen name:</dt>
+        <dd>
+            @Model.User.ScreenName
+        </dd>
         <dt>Password:</dt>
         <dd>
             [
