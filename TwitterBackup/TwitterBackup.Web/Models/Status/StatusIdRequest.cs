@@ -1,4 +1,4 @@
-﻿namespace TwitterBackup.Web.Messages.Status
+﻿namespace TwitterBackup.Web.Models.Status
 {
     public class StatusIdRequest
     {

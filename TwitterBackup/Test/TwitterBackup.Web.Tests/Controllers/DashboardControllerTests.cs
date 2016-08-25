@@ -5,7 +5,7 @@ using TwitterBackup.Business.Models;
 using TwitterBackup.Business.Services.Users;
 using NSubstitute;
 using TwitterBackup.Web.Controllers;
-using TwitterBackup.Web.Messages.User;
+using TwitterBackup.Web.Models.User;
 using Xunit;
 
 namespace TwitterBackup.Web.Tests.Controllers

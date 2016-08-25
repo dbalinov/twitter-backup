@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TwitterBackup.Business.Models;
 
-namespace TwitterBackup.Web.Messages.Status
+namespace TwitterBackup.Web.Models.Status
 {
     public class TimelineResponse
     {

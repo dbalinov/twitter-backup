@@ -1,4 +1,4 @@
-﻿namespace TwitterBackup.Web.Messages.User
+﻿namespace TwitterBackup.Web.Models.User
 {
     public class SearchUserRequest
     {

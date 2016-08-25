@@ -216,12 +216,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Messages\User\DashboardResponse.cs" />
-    <Compile Include="Messages\User\FavoriteUserRequest.cs" />
-    <Compile Include="Messages\User\SearchUserRequest.cs" />
-    <Compile Include="Messages\Status\StatusIdRequest.cs" />
-    <Compile Include="Messages\Status\TimelineRequest.cs" />
-    <Compile Include="Messages\Status\TimelineResponse.cs" />
+    <Compile Include="Models\User\DashboardResponse.cs" />
+    <Compile Include="Models\User\FavoriteUserRequest.cs" />
+    <Compile Include="Models\User\SearchUserRequest.cs" />
+    <Compile Include="Models\Status\StatusIdRequest.cs" />
+    <Compile Include="Models\Status\TimelineRequest.cs" />
+    <Compile Include="Models\Status\TimelineResponse.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

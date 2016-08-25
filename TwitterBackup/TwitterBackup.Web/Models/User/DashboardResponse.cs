@@ -2,7 +2,7 @@
 using System.Linq;
 using TwitterBackup.Business.Models;
 
-namespace TwitterBackup.Web.Messages.User
+namespace TwitterBackup.Web.Models.User
 {
     public class DashboardResponse
     {

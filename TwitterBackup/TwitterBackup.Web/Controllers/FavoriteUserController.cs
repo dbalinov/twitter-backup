@@ -1,9 +1,9 @@
 ﻿using System.Web.Http;
+using System.Threading.Tasks;
 using TwitterBackup.Business.Models;
 using TwitterBackup.Business.Services.Users;
-using System.Threading.Tasks;
 using TwitterBackup.Infrastructure.Identity.Claims;
-using TwitterBackup.Web.Messages.User;
+using TwitterBackup.Web.Models.User;
 
 namespace TwitterBackup.Web.Controllers
 {

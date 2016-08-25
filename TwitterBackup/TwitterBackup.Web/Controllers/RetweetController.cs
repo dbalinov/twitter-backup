@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
 using TwitterBackup.Business.Services.Statuses;
-using TwitterBackup.Web.Messages.Status;
+using TwitterBackup.Web.Models.Status;
 
 namespace TwitterBackup.Web.Controllers
 {

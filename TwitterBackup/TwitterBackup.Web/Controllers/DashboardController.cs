@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 using TwitterBackup.Business.Services.Users;
-using TwitterBackup.Web.Messages.User;
+using TwitterBackup.Web.Models.User;
 using System.Threading.Tasks;
 
 namespace TwitterBackup.Web.Controllers
