@@ -91,11 +91,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Business\Business.csproj">
+    <ProjectReference Include="..\..\TwitterBackup.Business\Business.csproj">
       <Project>{69bfb9fb-37a8-4cbc-a938-e1e663f191e2}</Project>
       <Name>Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Infrastructure\TwitterBackup.Infrastructure.csproj">
+    <ProjectReference Include="..\..\TwitterBackup.Infrastructure\TwitterBackup.Infrastructure.csproj">
       <Project>{2319cbe1-ecfa-4abb-9474-1a84405d6481}</Project>
       <Name>TwitterBackup.Infrastructure</Name>
     </ProjectReference>

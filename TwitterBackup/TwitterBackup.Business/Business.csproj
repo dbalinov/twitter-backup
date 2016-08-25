@@ -72,11 +72,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+    <ProjectReference Include="..\TwitterBackup.DataAccess\DataAccess.csproj">
       <Project>{c5bf0329-9db9-43f2-bb26-8e18c6b9fa5b}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Infrastructure\TwitterBackup.Infrastructure.csproj">
+    <ProjectReference Include="..\TwitterBackup.Infrastructure\TwitterBackup.Infrastructure.csproj">
       <Project>{2319cbe1-ecfa-4abb-9474-1a84405d6481}</Project>
       <Name>TwitterBackup.Infrastructure</Name>
     </ProjectReference>
