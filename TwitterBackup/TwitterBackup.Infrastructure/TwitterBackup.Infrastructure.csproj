@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cacheing\ICacheProvider.cs" />
+    <Compile Include="Cacheing\WebCacheProvider.cs" />
     <Compile Include="Identity\Claims\ITwitterClaimsHelper.cs" />
     <Compile Include="Identity\Claims\TwitterClaimsHelper.cs" />
     <Compile Include="Identity\MessageServices\EmailService.cs" />

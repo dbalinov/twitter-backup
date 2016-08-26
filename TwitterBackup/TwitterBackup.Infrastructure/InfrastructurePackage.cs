@@ -1,6 +1,7 @@
 ﻿using TwitterBackup.Infrastructure.Identity.Claims;
 using SimpleInjector;
 using SimpleInjector.Packaging;
+using TwitterBackup.Infrastructure.Cacheing;
 
 namespace TwitterBackup.Infrastructure
 {
@@ -8,6 +9,7 @@ namespace TwitterBackup.Infrastructure
     {
         public void RegisterServices(Container container)
         {
+            container.Register<ICacheProvider, WebCacheProvider>();
             container.Register<ITwitterClaimsHelper, TwitterClaimsHelper>(Lifestyle.Scoped);
         }
     }
