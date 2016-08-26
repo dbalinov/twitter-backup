@@ -9,7 +9,7 @@ namespace TwitterBackup.Infrastructure
     {
         public void RegisterServices(Container container)
         {
-            container.Register<ICacheProvider, WebCacheProvider>();
+            container.Register<ICacheProvider, WebCacheProvider>(Lifestyle.Scoped);
             container.Register<ITwitterClaimsHelper, TwitterClaimsHelper>(Lifestyle.Scoped);
         }
     }

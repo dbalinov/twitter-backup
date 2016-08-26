@@ -19,7 +19,7 @@ namespace TwitterBackup.DataAccess
 
             container.Register<IUserRepository, UserRepository>(Lifestyle.Scoped);
             container.Register<IFavoriteUserRepository, FavoriteUserRepository>(Lifestyle.Scoped);
-            container.Register<IStatusRepository, StatusRepository>(Lifestyle.Scoped);
+            container.Register<IStatusRepository, CachedStatusRepository>(Lifestyle.Scoped);
             container.Register<IStatusStoreRepository, StatusStoreRepository>(Lifestyle.Scoped);
             
             container.Register<ITwitterCredentialsFactory, TwitterCredentialsFactory>(Lifestyle.Scoped);
