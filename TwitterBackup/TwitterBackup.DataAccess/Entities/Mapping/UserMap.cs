@@ -15,6 +15,7 @@
             to.FriendsCount = from.FriendsCount;
             to.ScreenName = from.ScreenName;
             to.Verified = from.Verified;
+
             return  to;
         }
     }

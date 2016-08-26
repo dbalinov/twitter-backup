@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mapping\" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

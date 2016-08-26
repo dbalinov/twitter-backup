@@ -89,7 +89,6 @@ textarea {
       font-size: 18px;
       font-weight: 500;
       transition: color 0.15s ease-in-out 0s; }
-  .twitter-card,
   .twitter-card a,
   .twitter-card .profile-buttons .notifications-button {
     cursor: pointer; }

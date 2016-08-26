@@ -29,9 +29,6 @@ namespace TwitterBackup.DataAccess.Repositories.Statuses
 
         public async Task<IEnumerable<Status>> GetUserTimelineAsync(StatusListParams statusListParams)
         {
-            var user = await Auth.ExecuteOperationWithCredentials(
-                this.credentials, () => UserAsync.GetUserFromId(long.Parse(statusListParams.CreatedByUserId)));
-            
             var userTimelineParam = new UserTimelineParameters
             {
                 MaximumNumberOfTweetsToRetrieve = statusListParams.Count ?? 100,
@@ -44,9 +41,11 @@ namespace TwitterBackup.DataAccess.Repositories.Statuses
                 userTimelineParam.MaxId = long.Parse(statusListParams.MaxId) - 1;
             }
 
-            var tweets = await Auth.ExecuteOperationWithCredentials(
-                this.credentials, () => user.GetUserTimelineAsync(userTimelineParam));
+            var userId = new UserIdentifier(long.Parse(statusListParams.CreatedByUserId));
 
+            var tweets = await Auth.ExecuteOperationWithCredentials(
+                this.credentials, () =>  TimelineAsync.GetUserTimeline(userId, userTimelineParam));
+            
             tweets = tweets ?? Enumerable.Empty<ITweet>();
 
             var mapper = new StatusMapper();
