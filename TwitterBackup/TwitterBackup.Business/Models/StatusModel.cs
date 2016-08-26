@@ -12,6 +12,8 @@ namespace TwitterBackup.Business.Models
 
         public DateTime CreatedAt { get; set; }
         
+        public string CreatedByScreenName { get; set; }
+
         public bool IsSaved { get; set; }
 
         public string MediaType { get; set; }

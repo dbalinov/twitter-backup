@@ -25,6 +25,7 @@ namespace TwitterBackup.Business.Tests.Mapping
                 Text = "2",
                 Retweeted = true,
                 CreatedAt = DateTime.Today,
+                CreatedByScreenName = "@twitter_user",
                 MediaType = "type",
                 MediaUrl = "url"
             };
@@ -37,6 +38,7 @@ namespace TwitterBackup.Business.Tests.Mapping
             Assert.Equal(dto.Text, model.Text);
             Assert.Equal(dto.Retweeted, model.Retweeted);
             Assert.Equal(dto.CreatedAt, model.CreatedAt);
+            Assert.Equal(dto.CreatedByScreenName, model.CreatedByScreenName);
             Assert.Equal(dto.MediaType, model.MediaType);
             Assert.Equal(dto.MediaUrl, model.MediaUrl);
         }

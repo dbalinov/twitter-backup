@@ -12,7 +12,7 @@ namespace TwitterBackup.DataAccess.Entities.Mapping
             to.Retweeted = from.Retweeted;
             to.CreatedAt = from.CreatedAt;
             to.CreatedById = from.CreatedBy.IdStr;
-
+            to.CreatedByScreenName = from.CreatedBy.ScreenName;
             var media = from.Entities.Medias.FirstOrDefault();
             if (media != null)
             {

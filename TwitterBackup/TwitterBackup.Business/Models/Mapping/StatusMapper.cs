@@ -10,6 +10,7 @@ namespace TwitterBackup.Business.Models.Mapping
             to.Text = from.Text;
             to.Retweeted = from.Retweeted;
             to.CreatedAt = from.CreatedAt;
+            to.CreatedByScreenName = from.CreatedByScreenName;
             to.MediaType = from.MediaType;
             to.MediaUrl = from.MediaUrl;
 

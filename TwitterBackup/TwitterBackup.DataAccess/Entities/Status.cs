@@ -14,6 +14,8 @@ namespace TwitterBackup.DataAccess.Entities
         
         public string CreatedById { get; set; }
 
+        public string CreatedByScreenName { get; set; }
+
         public string SavedByUserId { get; set; }
 
         public string MediaType { get; set; }

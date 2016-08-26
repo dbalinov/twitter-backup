@@ -32,8 +32,7 @@ namespace TwitterBackup.DataAccess.Repositories.Statuses
             var userTimelineParam = new UserTimelineParameters
             {
                 MaximumNumberOfTweetsToRetrieve = statusListParams.Count ?? 100,
-                IncludeRTS = true,
-                TrimUser = true
+                IncludeRTS = true
             };
 
             if (!string.IsNullOrEmpty(statusListParams.MaxId))
