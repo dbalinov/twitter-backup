@@ -4,8 +4,6 @@ using System.Threading.Tasks;
 using NSubstitute;
 using TwitterBackup.DataAccess.Repositories.Statuses;
 using TwitterBackup.Infrastructure.Identity.Claims;
-using System.Web.Configuration;
-using MongoDB.Driver;
 using TwitterBackup.DataAccess.Entities;
 using Xunit;
 
@@ -18,9 +16,7 @@ namespace TwitterBackup.DataAccess.Tests.Repositories.Statuses
 
         public StatusStoreRepositoryTests()
         {
-            var mongoConnectionString = WebConfigurationManager.AppSettings["mongodb:ConnectionString"];
-            var mongoClient = new MongoClient(mongoConnectionString);
-            var dbContext = new DbContext(mongoClient);
+            var dbContext = TestUtils.GetDbContext();
 
             this.claimsHelper = Substitute.For<ITwitterClaimsHelper>();
             this.statusStoreRepository =new StatusStoreRepository(dbContext, claimsHelper);

@@ -128,6 +128,7 @@
     <Compile Include="Repositories\Statuses\StatusRepositoryTests.cs" />
     <Compile Include="Repositories\Statuses\StatusStoreRepositoryTests.cs" />
     <Compile Include="Repositories\Users\UserRepositoryTests.cs" />
+    <Compile Include="TestUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TwitterBackup.DataAccess\TwitterBackup.DataAccess.csproj">
