@@ -89,6 +89,22 @@ namespace TwitterBackup.Web.Controllers
             }
         }
 
+        private async Task AddToRegister()
+        {
+            var claimsIdentity = await AuthenticationManager
+                .GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+
+            // Get the list of access token related claims from the identity
+            var userIdClaim = claimsIdentity.Claims
+                .FirstOrDefault(c => c.Type == "urn:tokens:twitter:userid");
+
+            if (userIdClaim != null)
+            {
+                var userService = DependencyResolver.Current.GetService<IUserService>();
+                await userService.RegisterUserAsync(userIdClaim.Value);
+            }
+        }
+
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
@@ -331,6 +347,7 @@ namespace TwitterBackup.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    await AddToRegister();
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

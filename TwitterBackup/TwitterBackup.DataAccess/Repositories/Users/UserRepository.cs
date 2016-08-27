@@ -59,7 +59,11 @@ namespace TwitterBackup.DataAccess.Repositories.Users
         public async Task RegisterUserAsync(string userId)
         {
             var userRegister = new Entities.UserRegister { UserId = userId };
-            await this.dbContext.UserRegisters.InsertOneAsync(userRegister);
+            var exists = await this.dbContext.UserRegisters.CountAsync(x => x.UserId == userId) > 0;
+            if (!exists)
+            {
+                await this.dbContext.UserRegisters.InsertOneAsync(userRegister);
+            }
         }
 
         public async Task<IEnumerable<Entities.UserRegister>> GetRegisterUsersAsync()
