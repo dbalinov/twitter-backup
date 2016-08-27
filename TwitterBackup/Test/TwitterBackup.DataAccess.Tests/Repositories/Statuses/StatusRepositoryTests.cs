@@ -16,13 +16,8 @@ namespace TwitterBackup.DataAccess.Tests.Repositories.Statuses
 
         public StatusRepositoryTests()
         {
-            var credentials = new TwitterCredentials(
-                WebConfigurationManager.AppSettings["twitter:ConsumerKey"],
-                WebConfigurationManager.AppSettings["twitter:ConsumerSecret"],
-                "3656340495-Bu8Wak5cCQYXBFKdklhVbvH3AvJXrGRfn3m2YPf",
-                "ZfNMcX6JW4lAnaVj6pJ38FZYxM00vcCqHUwCaUurW1hoq");
-
             var credentialsFactory = Substitute.For<ITwitterCredentialsFactory>();
+            var credentials = TestUtils.GetCredentials();
             credentialsFactory.Create().Returns(credentials);
             this.statusRepository = new StatusRepository(credentialsFactory);
         }
