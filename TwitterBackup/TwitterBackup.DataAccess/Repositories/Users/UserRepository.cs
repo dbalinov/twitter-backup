@@ -25,7 +25,7 @@ namespace TwitterBackup.DataAccess.Repositories.Users
             var users = Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => Tweetinvi.Search.SearchUsers(query, 9));
 
-            var mapper = new UserMap();
+            var mapper = new UserMapper();
             return users.Select(user => mapper.Map(user, new Entities.User()));
         }
 
@@ -34,7 +34,7 @@ namespace TwitterBackup.DataAccess.Repositories.Users
             var users = Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => User.GetUsersFromIds(ids.Select(long.Parse)));
 
-            var mapper = new UserMap();
+            var mapper = new UserMapper();
             return users.Select(user => mapper.Map(user, new Entities.User()));
         }
 
@@ -43,7 +43,7 @@ namespace TwitterBackup.DataAccess.Repositories.Users
             var users = await Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => UserAsync.GetFriends(long.Parse(userId)));
 
-            var mapper = new UserMap();
+            var mapper = new UserMapper();
             return users.Select(user => mapper.Map(user, new Entities.User()));
         }
 
@@ -52,7 +52,7 @@ namespace TwitterBackup.DataAccess.Repositories.Users
             var user = await Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => UserAsync.GetUserFromId(long.Parse(userId)));
 
-            var mapper = new UserMap();
+            var mapper = new UserMapper();
             return mapper.Map(user, new Entities.User());
         }
 

@@ -20,7 +20,7 @@ namespace TwitterBackup.DataAccess.Tests.Mapping
         }
 
         [Fact]
-        public void MapFromDtoToModel()
+        public void MapFromTweetToDto()
         {
             // Arrange
             var tweetDto = new TweetDTO

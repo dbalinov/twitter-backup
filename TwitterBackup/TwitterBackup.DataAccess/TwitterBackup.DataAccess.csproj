@@ -107,7 +107,7 @@
     <Compile Include="DbContext.cs" />
     <Compile Include="Entities\FavoriteUserRelation.cs" />
     <Compile Include="Entities\Mapping\StatusMapper.cs" />
-    <Compile Include="Entities\Mapping\UserMap.cs" />
+    <Compile Include="Entities\Mapping\UserMapper.cs" />
     <Compile Include="Entities\MongoEntity.cs" />
     <Compile Include="Entities\Status.cs" />
     <Compile Include="Entities\StatusListParams.cs" />
