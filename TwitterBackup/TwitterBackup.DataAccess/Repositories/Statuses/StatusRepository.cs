@@ -60,9 +60,6 @@ namespace TwitterBackup.DataAccess.Repositories.Statuses
 
         public int GetRetweetsCountForUser(string userId)
         {
-            var user = Auth.ExecuteOperationWithCredentials(
-                this.credentials, () => Tweetinvi.User.GetUserFromId(long.Parse(userId)));
-
             var userTimelineParam = new UserTimelineParameters
             {
                 MaximumNumberOfTweetsToRetrieve = 200,
@@ -72,8 +69,10 @@ namespace TwitterBackup.DataAccess.Repositories.Statuses
                 ExcludeReplies = true,                
             };
 
+            var user = new UserIdentifier(long.Parse(userId));
+
             var tweets = Auth.ExecuteOperationWithCredentials(
-                this.credentials, () => user.GetUserTimeline(userTimelineParam));
+                this.credentials, () => Timeline.GetUserTimeline(user, userTimelineParam));
 
             return tweets.Count(x => x.IsRetweet);
         }
