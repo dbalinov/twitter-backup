@@ -42,7 +42,7 @@ namespace TwitterBackup.DataAccess.Repositories.Statuses
             var options = new FindOptions<Status>
             {
                 Sort = Builders<Status>.Sort.Descending(x => x.StatusId),
-                Limit = 5
+                Limit = statusListParams.Count
             };
 
             var savedStatuses = await this.dbContext.Statuses.FindAsync(complexFilter, options);
