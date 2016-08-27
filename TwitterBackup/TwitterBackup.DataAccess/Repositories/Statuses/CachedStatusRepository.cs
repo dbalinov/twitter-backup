@@ -43,7 +43,7 @@ namespace TwitterBackup.DataAccess.Repositories.Statuses
             }
 
             var count = statusListParams.Count.Value;
-            statusListParams.Count = 50;
+            statusListParams.Count = 100;
             var result = await base.GetUserTimelineAsync(statusListParams);
 
             cacheProvider.Set(key, result, TimeSpan.FromMinutes(5));
