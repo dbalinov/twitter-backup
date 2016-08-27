@@ -2,7 +2,7 @@
 
 TwitterBackup a Javascript-based Single Page Application (SPA) with .NET Backend that allows users to store tweets from their favorite Twitter users.
 
-# Fatures
+## Fatures
 
 With TwitterBackup you can:
 * Login with your twitter account.
@@ -13,15 +13,21 @@ With TwitterBackup you can:
 * Retweet posts from your favorite users.
 * Administrator dashboard.
 
-# Technologies & libraries
+## Adavantages:
+* Infinity scroll in timeline page.
+* Cacheing data form twitter.
+* Optimized mongodb queries.
+* 3-layer architecture.
 
-## Back-end
-* ASP.NET MVC, WebAPI,
+## Technologies & libraries
+
+### Back-end
+* ASP.NET MVC, WebAPI
 * MongoDB
 * Working with Twitter API
 * xUnit test framework
 
-## Front-end
+### Front-end
 * TypeScript
 * SCSS styles
 * angularjs
