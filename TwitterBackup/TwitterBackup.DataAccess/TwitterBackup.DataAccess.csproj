@@ -120,6 +120,7 @@
     <Compile Include="Repositories\Statuses\IStatusStoreRepository.cs" />
     <Compile Include="Repositories\Statuses\StatusRepository.cs" />
     <Compile Include="Repositories\Statuses\StatusStoreRepository.cs" />
+    <Compile Include="Repositories\Users\CachedUserRepository.cs" />
     <Compile Include="Repositories\Users\FavoriteUserRepository.cs" />
     <Compile Include="Repositories\Users\IFavoriteUserRepository.cs" />
     <Compile Include="Repositories\Users\IUserRepository.cs" />

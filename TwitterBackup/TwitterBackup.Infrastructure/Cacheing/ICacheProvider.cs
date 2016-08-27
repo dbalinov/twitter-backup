@@ -8,6 +8,6 @@ namespace TwitterBackup.Infrastructure.Cacheing
 
         void Set<T>(string key, T value);
 
-        void Set<T>(string key, T value, TimeSpan slidingExpiration);
+        void Set<T>(string key, T value, TimeSpan expiration);
     }
 }

@@ -19,10 +19,10 @@ namespace TwitterBackup.Infrastructure.Cacheing
             cache.Insert(key, value);
         }
 
-        public void Set<T>(string key, T value, TimeSpan slidingExpiration)
+        public void Set<T>(string key, T value, TimeSpan expiration)
         {
             var cache = HttpContext.Current.Cache;
-            cache.Insert(key, value, null, Cache.NoAbsoluteExpiration, slidingExpiration);
+            cache.Insert(key, value, null, DateTime.Now.Add(expiration), Cache.NoSlidingExpiration);
         }
     }
 }

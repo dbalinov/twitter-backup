@@ -17,7 +17,7 @@ namespace TwitterBackup.DataAccess
 
             container.Register<IDbContext, DbContext>(Lifestyle.Singleton);
 
-            container.Register<IUserRepository, UserRepository>(Lifestyle.Scoped);
+            container.Register<IUserRepository, CachedUserRepository>(Lifestyle.Scoped);
             container.Register<IFavoriteUserRepository, FavoriteUserRepository>(Lifestyle.Scoped);
             container.Register<IStatusRepository, CachedStatusRepository>(Lifestyle.Scoped);
             container.Register<IStatusStoreRepository, StatusStoreRepository>(Lifestyle.Scoped);

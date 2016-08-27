@@ -10,7 +10,7 @@ namespace TwitterBackup.DataAccess.Repositories.Statuses
 {
     internal class CachedStatusRepository : StatusRepository
     {
-        private ICacheProvider cacheProvider;
+        private readonly ICacheProvider cacheProvider;
 
         public CachedStatusRepository(ITwitterCredentialsFactory credentialsFactory, ICacheProvider cacheProvider)
             : base(credentialsFactory)

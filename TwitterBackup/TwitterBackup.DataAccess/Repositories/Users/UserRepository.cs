@@ -29,7 +29,7 @@ namespace TwitterBackup.DataAccess.Repositories.Users
             return users.Select(user => mapper.Map(user, new Entities.User()));
         }
 
-        public IEnumerable<Entities.User> GetUsersFromIds(IEnumerable<string> ids)
+        public virtual IEnumerable<Entities.User> GetUsersFromIds(IEnumerable<string> ids)
         {
             var users = Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => User.GetUsersFromIds(ids.Select(long.Parse)));
@@ -47,7 +47,7 @@ namespace TwitterBackup.DataAccess.Repositories.Users
             return users.Select(user => mapper.Map(user, new Entities.User()));
         }
 
-        public async Task<Entities.User> GetAsync(string userId)
+        public virtual async Task<Entities.User> GetAsync(string userId)
         {
             var user = await Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => UserAsync.GetUserFromId(long.Parse(userId)));

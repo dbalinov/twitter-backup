@@ -20,7 +20,7 @@
             <div class="panel-body">
                 <i class="fa fa-bookmark" aria-hidden="true"></i>
                 <div>
-                    Downloads<br/>
+                    Saved tweets<br/>
                     {{model.downloadsCount}}
                 </div>
             </div>
@@ -31,7 +31,7 @@
             <div class="panel-body">
                 <i class="fa fa-retweet" aria-hidden="true"></i>
                 <div>
-                    Retweers<br/>
+                    Retweets<br/>
                     {{model.retweetsCount}}
                     <span ng-if="!model.retweetsCountIsAccurate">+</span>
                 </div>
@@ -51,8 +51,10 @@
             <img ng-src="{{ user.ProfileImageUrl }}" alt="" />
         </td>
         <td>
-            {{ user.Name }}<br/>
-            {{ user.ScreenName }}
+            <a href="#/status/timeline/{{user.Id}}">
+                <b>{{ user.Name }}</b><br/>
+                {{ user.ScreenName }}
+            </a>
         </td>
         <td>{{ user.FavoriteUsersCount }}</td>
         <td>{{ user.DownloadsCount }}</td>

@@ -19,7 +19,7 @@ namespace TwitterBackup.DataAccess.Repositories.Statuses
             this.credentials = credentialsFactory.Create();
         }
 
-        public virtual async Task<Status> GetAsync(string statusId)
+        public async Task<Status> GetAsync(string statusId)
         {
             var tweet = await Auth.ExecuteOperationWithCredentials(
                 this.credentials, () => TweetAsync.GetTweet(long.Parse(statusId)));
@@ -41,9 +41,9 @@ namespace TwitterBackup.DataAccess.Repositories.Statuses
             }
 
             var userId = new UserIdentifier(long.Parse(statusListParams.CreatedByUserId));
-
+            
             var tweets = await Auth.ExecuteOperationWithCredentials(
-                this.credentials, () =>  TimelineAsync.GetUserTimeline(userId, userTimelineParam));
+                this.credentials, () => TimelineAsync.GetUserTimeline(userId, userTimelineParam));
             
             tweets = tweets ?? Enumerable.Empty<ITweet>();
 

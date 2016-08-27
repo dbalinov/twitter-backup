@@ -134,15 +134,13 @@ textarea {
 }
 
 .animate-repeat {
-  list-style:none;
-  box-sizing:border-box;
-}
+    list-style:none;
+    box-sizing:border-box;
 
-.animate-repeat {
     &.ng-move,
     &.ng-enter,
     &.ng-leave {
-      transition:all linear 0.5s;
+      transition:all linear 0.8s;
     }
     &.ng-leave.ng-leave-active,
     &.ng-move,
