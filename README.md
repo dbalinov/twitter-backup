@@ -17,6 +17,7 @@ With TwitterBackup you can:
 * Infinity scroll in timeline page.
 * Cacheing data form twitter.
 * Optimized mongodb queries.
+* Async WebAPI 
 * 3-layer architecture.
 * Responsive design.
 
