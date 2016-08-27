@@ -73,6 +73,7 @@
     <Compile Include="Mapping\StatusListParamsMapperTests.cs" />
     <Compile Include="Mapping\StatusMapperTests.cs" />
     <Compile Include="Mapping\UserMapperTests.cs" />
+    <Compile Include="Models\StatusModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Statuses\StatusServiceTests.cs" />
     <Compile Include="Services\Users\FavoriteUserServiceTests.cs" />

@@ -33,7 +33,7 @@ namespace TwitterBackup.Web.Tests.Controllers
             var userId = "user id";
             var users = new List<UserModel>();
 
-            claimsHelper.GetUserId().Returns(userId);
+            this.claimsHelper.GetUserId().Returns(userId);
             this.favoriteUserService.GetFavoriteUsers(userId).Returns(users);
 
             // Act
