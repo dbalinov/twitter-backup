@@ -18,6 +18,7 @@ With TwitterBackup you can:
 * Cacheing data form twitter.
 * Optimized mongodb queries.
 * 3-layer architecture.
+* Responsive design.
 
 ## Technologies & libraries
 
