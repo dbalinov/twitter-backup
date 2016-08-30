@@ -71,13 +71,13 @@ namespace TwitterBackup.DataAccess.Tests.Repositories.Statuses
         }
 
         [Fact]
-        public void GetRetweetsCountForUserTest()
+        public async Task GetRetweetsCountForUserTest()
         {
             // Arrange
             var userId = "74286565";
 
             // Act
-            var result = this.statusRepository.GetRetweetsCountForUser(userId);
+            var result = await this.statusRepository.GetRetweetsCountForUserAsync(userId);
 
             // Assert
             Assert.True(result > 0);

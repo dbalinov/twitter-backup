@@ -58,7 +58,7 @@ namespace TwitterBackup.DataAccess.Repositories.Statuses
                 this.credentials, () => TweetAsync.PublishRetweet(tweetId));
         }
 
-        public int GetRetweetsCountForUser(string userId)
+        public async Task<int> GetRetweetsCountForUserAsync(string userId)
         {
             var userTimelineParam = new UserTimelineParameters
             {
@@ -71,8 +71,8 @@ namespace TwitterBackup.DataAccess.Repositories.Statuses
 
             var user = new UserIdentifier(long.Parse(userId));
 
-            var tweets = Auth.ExecuteOperationWithCredentials(
-                this.credentials, () => Timeline.GetUserTimeline(user, userTimelineParam));
+            var tweets = await Auth.ExecuteOperationWithCredentials(
+                this.credentials, () => TimelineAsync.GetUserTimeline(user, userTimelineParam));
 
             return tweets.Count(x => x.IsRetweet);
         }

@@ -105,6 +105,16 @@ namespace TwitterBackup.Business.Services.Users
             var favoriteUserCount = this.userRepository.GetFavoriteUserCount(userIds);
             var downloadStatusCount = this.statusStoreRepository.GetDownloadStatusCount(userIds);
 
+            var tasks = new List<Task<int>>();
+            foreach (var user in userModels)
+            {
+                var userRetweetsCountTask = this.statusRepository.GetRetweetsCountForUserAsync(user.Id);
+                tasks.Add(userRetweetsCountTask);
+            }
+
+            var userRetweetsCountResults = await Task.WhenAll(tasks);
+
+            var i = 0;
             userModels.ForEach(user =>
             {
                 var userCount = favoriteUserCount.FirstOrDefault(x => x.Item1 == user.Id);
@@ -118,9 +128,10 @@ namespace TwitterBackup.Business.Services.Users
                 {
                     user.DownloadsCount = statusCount.Item2;
                 }
-                
-                user.RetweetsCount = this.statusRepository.GetRetweetsCountForUser(user.Id);
+
+                user.RetweetsCount = userRetweetsCountResults[i];
                 user.RetweetsCountIsAccurate = user.RetweetsCount < 200;
+                i++;
             });
 
             return userModels;

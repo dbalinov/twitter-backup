@@ -12,6 +12,6 @@ namespace TwitterBackup.DataAccess.Repositories.Statuses
 
         Task RetweetAsync(string statusId);
 
-        int GetRetweetsCountForUser(string userId);
+        Task<int> GetRetweetsCountForUserAsync(string userId);
     }
 }

@@ -158,7 +158,7 @@ namespace TwitterBackup.Business.Tests.Services.Users
                     Tuple.Create(userId2, 4)
                 });
 
-            this.statusRepository.GetRetweetsCountForUser(userId2).Returns(201);
+            this.statusRepository.GetRetweetsCountForUserAsync(userId2).Returns(201);
 
             // Act
             var result = await this.userService.GetDashboardUsersAsync();
